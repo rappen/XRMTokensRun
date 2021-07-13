@@ -20,9 +20,7 @@ namespace XRMTokensRun
         public XRMTR()
         {
             InitializeComponent();
-            
-            btnGetRecord.BackColor = Color.White;
-        }
+         }
 
         private void MyPluginControl_Load(object sender, EventArgs e)
         {
