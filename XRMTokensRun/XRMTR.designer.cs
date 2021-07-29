@@ -63,6 +63,7 @@ namespace XRMTokensRun
             this.label4 = new System.Windows.Forms.Label();
             this.txtTokensOut = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblError = new System.Windows.Forms.Label();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -425,11 +426,12 @@ namespace XRMTokensRun
             // 
             this.gbTokenResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbTokenResult.Controls.Add(this.lblError);
             this.gbTokenResult.Controls.Add(this.label4);
             this.gbTokenResult.Controls.Add(this.txtTokensOut);
             this.gbTokenResult.Location = new System.Drawing.Point(3, 162);
             this.gbTokenResult.Name = "gbTokenResult";
-            this.gbTokenResult.Size = new System.Drawing.Size(756, 189);
+            this.gbTokenResult.Size = new System.Drawing.Size(756, 235);
             this.gbTokenResult.TabIndex = 4;
             this.gbTokenResult.TabStop = false;
             this.gbTokenResult.Text = "Result";
@@ -455,12 +457,21 @@ namespace XRMTokensRun
             this.txtTokensOut.Multiline = true;
             this.txtTokensOut.Name = "txtTokensOut";
             this.txtTokensOut.ReadOnly = true;
-            this.txtTokensOut.Size = new System.Drawing.Size(718, 101);
+            this.txtTokensOut.Size = new System.Drawing.Size(718, 135);
             this.txtTokensOut.TabIndex = 3;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // lblError
+            // 
+            this.lblError.AutoSize = true;
+            this.lblError.Location = new System.Drawing.Point(23, 214);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(37, 16);
+            this.lblError.TabIndex = 4;
+            this.lblError.Text = "Error";
             // 
             // XRMTR
             // 
@@ -535,5 +546,6 @@ namespace XRMTokensRun
         private System.Windows.Forms.Button btnSmart;
         private System.Windows.Forms.LinkLabel linkHelp;
         private System.Windows.Forms.Label lblSmart;
+        private System.Windows.Forms.Label lblError;
     }
 }

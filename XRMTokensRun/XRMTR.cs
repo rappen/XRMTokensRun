@@ -42,19 +42,13 @@ namespace XRMTokensRun
 
         private void XRMTR_Load(object sender, EventArgs e)
         {
-            if (!SettingsManager.Instance.TryLoad(GetType(), out settings))
-            {
-                settings = new Settings();
-            }
+            LoadSetting();
             Enable(true);
         }
 
         public override void ClosingPlugin(PluginCloseInfo info)
         {
-            if (settings != null)
-            {
-                SettingsManager.Instance.Save(GetType(), settings);
-            }
+            SaveSettings();
         }
 
         /// <summary>
@@ -63,16 +57,41 @@ namespace XRMTokensRun
         public override void UpdateConnection(IOrganizationService newService, ConnectionDetail detail, string actionName, object parameter)
         {
             base.UpdateConnection(newService, detail, actionName, parameter);
-            if (settings == null && !SettingsManager.Instance.TryLoad(GetType(), out settings))
-            {
-                settings = new Settings();
-            }
+            LoadSetting();
             tableselect.DataSource = newService?.LoadEntities()?.EntityMetadata;
             record.Service = newService;
             if (settings.Table != null)
             {
                 tableselect.SelectedItem = tableselect.Items.OfType<EntityMetadataItem>().FirstOrDefault(t => t.Metadata.LogicalName == settings.Table);
             }
+        }
+
+        private void LoadSetting()
+        {
+            if (settings == null && !SettingsManager.Instance.TryLoad(GetType(), out settings))
+            {
+                settings = new Settings();
+            }
+            chkAuto.Checked = settings.ExeAuto;
+        }
+
+        private void SaveSettings()
+        {
+            if (settings == null)
+            {
+                settings = new Settings();
+            }
+            settings.ExeAuto = chkAuto.Checked;
+            settings.Table = tableselect.SelectedEntity.LogicalName;
+            if (settings.Token?.FirstOrDefault(t => t.key == tableselect.SelectedEntity.LogicalName) is KeyValuePair token)
+            {
+                token.value = txtTokensIn.Text;
+            }
+            else
+            {
+                settings.Token.Add(new KeyValuePair { key = tableselect.SelectedEntity.LogicalName, value = txtTokensIn.Text });
+            }
+            SettingsManager.Instance.Save(GetType(), settings);
         }
 
         private void tableselect_SelectedIndexChanged(object sender, EventArgs e)
@@ -98,6 +117,10 @@ namespace XRMTokensRun
                 record.Record = look.Record;
             }
             ShowColumns();
+            if (chkAuto.Checked)
+            {
+                Execute();
+            }
             Enable(true);
         }
 
@@ -109,7 +132,16 @@ namespace XRMTokensRun
                 return;
             }
             SaveSettings();
-            txtTokensOut.Text = record.Record.Substitute(Service, txtTokensIn.Text);
+            try
+            {
+                lblError.Text = "";
+                txtTokensOut.Text = "";
+                txtTokensOut.Text = record.Record.Substitute(Service, txtTokensIn.Text);
+            }
+            catch (Exception ex)
+            {
+                lblError.Text = ex.Message;
+            }
         }
 
         private void Enable(bool on)
@@ -119,19 +151,6 @@ namespace XRMTokensRun
             gbTokenHelp.Enabled = on && record?.Record != null;
             gbTokens.Enabled = on && record?.Record != null;
             btnSmart.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
-        }
-
-        private void SaveSettings()
-        {
-            settings.Table = tableselect.SelectedEntity.LogicalName;
-            if (settings.Token?.FirstOrDefault(t => t.key == tableselect.SelectedEntity.LogicalName) is KeyValuePair token)
-            {
-                token.value = txtTokensIn.Text;
-            }
-            else
-            {
-                settings.Token.Add(new KeyValuePair { key = tableselect.SelectedEntity.LogicalName, value = txtTokensIn.Text });
-            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
