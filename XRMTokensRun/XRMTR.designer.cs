@@ -42,11 +42,18 @@ namespace XRMTokensRun
             this.btnReload = new System.Windows.Forms.Button();
             this.gbGetRecord = new System.Windows.Forms.GroupBox();
             this.btnGetRecord = new System.Windows.Forms.Button();
+            this.tableselect = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.recordname = new Rappen.XTB.Helpers.Controls.XRMColumnText();
+            this.record = new Rappen.XTB.Helpers.Controls.XRMRecordHost();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gbSmart = new System.Windows.Forms.GroupBox();
+            this.linkHelp = new System.Windows.Forms.LinkLabel();
+            this.lblSmart = new System.Windows.Forms.Label();
+            this.btnSmart = new System.Windows.Forms.Button();
+            this.cmbTokenHelp = new System.Windows.Forms.ComboBox();
             this.gbTokens = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTokensIn = new System.Windows.Forms.TextBox();
@@ -56,13 +63,6 @@ namespace XRMTokensRun
             this.label4 = new System.Windows.Forms.Label();
             this.txtTokensOut = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.cmbTokenHelp = new System.Windows.Forms.ComboBox();
-            this.btnSmart = new System.Windows.Forms.Button();
-            this.tableselect = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
-            this.recordname = new Rappen.XTB.Helpers.Controls.XRMColumnText();
-            this.record = new Rappen.XTB.Helpers.Controls.XRMRecordHost();
-            this.lblSmart = new System.Windows.Forms.Label();
-            this.linkHelp = new System.Windows.Forms.LinkLabel();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -216,7 +216,19 @@ namespace XRMTokensRun
             this.btnGetRecord.TabIndex = 4;
             this.btnGetRecord.Text = "Select Record";
             this.btnGetRecord.UseVisualStyleBackColor = false;
-            this.btnGetRecord.Click += new System.EventHandler(this.button1_Click);
+            this.btnGetRecord.Click += new System.EventHandler(this.btnGetRecurd_Click);
+            // 
+            // tableselect
+            // 
+            this.tableselect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableselect.FormattingEnabled = true;
+            this.tableselect.Location = new System.Drawing.Point(133, 30);
+            this.tableselect.Margin = new System.Windows.Forms.Padding(4);
+            this.tableselect.Name = "tableselect";
+            this.tableselect.Size = new System.Drawing.Size(235, 24);
+            this.tableselect.TabIndex = 0;
+            this.tableselect.SelectedIndexChanged += new System.EventHandler(this.tableselect_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -237,6 +249,26 @@ namespace XRMTokensRun
             this.label2.Size = new System.Drawing.Size(53, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Record";
+            // 
+            // recordname
+            // 
+            this.recordname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordname.Column = null;
+            this.recordname.DisplayFormat = "";
+            this.recordname.Location = new System.Drawing.Point(133, 118);
+            this.recordname.Margin = new System.Windows.Forms.Padding(4);
+            this.recordname.Name = "recordname";
+            this.recordname.RecordHost = this.record;
+            this.recordname.Size = new System.Drawing.Size(235, 22);
+            this.recordname.TabIndex = 3;
+            // 
+            // record
+            // 
+            this.record.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.record.LogicalName = null;
+            this.record.Record = null;
+            this.record.Service = null;
             // 
             // linkLabel1
             // 
@@ -270,7 +302,7 @@ namespace XRMTokensRun
             this.splitContainer2.Panel2.Controls.Add(this.gbOption);
             this.splitContainer2.Panel2.Controls.Add(this.gbTokenResult);
             this.splitContainer2.Size = new System.Drawing.Size(772, 766);
-            this.splitContainer2.SplitterDistance = 263;
+            this.splitContainer2.SplitterDistance = 296;
             this.splitContainer2.SplitterWidth = 8;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -282,12 +314,54 @@ namespace XRMTokensRun
             this.gbSmart.Controls.Add(this.lblSmart);
             this.gbSmart.Controls.Add(this.btnSmart);
             this.gbSmart.Controls.Add(this.cmbTokenHelp);
-            this.gbSmart.Location = new System.Drawing.Point(3, 151);
+            this.gbSmart.Location = new System.Drawing.Point(3, 184);
             this.gbSmart.Name = "gbSmart";
             this.gbSmart.Size = new System.Drawing.Size(756, 105);
             this.gbSmart.TabIndex = 6;
             this.gbSmart.TabStop = false;
             this.gbSmart.Text = "Smart Help";
+            // 
+            // linkHelp
+            // 
+            this.linkHelp.AutoSize = true;
+            this.linkHelp.Enabled = false;
+            this.linkHelp.Location = new System.Drawing.Point(23, 63);
+            this.linkHelp.Name = "linkHelp";
+            this.linkHelp.Size = new System.Drawing.Size(32, 16);
+            this.linkHelp.TabIndex = 4;
+            this.linkHelp.TabStop = true;
+            this.linkHelp.Text = "Link";
+            this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
+            // 
+            // lblSmart
+            // 
+            this.lblSmart.AutoSize = true;
+            this.lblSmart.Location = new System.Drawing.Point(69, 63);
+            this.lblSmart.Name = "lblSmart";
+            this.lblSmart.Size = new System.Drawing.Size(91, 16);
+            this.lblSmart.TabIndex = 3;
+            this.lblSmart.Text = "Select above!";
+            // 
+            // btnSmart
+            // 
+            this.btnSmart.Enabled = false;
+            this.btnSmart.Location = new System.Drawing.Point(247, 32);
+            this.btnSmart.Name = "btnSmart";
+            this.btnSmart.Size = new System.Drawing.Size(75, 23);
+            this.btnSmart.TabIndex = 2;
+            this.btnSmart.Text = "Insert";
+            this.btnSmart.UseVisualStyleBackColor = true;
+            this.btnSmart.Click += new System.EventHandler(this.btnSmart_Click);
+            // 
+            // cmbTokenHelp
+            // 
+            this.cmbTokenHelp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTokenHelp.FormattingEnabled = true;
+            this.cmbTokenHelp.Location = new System.Drawing.Point(23, 32);
+            this.cmbTokenHelp.Name = "cmbTokenHelp";
+            this.cmbTokenHelp.Size = new System.Drawing.Size(202, 24);
+            this.cmbTokenHelp.TabIndex = 1;
+            this.cmbTokenHelp.SelectedIndexChanged += new System.EventHandler(this.cmbTokenHelp_SelectedIndexChanged);
             // 
             // gbTokens
             // 
@@ -298,7 +372,7 @@ namespace XRMTokensRun
             this.gbTokens.Controls.Add(this.txtTokensIn);
             this.gbTokens.Location = new System.Drawing.Point(3, 19);
             this.gbTokens.Name = "gbTokens";
-            this.gbTokens.Size = new System.Drawing.Size(756, 126);
+            this.gbTokens.Size = new System.Drawing.Size(756, 159);
             this.gbTokens.TabIndex = 5;
             this.gbTokens.TabStop = false;
             this.gbTokens.Text = "XRM Tokens";
@@ -322,7 +396,7 @@ namespace XRMTokensRun
             this.txtTokensIn.Margin = new System.Windows.Forms.Padding(4);
             this.txtTokensIn.Multiline = true;
             this.txtTokensIn.Name = "txtTokensIn";
-            this.txtTokensIn.Size = new System.Drawing.Size(718, 43);
+            this.txtTokensIn.Size = new System.Drawing.Size(718, 76);
             this.txtTokensIn.TabIndex = 1;
             this.txtTokensIn.TextChanged += new System.EventHandler(this.txtTokensIn_TextChanged);
             // 
@@ -388,80 +462,6 @@ namespace XRMTokensRun
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // cmbTokenHelp
-            // 
-            this.cmbTokenHelp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTokenHelp.FormattingEnabled = true;
-            this.cmbTokenHelp.Location = new System.Drawing.Point(23, 32);
-            this.cmbTokenHelp.Name = "cmbTokenHelp";
-            this.cmbTokenHelp.Size = new System.Drawing.Size(202, 24);
-            this.cmbTokenHelp.TabIndex = 1;
-            this.cmbTokenHelp.SelectedIndexChanged += new System.EventHandler(this.cmbTokenHelp_SelectedIndexChanged);
-            // 
-            // btnSmart
-            // 
-            this.btnSmart.Enabled = false;
-            this.btnSmart.Location = new System.Drawing.Point(247, 32);
-            this.btnSmart.Name = "btnSmart";
-            this.btnSmart.Size = new System.Drawing.Size(75, 23);
-            this.btnSmart.TabIndex = 2;
-            this.btnSmart.Text = "Insert";
-            this.btnSmart.UseVisualStyleBackColor = true;
-            this.btnSmart.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // tableselect
-            // 
-            this.tableselect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableselect.FormattingEnabled = true;
-            this.tableselect.Location = new System.Drawing.Point(133, 30);
-            this.tableselect.Margin = new System.Windows.Forms.Padding(4);
-            this.tableselect.Name = "tableselect";
-            this.tableselect.Size = new System.Drawing.Size(235, 24);
-            this.tableselect.TabIndex = 0;
-            this.tableselect.SelectedIndexChanged += new System.EventHandler(this.tableselect_SelectedIndexChanged);
-            // 
-            // recordname
-            // 
-            this.recordname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordname.Column = null;
-            this.recordname.DisplayFormat = "";
-            this.recordname.Location = new System.Drawing.Point(133, 118);
-            this.recordname.Margin = new System.Windows.Forms.Padding(4);
-            this.recordname.Name = "recordname";
-            this.recordname.RecordHost = this.record;
-            this.recordname.Size = new System.Drawing.Size(235, 22);
-            this.recordname.TabIndex = 3;
-            // 
-            // record
-            // 
-            this.record.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.record.LogicalName = null;
-            this.record.Record = null;
-            this.record.Service = null;
-            // 
-            // lblSmart
-            // 
-            this.lblSmart.AutoSize = true;
-            this.lblSmart.Location = new System.Drawing.Point(69, 63);
-            this.lblSmart.Name = "lblSmart";
-            this.lblSmart.Size = new System.Drawing.Size(91, 16);
-            this.lblSmart.TabIndex = 3;
-            this.lblSmart.Text = "Select above!";
-            // 
-            // linkHelp
-            // 
-            this.linkHelp.AutoSize = true;
-            this.linkHelp.Enabled = false;
-            this.linkHelp.Location = new System.Drawing.Point(23, 63);
-            this.linkHelp.Name = "linkHelp";
-            this.linkHelp.Size = new System.Drawing.Size(32, 16);
-            this.linkHelp.TabIndex = 4;
-            this.linkHelp.TabStop = true;
-            this.linkHelp.Text = "Link";
-            this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
-            // 
             // XRMTR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -473,7 +473,7 @@ namespace XRMTokensRun
             this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "XRMTR";
             this.Size = new System.Drawing.Size(1183, 797);
-            this.Load += new System.EventHandler(this.MyPluginControl_Load);
+            this.Load += new System.EventHandler(this.XRMTR_Load);
             this.toolStripMenu.ResumeLayout(false);
             this.toolStripMenu.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);

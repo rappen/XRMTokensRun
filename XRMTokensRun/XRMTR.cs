@@ -2,6 +2,7 @@
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using Rappen.XTB.Helpers;
+using Rappen.XTB.Helpers.ControlItems;
 using Rappen.XTB.Helpers.Controls;
 using Rappen.XTB.Helpers.Extensions;
 using System;
@@ -39,13 +40,21 @@ namespace XRMTokensRun
             cmbTokenHelp.Items.Add(new TokenHelp("Expand", "<expand|entity|attribute|{attribute}|orderby|, |true|true|max>", 8, 6, "Return all children from the Column", "https://jonasr.app/xrm-tokens/#expand"));
         }
 
-        public override void ClosingPlugin(PluginCloseInfo info)
+        private void XRMTR_Load(object sender, EventArgs e)
         {
-            SettingsManager.Instance.Save(GetType(), settings);
+            if (!SettingsManager.Instance.TryLoad(GetType(), out settings))
+            {
+                settings = new Settings();
+            }
+            Enable(true);
         }
 
-        private void MyPluginControl_Load(object sender, EventArgs e)
+        public override void ClosingPlugin(PluginCloseInfo info)
         {
+            if (settings != null)
+            {
+                SettingsManager.Instance.Save(GetType(), settings);
+            }
         }
 
         /// <summary>
@@ -54,19 +63,16 @@ namespace XRMTokensRun
         public override void UpdateConnection(IOrganizationService newService, ConnectionDetail detail, string actionName, object parameter)
         {
             base.UpdateConnection(newService, detail, actionName, parameter);
-            if (!SettingsManager.Instance.TryLoad(GetType(), out settings))
+            if (settings == null && !SettingsManager.Instance.TryLoad(GetType(), out settings))
             {
                 settings = new Settings();
             }
-            if (newService == null)
-            {
-                tableselect.DataSource = null;
-            }
-            else
-            {
-                tableselect.DataSource = newService.LoadEntities().EntityMetadata;
-            }
+            tableselect.DataSource = newService?.LoadEntities()?.EntityMetadata;
             record.Service = newService;
+            if (settings.Table != null)
+            {
+                tableselect.SelectedItem = tableselect.Items.OfType<EntityMetadataItem>().FirstOrDefault(t => t.Metadata.LogicalName == settings.Table);
+            }
         }
 
         private void tableselect_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,14 +80,13 @@ namespace XRMTokensRun
             var entity = tableselect.SelectedEntity;
             if (entity != null && settings != null)
             {
-                settings.Table = entity.LogicalName;
-                var token = settings.Token?.FirstOrDefault(t => t.key == settings.Table)?.value;
+                var token = settings.Token?.FirstOrDefault(t => t.key == entity.LogicalName)?.value;
                 txtTokensIn.Text = token;
             }
-            btnGetRecord.Enabled = entity != null;
+            Enable(true);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGetRecurd_Click(object sender, EventArgs e)
         {
             var look = new XRMLookupDialog
             {
@@ -91,8 +96,9 @@ namespace XRMTokensRun
             if (look.ShowDialog() == DialogResult.OK)
             {
                 record.Record = look.Record;
-                ShowColumns();
             }
+            ShowColumns();
+            Enable(true);
         }
 
         private void Execute()
@@ -106,8 +112,18 @@ namespace XRMTokensRun
             txtTokensOut.Text = record.Record.Substitute(Service, txtTokensIn.Text);
         }
 
+        private void Enable(bool on)
+        {
+            tableselect.Enabled = on && Service != null;
+            btnGetRecord.Enabled = on && tableselect.SelectedEntity != null;
+            gbTokenHelp.Enabled = on && record?.Record != null;
+            gbTokens.Enabled = on && record?.Record != null;
+            btnSmart.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
+        }
+
         private void SaveSettings()
         {
+            settings.Table = tableselect.SelectedEntity.LogicalName;
             if (settings.Token?.FirstOrDefault(t => t.key == tableselect.SelectedEntity.LogicalName) is KeyValuePair token)
             {
                 token.value = txtTokensIn.Text;
@@ -139,7 +155,10 @@ namespace XRMTokensRun
         private void ShowColumns()
         {
             lstRecord.Items.Clear();
-            lstRecord.Items.AddRange(record.Record.Attributes.Keys.Select(k => new ListViewItem(k)).ToArray());
+            if (record.Record != null)
+            {
+                lstRecord.Items.AddRange(record.Record.Attributes.Keys.Select(k => new ListViewItem(k)).ToArray());
+            }
         }
 
         private void lstRecord_DoubleClick(object sender, EventArgs e)
@@ -194,7 +213,7 @@ namespace XRMTokensRun
             txtTokensIn.Focus();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void btnSmart_Click(object sender, EventArgs e)
         {
             if (cmbTokenHelp.SelectedItem is TokenHelp help)
             {
@@ -212,15 +231,15 @@ namespace XRMTokensRun
         {
             if (cmbTokenHelp.SelectedItem is TokenHelp help)
             {
-                btnSmart.Enabled = true;
                 lblSmart.Text = help.help;
                 linkHelp.Enabled = true;
             }
             else
             {
-                btnSmart.Enabled = false;
+                lblSmart.Text = "";
                 linkHelp.Enabled = false;
             }
+            Enable(true);
         }
 
         private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
