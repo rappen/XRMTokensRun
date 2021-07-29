@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>XRMTokensRun</RootNamespace>
-    <AssemblyName>XRMTokensRun</AssemblyName>
+    <AssemblyName>Rappen.XTB.XRBTR</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
