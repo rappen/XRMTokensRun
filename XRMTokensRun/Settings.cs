@@ -14,6 +14,13 @@ namespace XRMTokensRun
     /// </remarks>
     public class Settings
     {
-        public string LastUsedOrganizationWebappUrl { get; set; }
+        public string Table { get; set; }
+        public List<KeyValuePair> Token { get; set; } = new List<KeyValuePair>();
+    }
+
+    public class KeyValuePair
+    {
+        public string key { get; set; }
+        public string value { get; set; }
     }
 }

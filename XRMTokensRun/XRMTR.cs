@@ -15,30 +15,21 @@ namespace XRMTokensRun
 {
     public partial class XRMTR : PluginControlBase
     {
-        private Settings mySettings;
+        private Settings settings;
 
         public XRMTR()
         {
             InitializeComponent();
-         }
+        }
+
+        public override void ClosingPlugin(PluginCloseInfo info)
+        {
+            SettingsManager.Instance.Save(GetType(), settings, ConnectionDetail?.ConnectionName);
+        }
 
         private void MyPluginControl_Load(object sender, EventArgs e)
         {
-            if (!SettingsManager.Instance.TryLoad(GetType(), out mySettings))
-            {
-                mySettings = new Settings();
-            }
-        }
 
-        /// <summary>
-        /// This event occurs when the plugin is closed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void MyPluginControl_OnCloseTool(object sender, EventArgs e)
-        {
-            // Before leaving, save the settings
-            SettingsManager.Instance.Save(GetType(), mySettings);
         }
 
         /// <summary>
@@ -47,13 +38,10 @@ namespace XRMTokensRun
         public override void UpdateConnection(IOrganizationService newService, ConnectionDetail detail, string actionName, object parameter)
         {
             base.UpdateConnection(newService, detail, actionName, parameter);
-
-            if (mySettings != null && detail != null)
+            if (!SettingsManager.Instance.TryLoad(GetType(), out settings, ConnectionDetail?.ConnectionName))
             {
-                mySettings.LastUsedOrganizationWebappUrl = detail.WebApplicationUrl;
-                LogInfo("Connection has changed to: {0}", detail.WebApplicationUrl);
+                settings = new Settings();
             }
-
             if (newService == null)
             {
                 tableselect.DataSource = null;
@@ -68,6 +56,12 @@ namespace XRMTokensRun
         private void tableselect_SelectedIndexChanged(object sender, EventArgs e)
         {
             var entity = tableselect.SelectedEntity;
+            if (entity != null && settings != null)
+            {
+                settings.Table = entity.LogicalName;
+                var token = settings.Token?.FirstOrDefault(t => t.key == settings.Table)?.value;
+                txtTokensIn.Text = token;
+            }
             btnGetRecord.Enabled = entity != null;
         }
 
@@ -87,7 +81,20 @@ namespace XRMTokensRun
 
         private void btnResult_Click(object sender, EventArgs e)
         {
+            SaveSettings();
             txtTokensOut.Text = record.Record.Substitute(Service, txtTokensIn.Text);
+        }
+
+        private void SaveSettings()
+        {
+            if (settings.Token?.FirstOrDefault(t => t.key == tableselect.SelectedEntity.LogicalName) is KeyValuePair token)
+            {
+                token.value = txtTokensIn.Text;
+            }
+            else
+            {
+                settings.Token.Add(new KeyValuePair { key = tableselect.SelectedEntity.LogicalName, value = txtTokensIn.Text });
+            }
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -116,7 +123,7 @@ namespace XRMTokensRun
 
         private void lstRecord_DoubleClick(object sender, EventArgs e)
         {
-            if (lstRecord.SelectedItems == null)
+            if (lstRecord.SelectedItems == null || lstRecord.SelectedItems.Count == 0)
             {
                 return;
             }
