@@ -61,6 +61,8 @@ namespace XRMTokensRun
             this.tableselect = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
             this.recordname = new Rappen.XTB.Helpers.Controls.XRMColumnText();
             this.record = new Rappen.XTB.Helpers.Controls.XRMRecordHost();
+            this.lblSmart = new System.Windows.Forms.Label();
+            this.linkHelp = new System.Windows.Forms.LinkLabel();
             this.toolStripMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -276,11 +278,13 @@ namespace XRMTokensRun
             // 
             this.gbSmart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbSmart.Controls.Add(this.linkHelp);
+            this.gbSmart.Controls.Add(this.lblSmart);
             this.gbSmart.Controls.Add(this.btnSmart);
             this.gbSmart.Controls.Add(this.cmbTokenHelp);
-            this.gbSmart.Location = new System.Drawing.Point(3, 180);
+            this.gbSmart.Location = new System.Drawing.Point(3, 151);
             this.gbSmart.Name = "gbSmart";
-            this.gbSmart.Size = new System.Drawing.Size(756, 76);
+            this.gbSmart.Size = new System.Drawing.Size(756, 105);
             this.gbSmart.TabIndex = 6;
             this.gbSmart.TabStop = false;
             this.gbSmart.Text = "Smart Help";
@@ -294,7 +298,7 @@ namespace XRMTokensRun
             this.gbTokens.Controls.Add(this.txtTokensIn);
             this.gbTokens.Location = new System.Drawing.Point(3, 19);
             this.gbTokens.Name = "gbTokens";
-            this.gbTokens.Size = new System.Drawing.Size(756, 159);
+            this.gbTokens.Size = new System.Drawing.Size(756, 126);
             this.gbTokens.TabIndex = 5;
             this.gbTokens.TabStop = false;
             this.gbTokens.Text = "XRM Tokens";
@@ -318,7 +322,7 @@ namespace XRMTokensRun
             this.txtTokensIn.Margin = new System.Windows.Forms.Padding(4);
             this.txtTokensIn.Multiline = true;
             this.txtTokensIn.Name = "txtTokensIn";
-            this.txtTokensIn.Size = new System.Drawing.Size(718, 76);
+            this.txtTokensIn.Size = new System.Drawing.Size(718, 43);
             this.txtTokensIn.TabIndex = 1;
             this.txtTokensIn.TextChanged += new System.EventHandler(this.txtTokensIn_TextChanged);
             // 
@@ -437,6 +441,27 @@ namespace XRMTokensRun
             this.record.Record = null;
             this.record.Service = null;
             // 
+            // lblSmart
+            // 
+            this.lblSmart.AutoSize = true;
+            this.lblSmart.Location = new System.Drawing.Point(69, 63);
+            this.lblSmart.Name = "lblSmart";
+            this.lblSmart.Size = new System.Drawing.Size(91, 16);
+            this.lblSmart.TabIndex = 3;
+            this.lblSmart.Text = "Select above!";
+            // 
+            // linkHelp
+            // 
+            this.linkHelp.AutoSize = true;
+            this.linkHelp.Enabled = false;
+            this.linkHelp.Location = new System.Drawing.Point(23, 63);
+            this.linkHelp.Name = "linkHelp";
+            this.linkHelp.Size = new System.Drawing.Size(32, 16);
+            this.linkHelp.TabIndex = 4;
+            this.linkHelp.TabStop = true;
+            this.linkHelp.Text = "Link";
+            this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
+            // 
             // XRMTR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -465,6 +490,7 @@ namespace XRMTokensRun
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.gbSmart.ResumeLayout(false);
+            this.gbSmart.PerformLayout();
             this.gbTokens.ResumeLayout(false);
             this.gbTokens.PerformLayout();
             this.gbOption.ResumeLayout(false);
@@ -507,5 +533,7 @@ namespace XRMTokensRun
         private System.Windows.Forms.GroupBox gbSmart;
         private System.Windows.Forms.ComboBox cmbTokenHelp;
         private System.Windows.Forms.Button btnSmart;
+        private System.Windows.Forms.LinkLabel linkHelp;
+        private System.Windows.Forms.Label lblSmart;
     }
 }

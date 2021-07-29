@@ -22,20 +22,21 @@ namespace XRMTokensRun
             InitializeComponent();
 
             cmbTokenHelp.Items.Add(" - Data -");
-            cmbTokenHelp.Items.Add(new TokenHelp("Column", "{column}", 1, 6));
-            cmbTokenHelp.Items.Add(new TokenHelp("Column Raw", "{column|<value>}", 1, 6));
-            cmbTokenHelp.Items.Add(new TokenHelp("System", "<system|value|format>", 8, 5));
+            cmbTokenHelp.Items.Add(new TokenHelp("Column", "{column}", 1, 6, "A simple column, of lookup.column", "https://jonasr.app/xrm-tokens/#attribute"));
+            cmbTokenHelp.Items.Add(new TokenHelp("Column Raw", "{column|<value>}", 1, 6, "Like Column, but always return simlest type.", "https://jonasr.app/xrm-tokens/#raw"));
+            cmbTokenHelp.Items.Add(new TokenHelp("System", "<system|value|format>", 8, 5, "Gets 'systems' like now related to 'data'.", "https://jonasr.app/xrm-tokens/#system"));
             cmbTokenHelp.Items.Add("");
             cmbTokenHelp.Items.Add(" - Formatting -");
-            cmbTokenHelp.Items.Add(new TokenHelp("Left", "<Left|length>", 6, 6));
-            cmbTokenHelp.Items.Add(new TokenHelp("Right", "<Right|length>", 7, 6));
-            cmbTokenHelp.Items.Add(new TokenHelp("SubStr", "<SubStr|start|length>", 8, 12));
-            cmbTokenHelp.Items.Add(new TokenHelp("Pad", "<Pad|R|length| >", 7, 6));
-            cmbTokenHelp.Items.Add(new TokenHelp("Math", "<Math|operator|value>", 6, 14));
+            cmbTokenHelp.Items.Add(new TokenHelp("Left", "<Left|length>", 6, 6, "Can add to Left number of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
+            cmbTokenHelp.Items.Add(new TokenHelp("Right", "<Right|length>", 7, 6, "Can add to Right number of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
+            cmbTokenHelp.Items.Add(new TokenHelp("SubStr", "<SubStr|start|length>", 8, 12, "Can add to SubString of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
+            cmbTokenHelp.Items.Add(new TokenHelp("Pad", "<Pad|R|length| >", 7, 6, "Can add to Pad number of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
+            cmbTokenHelp.Items.Add(new TokenHelp("Replace", "<Replace|old|new>", 9, 7, "Can replace old info to new info of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
+            cmbTokenHelp.Items.Add(new TokenHelp("Math", "<Math|operator|value>", 6, 14, "Can add to make calculate of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
             cmbTokenHelp.Items.Add("");
             cmbTokenHelp.Items.Add(" - Advance -");
-            cmbTokenHelp.Items.Add(new TokenHelp("IIF", "<iif|value1|operator|value2|then|else>", 5, 6));
-            cmbTokenHelp.Items.Add(new TokenHelp("Expand", "<expand|entity|attribute|{attribute}|orderby|, |true|true>", 8, 6));
+            cmbTokenHelp.Items.Add(new TokenHelp("IIF", "<iif|value1|operator|value2|then|else>", 5, 6, "If-else to decide how info shall be returned.", "https://jonasr.app/xrm-tokens/#ifelse"));
+            cmbTokenHelp.Items.Add(new TokenHelp("Expand", "<expand|entity|attribute|{attribute}|orderby|, |true|true|max>", 8, 6, "Return all children from the Column", "https://jonasr.app/xrm-tokens/#expand"));
         }
 
         public override void ClosingPlugin(PluginCloseInfo info)
@@ -209,7 +210,25 @@ namespace XRMTokensRun
 
         private void cmbTokenHelp_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btnSmart.Enabled = cmbTokenHelp.SelectedItem is TokenHelp;
+            if (cmbTokenHelp.SelectedItem is TokenHelp help)
+            {
+                btnSmart.Enabled = true;
+                lblSmart.Text = help.help;
+                linkHelp.Enabled = true;
+            }
+            else
+            {
+                btnSmart.Enabled = false;
+                linkHelp.Enabled = false;
+            }
+        }
+
+        private void linkHelp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (cmbTokenHelp.SelectedItem is TokenHelp help)
+            {
+                Process.Start(help.url);
+            }
         }
     }
 }
