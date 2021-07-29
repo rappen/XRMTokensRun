@@ -20,16 +20,31 @@ namespace XRMTokensRun
         public XRMTR()
         {
             InitializeComponent();
+
+            cmbTokenHelp.Items.Add(" - Data -");
+            cmbTokenHelp.Items.Add(new TokenHelp("Column", "{column}", 1, 6));
+            cmbTokenHelp.Items.Add(new TokenHelp("Column Raw", "{column|<value>}", 1, 6));
+            cmbTokenHelp.Items.Add(new TokenHelp("System", "<system|value|format>", 8, 5));
+            cmbTokenHelp.Items.Add("");
+            cmbTokenHelp.Items.Add(" - Formatting -");
+            cmbTokenHelp.Items.Add(new TokenHelp("Left", "<Left|length>", 6, 6));
+            cmbTokenHelp.Items.Add(new TokenHelp("Right", "<Right|length>", 7, 6));
+            cmbTokenHelp.Items.Add(new TokenHelp("SubStr", "<SubStr|start|length>", 8, 12));
+            cmbTokenHelp.Items.Add(new TokenHelp("Pad", "<Pad|R|length| >", 7, 6));
+            cmbTokenHelp.Items.Add(new TokenHelp("Math", "<Math|operator|value>", 6, 14));
+            cmbTokenHelp.Items.Add("");
+            cmbTokenHelp.Items.Add(" - Advance -");
+            cmbTokenHelp.Items.Add(new TokenHelp("IIF", "<iif|value1|operator|value2|then|else>", 5, 6));
+            cmbTokenHelp.Items.Add(new TokenHelp("Expand", "<expand|entity|attribute|{attribute}|orderby|, |true|true>", 8, 6));
         }
 
         public override void ClosingPlugin(PluginCloseInfo info)
         {
-            SettingsManager.Instance.Save(GetType(), settings, ConnectionDetail?.ConnectionName);
+            SettingsManager.Instance.Save(GetType(), settings);
         }
 
         private void MyPluginControl_Load(object sender, EventArgs e)
         {
-
         }
 
         /// <summary>
@@ -38,7 +53,7 @@ namespace XRMTokensRun
         public override void UpdateConnection(IOrganizationService newService, ConnectionDetail detail, string actionName, object parameter)
         {
             base.UpdateConnection(newService, detail, actionName, parameter);
-            if (!SettingsManager.Instance.TryLoad(GetType(), out settings, ConnectionDetail?.ConnectionName))
+            if (!SettingsManager.Instance.TryLoad(GetType(), out settings))
             {
                 settings = new Settings();
             }
@@ -79,8 +94,13 @@ namespace XRMTokensRun
             }
         }
 
-        private void btnResult_Click(object sender, EventArgs e)
+        private void Execute()
         {
+            timer1.Stop();
+            if (record.Record == null)
+            {
+                return;
+            }
             SaveSettings();
             txtTokensOut.Text = record.Record.Substitute(Service, txtTokensIn.Text);
         }
@@ -128,6 +148,68 @@ namespace XRMTokensRun
                 return;
             }
             txtTokensIn.Text += "{" + lstRecord.SelectedItems[0].Text + "}";
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            Execute();
+        }
+
+        private void chkAuto_CheckedChanged(object sender, EventArgs e)
+        {
+            Auto();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Execute();
+        }
+
+        private void txtTokensIn_TextChanged(object sender, EventArgs e)
+        {
+            Auto();
+        }
+
+        private void Auto()
+        {
+            timer1.Stop();
+            if (chkAuto.Checked)
+            {
+                timer1.Start();
+            }
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AddToken("columb");
+        }
+
+        private void AddToken(string token)
+        {
+            var pos = txtTokensIn.SelectionStart;
+            txtTokensIn.Paste("{" + token + "}");
+            txtTokensIn.SelectionStart = pos + 1;
+            txtTokensIn.SelectionLength = token.Length;
+            txtTokensIn.Focus();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (cmbTokenHelp.SelectedItem is TokenHelp help)
+            {
+                cmbTokenHelp.SelectedIndex = -1;
+                var selstart = txtTokensIn.SelectionStart;
+                txtTokensIn.SelectedText = "";
+                txtTokensIn.Text = txtTokensIn.Text.Insert(selstart, help.content);
+                txtTokensIn.SelectionStart = selstart + help.cursorpos;
+                txtTokensIn.SelectionLength = help.sellength;
+                txtTokensIn.Focus();
+            }
+        }
+
+        private void cmbTokenHelp_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnSmart.Enabled = cmbTokenHelp.SelectedItem is TokenHelp;
         }
     }
 }
