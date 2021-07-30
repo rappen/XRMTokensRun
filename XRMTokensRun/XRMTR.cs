@@ -94,6 +94,16 @@ namespace XRMTokensRun
             SettingsManager.Instance.Save(GetType(), settings);
         }
 
+        private void Enable(bool on)
+        {
+            tableselect.Enabled = on && Service != null;
+            btnGetRecord.Enabled = on && tableselect.SelectedEntity != null;
+            gbTokenHelp.Enabled = on && record?.Record != null;
+            gbTokens.Enabled = on && record?.Record != null;
+            btnAddToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
+            btnSmartToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
+        }
+
         private void tableselect_SelectedIndexChanged(object sender, EventArgs e)
         {
             var entity = tableselect.SelectedEntity;
@@ -144,15 +154,6 @@ namespace XRMTokensRun
             {
                 lblError.Text = ex.Message;
             }
-        }
-
-        private void Enable(bool on)
-        {
-            tableselect.Enabled = on && Service != null;
-            btnGetRecord.Enabled = on && tableselect.SelectedEntity != null;
-            gbTokenHelp.Enabled = on && record?.Record != null;
-            gbTokens.Enabled = on && record?.Record != null;
-            btnAddToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -234,7 +235,7 @@ namespace XRMTokensRun
             txtTokensIn.Focus();
         }
 
-        private void btnSmart_Click(object sender, EventArgs e)
+        private void btnAddToken_Click(object sender, EventArgs e)
         {
             if (cmbTokenHelp.SelectedItem is TokenHelp help)
             {
@@ -246,6 +247,49 @@ namespace XRMTokensRun
                 txtTokensIn.SelectionLength = help.sellength;
                 txtTokensIn.Focus();
             }
+        }
+
+        private void btnSmartToken_Click(object sender, EventArgs e)
+        {
+            if (cmbTokenHelp.SelectedItem is TokenHelp help)
+            {
+                var token = GetSmartToken(help.name);
+                if (string.IsNullOrWhiteSpace(token))
+                {
+                    return;
+                }
+                cmbTokenHelp.SelectedIndex = -1;
+                var selstart = txtTokensIn.SelectionStart;
+                txtTokensIn.SelectedText = "";
+                txtTokensIn.Text = txtTokensIn.Text.Insert(selstart, token);
+                txtTokensIn.SelectionStart = selstart;
+                txtTokensIn.SelectionLength = token.Length;
+                txtTokensIn.Focus();
+            }
+        }
+
+        private string GetSmartToken(string tokentype)
+        {
+            switch (tokentype.ToLowerInvariant().Replace(" ", ""))
+            {
+                case "column":
+                    return GetColumn(false);
+                case "columnraw":
+                    return GetColumn(true);
+            }
+            return null;
+        }
+
+        private string GetColumn(bool raw)
+        {
+            var attr = new GetAttribute();
+            var enme = Service.GetEntity(tableselect.SelectedEntity.LogicalName);
+            attr.xrmAttributeComboBox1.DataSource = enme;
+            if (attr.ShowDialog(this) == DialogResult.OK)
+            {
+                return "{" + attr.xrmAttributeComboBox1.SelectedAttribute.LogicalName + (raw ? "|<value>" : "") + "}";
+            }
+            return null;
         }
 
         private void cmbTokenHelp_SelectedIndexChanged(object sender, EventArgs e)

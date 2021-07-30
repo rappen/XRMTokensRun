@@ -53,6 +53,7 @@ namespace XRMTokensRun
             this.linkHelp = new System.Windows.Forms.LinkLabel();
             this.lblSmart = new System.Windows.Forms.Label();
             this.btnAddToken = new System.Windows.Forms.Button();
+            this.btnSmartToken = new System.Windows.Forms.Button();
             this.cmbTokenHelp = new System.Windows.Forms.ComboBox();
             this.gbTokens = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -314,6 +315,7 @@ namespace XRMTokensRun
             this.gbSmart.Controls.Add(this.linkHelp);
             this.gbSmart.Controls.Add(this.lblSmart);
             this.gbSmart.Controls.Add(this.btnAddToken);
+            this.gbSmart.Controls.Add(this.btnSmartToken);
             this.gbSmart.Controls.Add(this.cmbTokenHelp);
             this.gbSmart.Location = new System.Drawing.Point(3, 184);
             this.gbSmart.Name = "gbSmart";
@@ -348,11 +350,22 @@ namespace XRMTokensRun
             this.btnAddToken.Enabled = false;
             this.btnAddToken.Location = new System.Drawing.Point(247, 32);
             this.btnAddToken.Name = "btnAddToken";
-            this.btnAddToken.Size = new System.Drawing.Size(100, 23);
+            this.btnAddToken.Size = new System.Drawing.Size(120, 23);
             this.btnAddToken.TabIndex = 2;
             this.btnAddToken.Text = "Add Token";
             this.btnAddToken.UseVisualStyleBackColor = true;
-            this.btnAddToken.Click += new System.EventHandler(this.btnSmart_Click);
+            this.btnAddToken.Click += new System.EventHandler(this.btnAddToken_Click);
+            // 
+            // btnSmart
+            // 
+            this.btnSmartToken.Enabled = false;
+            this.btnSmartToken.Location = new System.Drawing.Point(380, 32);
+            this.btnSmartToken.Name = "btnSmartToken";
+            this.btnSmartToken.Size = new System.Drawing.Size(120, 23);
+            this.btnSmartToken.TabIndex = 2;
+            this.btnSmartToken.Text = "Smart Token";
+            this.btnSmartToken.UseVisualStyleBackColor = true;
+            this.btnSmartToken.Click += new System.EventHandler(this.btnSmartToken_Click);
             // 
             // cmbTokenHelp
             // 
@@ -544,6 +557,7 @@ namespace XRMTokensRun
         private System.Windows.Forms.GroupBox gbSmart;
         private System.Windows.Forms.ComboBox cmbTokenHelp;
         private System.Windows.Forms.Button btnAddToken;
+        private System.Windows.Forms.Button btnSmartToken;
         private System.Windows.Forms.LinkLabel linkHelp;
         private System.Windows.Forms.Label lblSmart;
         private System.Windows.Forms.Label lblError;
