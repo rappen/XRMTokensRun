@@ -97,6 +97,8 @@ namespace XRMTokensRun
         private void tableselect_SelectedIndexChanged(object sender, EventArgs e)
         {
             var entity = tableselect.SelectedEntity;
+            record.Record = null;
+            ShowColumns();
             if (entity != null && settings != null)
             {
                 var token = settings.Token?.FirstOrDefault(t => t.key == entity.LogicalName)?.value;
@@ -176,7 +178,7 @@ namespace XRMTokensRun
             lstRecord.Items.Clear();
             if (record.Record != null)
             {
-                lstRecord.Items.AddRange(record.Record.Attributes.Keys.Select(k => new ListViewItem(k)).ToArray());
+                lstRecord.Items.AddRange(record.Record.Attributes.Keys.OrderBy(k => k).Select(k => new ListViewItem(k)).ToArray());
             }
         }
 
