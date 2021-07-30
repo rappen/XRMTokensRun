@@ -152,7 +152,7 @@ namespace XRMTokensRun
             btnGetRecord.Enabled = on && tableselect.SelectedEntity != null;
             gbTokenHelp.Enabled = on && record?.Record != null;
             gbTokens.Enabled = on && record?.Record != null;
-            btnSmart.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
+            btnAddToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
