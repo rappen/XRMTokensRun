@@ -14,7 +14,6 @@ namespace XRMTokensRun
     /// </remarks>
     public class Settings
     {
-        public bool ExeAuto { get; set; }
         public string Table { get; set; }
         public List<KeyValuePair> Token { get; set; } = new List<KeyValuePair>();
     }

@@ -7,7 +7,6 @@ using Rappen.XTB.Helpers.Controls;
 using Rappen.XTB.Helpers.Extensions;
 using System;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using XrmToolBox.Extensibility;
@@ -72,7 +71,6 @@ namespace XRMTokensRun
             {
                 settings = new Settings();
             }
-            chkAuto.Checked = settings.ExeAuto;
         }
 
         private void SaveSettings()
@@ -81,7 +79,6 @@ namespace XRMTokensRun
             {
                 settings = new Settings();
             }
-            settings.ExeAuto = chkAuto.Checked;
             settings.Table = tableselect.SelectedEntity.LogicalName;
             if (settings.Token?.FirstOrDefault(t => t.key == tableselect.SelectedEntity.LogicalName) is KeyValuePair token)
             {
@@ -98,7 +95,6 @@ namespace XRMTokensRun
         {
             tableselect.Enabled = on && Service != null;
             btnGetRecord.Enabled = on && tableselect.SelectedEntity != null;
-            gbTokenHelp.Enabled = on && record?.Record != null;
             gbTokens.Enabled = on && record?.Record != null;
             btnAddToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
             btnSmartToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
@@ -108,7 +104,6 @@ namespace XRMTokensRun
         {
             var entity = tableselect.SelectedEntity;
             record.Record = null;
-            ShowColumns();
             if (entity != null && settings != null)
             {
                 var token = settings.Token?.FirstOrDefault(t => t.key == entity.LogicalName)?.value;
@@ -117,7 +112,7 @@ namespace XRMTokensRun
             Enable(true);
         }
 
-        private void btnGetRecurd_Click(object sender, EventArgs e)
+        private void btnGetRecord_Click(object sender, EventArgs e)
         {
             var look = new XRMLookupDialog
             {
@@ -126,13 +121,9 @@ namespace XRMTokensRun
             };
             if (look.ShowDialog() == DialogResult.OK)
             {
-                record.Record = look.Record;
+                record.Record = Service.Retrieve(look.Record.LogicalName, look.Record.Id, new ColumnSet(true));
             }
-            ShowColumns();
-            if (chkAuto.Checked)
-            {
-                Execute();
-            }
+            Execute();
             Enable(true);
         }
 
@@ -156,50 +147,9 @@ namespace XRMTokensRun
             }
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("https://jonasr.app/xrm-tokens/");
-        }
-
         private void toolStripLabel1_Click(object sender, EventArgs e)
         {
             Process.Start("https://jonasr.app/xrm-tokens/");
-        }
-
-        private void btnReload_Click(object sender, EventArgs e)
-        {
-            var rec = Service.Retrieve(record.Record.LogicalName, record.Record.Id, new ColumnSet(true));
-            record.Record = null;
-            record.Record = rec;
-            ShowColumns();
-        }
-
-        private void ShowColumns()
-        {
-            lstRecord.Items.Clear();
-            if (record.Record != null)
-            {
-                lstRecord.Items.AddRange(record.Record.Attributes.Keys.OrderBy(k => k).Select(k => new ListViewItem(k)).ToArray());
-            }
-        }
-
-        private void lstRecord_DoubleClick(object sender, EventArgs e)
-        {
-            if (lstRecord.SelectedItems == null || lstRecord.SelectedItems.Count == 0)
-            {
-                return;
-            }
-            txtTokensIn.Text += "{" + lstRecord.SelectedItems[0].Text + "}";
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            Execute();
-        }
-
-        private void chkAuto_CheckedChanged(object sender, EventArgs e)
-        {
-            Auto();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -215,24 +165,7 @@ namespace XRMTokensRun
         private void Auto()
         {
             timer1.Stop();
-            if (chkAuto.Checked)
-            {
-                timer1.Start();
-            }
-        }
-
-        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            AddToken("columb");
-        }
-
-        private void AddToken(string token)
-        {
-            var pos = txtTokensIn.SelectionStart;
-            txtTokensIn.Paste("{" + token + "}");
-            txtTokensIn.SelectionStart = pos + 1;
-            txtTokensIn.SelectionLength = token.Length;
-            txtTokensIn.Focus();
+            timer1.Start();
         }
 
         private void btnAddToken_Click(object sender, EventArgs e)
@@ -274,6 +207,7 @@ namespace XRMTokensRun
             {
                 case "column":
                     return GetColumn(false);
+
                 case "columnraw":
                     return GetColumn(true);
             }
