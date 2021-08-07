@@ -1,0 +1,6 @@
+{jr_name}, <system|user|{fullname}>
+Designer: {jr_designerid} (id: {jr_designerid|<value>})
+Manufacturer: {jr_manufacturerid}, {jr_manufacturerid.address1_city}
+Passenger:
+  <expand|contact|jr_rocketpassenger|{lastname}, {firstname}|firstname/asc|
+  |true|true|100>

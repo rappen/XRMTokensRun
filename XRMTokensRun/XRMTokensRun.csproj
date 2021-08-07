@@ -198,6 +198,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetChildEntityAttribute.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetChildEntityAttribute.Designer.cs">
+      <DependentUpon>GetChildEntityAttribute.cs</DependentUpon>
+    </Compile>
     <Compile Include="GetAttribute.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -225,6 +231,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GetChildEntityAttribute.resx">
+      <DependentUpon>GetChildEntityAttribute.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GetAttribute.resx">
       <DependentUpon>GetAttribute.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,11 +1,6 @@
-﻿using System;
+﻿using Microsoft.Xrm.Sdk.Metadata;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace XRMTokensRun
@@ -17,9 +12,18 @@ namespace XRMTokensRun
             InitializeComponent();
         }
 
-        private void GetAttribute_Load(object sender, EventArgs e)
+        public static AttributeMetadata ShowDialog(Control owner, EntityMetadata entity, IEnumerable<AttributeMetadata> attributes = null)
         {
-
+            var dialog = new GetAttribute();
+            dialog.txtTable.Text = entity.DisplayName.UserLocalizedLabel.Label;
+            dialog.xrmAttributeComboBox1.DataSource = attributes == null ?
+                entity.Attributes.Where(a => a.IsLogical == false) :
+                attributes;
+            if (dialog.ShowDialog(owner) == DialogResult.OK && dialog.xrmAttributeComboBox1.SelectedAttribute is AttributeMetadata attr)
+            {
+                return attr;
+            }
+            return null;
         }
     }
 }

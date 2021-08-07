@@ -1,5 +1,6 @@
 ﻿using McTools.Xrm.Connection;
 using Microsoft.Xrm.Sdk;
+using Microsoft.Xrm.Sdk.Metadata;
 using Microsoft.Xrm.Sdk.Query;
 using Rappen.XTB.Helpers;
 using Rappen.XTB.Helpers.ControlItems;
@@ -17,9 +18,15 @@ namespace XRMTokensRun
     {
         private Settings settings;
 
+        public EntityMetadataCollection entities { get; private set; }
+
         public XRMTR()
         {
             InitializeComponent();
+            MetadataExtensions.attributeProperties = MetadataExtensions.attributeProperties.Union(new string[] {
+                "IsLogical",
+                "EntityLogicalName"
+            }).ToArray();
 
             cmbTokenHelp.Items.Add(" - Data -");
             cmbTokenHelp.Items.Add(new TokenHelp("Column", "{column}", 1, 6, "A simple column, of lookup.column", "https://jonasr.app/xrm-tokens/#attribute"));
@@ -57,7 +64,8 @@ namespace XRMTokensRun
         {
             base.UpdateConnection(newService, detail, actionName, parameter);
             LoadSetting();
-            tableselect.DataSource = newService?.LoadEntities()?.EntityMetadata;
+            entities = newService?.LoadEntities()?.EntityMetadata;
+            tableselect.DataSource = entities;
             record.Service = newService;
             if (settings.Table != null)
             {
@@ -186,7 +194,7 @@ namespace XRMTokensRun
         {
             if (cmbTokenHelp.SelectedItem is TokenHelp help)
             {
-                var token = GetSmartToken(help.name);
+                var token = GetSmartToken(help);
                 if (string.IsNullOrWhiteSpace(token))
                 {
                     return;
@@ -199,31 +207,6 @@ namespace XRMTokensRun
                 txtTokensIn.SelectionLength = token.Length;
                 txtTokensIn.Focus();
             }
-        }
-
-        private string GetSmartToken(string tokentype)
-        {
-            switch (tokentype.ToLowerInvariant().Replace(" ", ""))
-            {
-                case "column":
-                    return GetColumn(false);
-
-                case "columnraw":
-                    return GetColumn(true);
-            }
-            return null;
-        }
-
-        private string GetColumn(bool raw)
-        {
-            var attr = new GetAttribute();
-            var enme = Service.GetEntity(tableselect.SelectedEntity.LogicalName);
-            attr.xrmAttributeComboBox1.DataSource = enme;
-            if (attr.ShowDialog(this) == DialogResult.OK)
-            {
-                return "{" + attr.xrmAttributeComboBox1.SelectedAttribute.LogicalName + (raw ? "|<value>" : "") + "}";
-            }
-            return null;
         }
 
         private void cmbTokenHelp_SelectedIndexChanged(object sender, EventArgs e)
@@ -247,6 +230,35 @@ namespace XRMTokensRun
             {
                 Process.Start(help.url);
             }
+        }
+
+        private string GetSmartToken(TokenHelp help)
+        {
+            var entity = Service.GetEntity(tableselect.SelectedEntity.LogicalName);
+            switch (help.name.ToLowerInvariant().Replace(" ", ""))
+            {
+                case "column":
+                    if (GetAttribute.ShowDialog(this, entity) is AttributeMetadata attr)
+                    {
+                        return "{" + attr.LogicalName + "}";
+                    }
+                    break;
+
+                case "columnraw":
+                    if (GetAttribute.ShowDialog(this, entity) is AttributeMetadata attrraw)
+                    {
+                        return "{" + attrraw.LogicalName + "|<value>}";
+                    }
+                    break;
+
+                case "expand":
+                    if (GetChildEntityAttribute.ShowDialog(this, entity) is string expand)
+                    {
+                        return expand;
+                    }
+                    break;
+            }
+            return null;
         }
     }
 }
