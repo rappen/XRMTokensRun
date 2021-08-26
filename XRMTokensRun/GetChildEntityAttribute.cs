@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xrm.Sdk.Metadata;
 using Rappen.XTB.Helpers.Extensions;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -10,7 +11,7 @@ namespace XRMTokensRun
     {
         private XRMTR xrmtr;
         private EntityMetadata sourceentity;
-        
+
         public GetChildEntityAttribute()
         {
             InitializeComponent();
@@ -60,6 +61,11 @@ namespace XRMTokensRun
                 xrmShow.DataSource = null;
                 xrmOrder.DataSource = null;
             }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://jonasr.app/xrm-tokens/#expand");
         }
     }
 }

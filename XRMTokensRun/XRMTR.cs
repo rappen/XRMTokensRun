@@ -65,11 +65,11 @@ namespace XRMTokensRun
             base.UpdateConnection(newService, detail, actionName, parameter);
             LoadSetting();
             entities = newService?.LoadEntities()?.EntityMetadata;
-            tableselect.DataSource = entities;
+            cmbTable.DataSource = entities;
             record.Service = newService;
             if (settings.Table != null)
             {
-                tableselect.SelectedItem = tableselect.Items.OfType<EntityMetadataItem>().FirstOrDefault(t => t.Metadata.LogicalName == settings.Table);
+                cmbTable.SelectedItem = cmbTable.Items.OfType<EntityMetadataItem>().FirstOrDefault(t => t.Metadata.LogicalName == settings.Table);
             }
         }
 
@@ -87,35 +87,35 @@ namespace XRMTokensRun
             {
                 settings = new Settings();
             }
-            settings.Table = tableselect.SelectedEntity.LogicalName;
-            if (settings.Token?.FirstOrDefault(t => t.key == tableselect.SelectedEntity.LogicalName) is KeyValuePair token)
+            settings.Table = cmbTable.SelectedEntity.LogicalName;
+            if (settings.Token?.FirstOrDefault(t => t.key == cmbTable.SelectedEntity.LogicalName) is KeyValuePair token)
             {
                 token.value = txtTokensIn.Text;
             }
             else
             {
-                settings.Token.Add(new KeyValuePair { key = tableselect.SelectedEntity.LogicalName, value = txtTokensIn.Text });
+                settings.Token.Add(new KeyValuePair { key = cmbTable.SelectedEntity.LogicalName, value = txtTokensIn.Text });
             }
             SettingsManager.Instance.Save(GetType(), settings);
         }
 
         private void Enable(bool on)
         {
-            tableselect.Enabled = on && Service != null;
-            btnGetRecord.Enabled = on && tableselect.SelectedEntity != null;
+            cmbTable.Enabled = on && Service != null;
+            btnGetRecord.Enabled = on && cmbTable.SelectedEntity != null;
             gbTokens.Enabled = on && record?.Record != null;
             btnAddToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
             btnSmartToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
         }
 
-        private void tableselect_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbTable_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var entity = tableselect.SelectedEntity;
+            var entity = cmbTable.SelectedEntity;
             record.Record = null;
             if (entity != null && settings != null)
             {
                 var token = settings.Token?.FirstOrDefault(t => t.key == entity.LogicalName)?.value;
-                txtTokensIn.Text = token;
+                txtTokensIn.Lines = token?.Split('\n');
             }
             Enable(true);
         }
@@ -125,7 +125,7 @@ namespace XRMTokensRun
             var look = new XRMLookupDialog
             {
                 Service = Service,
-                LogicalName = tableselect.SelectedEntity.LogicalName
+                LogicalName = cmbTable.SelectedEntity.LogicalName
             };
             if (look.ShowDialog() == DialogResult.OK)
             {
@@ -234,7 +234,7 @@ namespace XRMTokensRun
 
         private string GetSmartToken(TokenHelp help)
         {
-            var entity = Service.GetEntity(tableselect.SelectedEntity.LogicalName);
+            var entity = Service.GetEntity(cmbTable.SelectedEntity.LogicalName);
             switch (help.name.ToLowerInvariant().Replace(" ", ""))
             {
                 case "column":
@@ -256,6 +256,9 @@ namespace XRMTokensRun
                     {
                         return expand;
                     }
+                    break;
+
+                case "system":
                     break;
             }
             return null;

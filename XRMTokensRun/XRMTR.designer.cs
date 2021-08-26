@@ -36,7 +36,10 @@ namespace XRMTokensRun
             this.gbGetRecord = new System.Windows.Forms.GroupBox();
             this.btnGetRecord = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmbTable = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.recordname = new Rappen.XTB.Helpers.Controls.XRMColumnText();
+            this.record = new Rappen.XTB.Helpers.Controls.XRMRecordHost();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gbTokens = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,9 +55,6 @@ namespace XRMTokensRun
             this.label4 = new System.Windows.Forms.Label();
             this.txtTokensOut = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.tableselect = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
-            this.recordname = new Rappen.XTB.Helpers.Controls.XRMColumnText();
-            this.record = new Rappen.XTB.Helpers.Controls.XRMRecordHost();
             this.toolStripMenu.SuspendLayout();
             this.gbGetRecord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -90,7 +90,7 @@ namespace XRMTokensRun
             // 
             this.gbGetRecord.Controls.Add(this.btnGetRecord);
             this.gbGetRecord.Controls.Add(this.label2);
-            this.gbGetRecord.Controls.Add(this.tableselect);
+            this.gbGetRecord.Controls.Add(this.cmbTable);
             this.gbGetRecord.Controls.Add(this.label1);
             this.gbGetRecord.Controls.Add(this.recordname);
             this.gbGetRecord.Dock = System.Windows.Forms.DockStyle.Top;
@@ -122,6 +122,16 @@ namespace XRMTokensRun
             this.label2.TabIndex = 4;
             this.label2.Text = "Record";
             // 
+            // cmbTable
+            // 
+            this.cmbTable.FormattingEnabled = true;
+            this.cmbTable.Location = new System.Drawing.Point(23, 58);
+            this.cmbTable.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbTable.Name = "cmbTable";
+            this.cmbTable.Size = new System.Drawing.Size(375, 24);
+            this.cmbTable.TabIndex = 0;
+            this.cmbTable.SelectedIndexChanged += new System.EventHandler(this.cmbTable_SelectedIndexChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -132,10 +142,29 @@ namespace XRMTokensRun
             this.label1.TabIndex = 1;
             this.label1.Text = "Table";
             // 
+            // recordname
+            // 
+            this.recordname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordname.Column = null;
+            this.recordname.DisplayFormat = "";
+            this.recordname.Location = new System.Drawing.Point(425, 58);
+            this.recordname.Margin = new System.Windows.Forms.Padding(4);
+            this.recordname.Name = "recordname";
+            this.recordname.RecordHost = this.record;
+            this.recordname.Size = new System.Drawing.Size(430, 22);
+            this.recordname.TabIndex = 3;
+            // 
+            // record
+            // 
+            this.record.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.record.LogicalName = null;
+            this.record.Record = null;
+            this.record.Service = null;
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer2.Location = new System.Drawing.Point(0, 27);
             this.splitContainer2.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer2.Name = "splitContainer2";
@@ -151,7 +180,7 @@ namespace XRMTokensRun
             // 
             this.splitContainer2.Panel2.Controls.Add(this.gbTokenResult);
             this.splitContainer2.Size = new System.Drawing.Size(997, 611);
-            this.splitContainer2.SplitterDistance = 366;
+            this.splitContainer2.SplitterDistance = 395;
             this.splitContainer2.SplitterWidth = 8;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -162,7 +191,7 @@ namespace XRMTokensRun
             this.gbTokens.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbTokens.Location = new System.Drawing.Point(0, 106);
             this.gbTokens.Name = "gbTokens";
-            this.gbTokens.Size = new System.Drawing.Size(997, 155);
+            this.gbTokens.Size = new System.Drawing.Size(997, 184);
             this.gbTokens.TabIndex = 5;
             this.gbTokens.TabStop = false;
             this.gbTokens.Text = "XRM Tokens";
@@ -188,7 +217,7 @@ namespace XRMTokensRun
             this.txtTokensIn.Margin = new System.Windows.Forms.Padding(4);
             this.txtTokensIn.Multiline = true;
             this.txtTokensIn.Name = "txtTokensIn";
-            this.txtTokensIn.Size = new System.Drawing.Size(959, 72);
+            this.txtTokensIn.Size = new System.Drawing.Size(959, 101);
             this.txtTokensIn.TabIndex = 1;
             this.txtTokensIn.TextChanged += new System.EventHandler(this.txtTokensIn_TextChanged);
             // 
@@ -200,7 +229,7 @@ namespace XRMTokensRun
             this.gbSmart.Controls.Add(this.btnSmartToken);
             this.gbSmart.Controls.Add(this.cmbTokenHelp);
             this.gbSmart.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gbSmart.Location = new System.Drawing.Point(0, 261);
+            this.gbSmart.Location = new System.Drawing.Point(0, 290);
             this.gbSmart.Name = "gbSmart";
             this.gbSmart.Size = new System.Drawing.Size(997, 105);
             this.gbSmart.TabIndex = 6;
@@ -268,7 +297,7 @@ namespace XRMTokensRun
             this.gbTokenResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbTokenResult.Location = new System.Drawing.Point(0, 0);
             this.gbTokenResult.Name = "gbTokenResult";
-            this.gbTokenResult.Size = new System.Drawing.Size(997, 237);
+            this.gbTokenResult.Size = new System.Drawing.Size(997, 208);
             this.gbTokenResult.TabIndex = 4;
             this.gbTokenResult.TabStop = false;
             this.gbTokenResult.Text = "Result";
@@ -277,7 +306,7 @@ namespace XRMTokensRun
             // 
             this.lblError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblError.AutoSize = true;
-            this.lblError.Location = new System.Drawing.Point(26, 209);
+            this.lblError.Location = new System.Drawing.Point(26, 180);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(37, 16);
             this.lblError.TabIndex = 4;
@@ -304,42 +333,12 @@ namespace XRMTokensRun
             this.txtTokensOut.Multiline = true;
             this.txtTokensOut.Name = "txtTokensOut";
             this.txtTokensOut.ReadOnly = true;
-            this.txtTokensOut.Size = new System.Drawing.Size(959, 137);
+            this.txtTokensOut.Size = new System.Drawing.Size(959, 108);
             this.txtTokensOut.TabIndex = 3;
             // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // tableselect
-            // 
-            this.tableselect.FormattingEnabled = true;
-            this.tableselect.Location = new System.Drawing.Point(23, 58);
-            this.tableselect.Margin = new System.Windows.Forms.Padding(4);
-            this.tableselect.Name = "tableselect";
-            this.tableselect.Size = new System.Drawing.Size(375, 24);
-            this.tableselect.TabIndex = 0;
-            this.tableselect.SelectedIndexChanged += new System.EventHandler(this.tableselect_SelectedIndexChanged);
-            // 
-            // recordname
-            // 
-            this.recordname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordname.Column = null;
-            this.recordname.DisplayFormat = "";
-            this.recordname.Location = new System.Drawing.Point(425, 58);
-            this.recordname.Margin = new System.Windows.Forms.Padding(4);
-            this.recordname.Name = "recordname";
-            this.recordname.RecordHost = this.record;
-            this.recordname.Size = new System.Drawing.Size(430, 22);
-            this.recordname.TabIndex = 3;
-            // 
-            // record
-            // 
-            this.record.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.record.LogicalName = null;
-            this.record.Record = null;
-            this.record.Service = null;
             // 
             // XRMTR
             // 
@@ -375,7 +374,7 @@ namespace XRMTokensRun
         #endregion
         private System.Windows.Forms.ToolStrip toolStripMenu;
         private System.Windows.Forms.Label label1;
-        private Rappen.XTB.Helpers.Controls.XRMEntityComboBox tableselect;
+        private Rappen.XTB.Helpers.Controls.XRMEntityComboBox cmbTable;
         private Rappen.XTB.Helpers.Controls.XRMRecordHost record;
         private Rappen.XTB.Helpers.Controls.XRMColumnText recordname;
         private System.Windows.Forms.SplitContainer splitContainer2;
