@@ -45,10 +45,11 @@ namespace XRMTokensRun
             this.label3 = new System.Windows.Forms.Label();
             this.txtTokensIn = new System.Windows.Forms.TextBox();
             this.gbSmart = new System.Windows.Forms.GroupBox();
+            this.btnSmartExpand = new System.Windows.Forms.Button();
             this.linkHelp = new System.Windows.Forms.LinkLabel();
             this.lblSmart = new System.Windows.Forms.Label();
             this.btnAddToken = new System.Windows.Forms.Button();
-            this.btnSmartToken = new System.Windows.Forms.Button();
+            this.btnSmartColumn = new System.Windows.Forms.Button();
             this.cmbTokenHelp = new System.Windows.Forms.ComboBox();
             this.gbTokenResult = new System.Windows.Forms.GroupBox();
             this.lblError = new System.Windows.Forms.Label();
@@ -211,7 +212,7 @@ namespace XRMTokensRun
             this.txtTokensIn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTokensIn.Font = new System.Drawing.Font("Cascadia Mono", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTokensIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTokensIn.HideSelection = false;
             this.txtTokensIn.Location = new System.Drawing.Point(23, 68);
             this.txtTokensIn.Margin = new System.Windows.Forms.Padding(4);
@@ -223,10 +224,11 @@ namespace XRMTokensRun
             // 
             // gbSmart
             // 
+            this.gbSmart.Controls.Add(this.btnSmartExpand);
             this.gbSmart.Controls.Add(this.linkHelp);
             this.gbSmart.Controls.Add(this.lblSmart);
             this.gbSmart.Controls.Add(this.btnAddToken);
-            this.gbSmart.Controls.Add(this.btnSmartToken);
+            this.gbSmart.Controls.Add(this.btnSmartColumn);
             this.gbSmart.Controls.Add(this.cmbTokenHelp);
             this.gbSmart.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gbSmart.Location = new System.Drawing.Point(0, 290);
@@ -236,11 +238,23 @@ namespace XRMTokensRun
             this.gbSmart.TabStop = false;
             this.gbSmart.Text = "Smart Help";
             // 
+            // btnSmartExpand
+            // 
+            this.btnSmartExpand.Enabled = false;
+            this.btnSmartExpand.Location = new System.Drawing.Point(149, 32);
+            this.btnSmartExpand.Name = "btnSmartExpand";
+            this.btnSmartExpand.Size = new System.Drawing.Size(120, 23);
+            this.btnSmartExpand.TabIndex = 5;
+            this.btnSmartExpand.Text = "Expand";
+            this.btnSmartExpand.UseVisualStyleBackColor = true;
+            this.btnSmartExpand.Click += new System.EventHandler(this.btnSmartExpand_Click);
+            // 
             // linkHelp
             // 
+            this.linkHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkHelp.AutoSize = true;
             this.linkHelp.Enabled = false;
-            this.linkHelp.Location = new System.Drawing.Point(23, 63);
+            this.linkHelp.Location = new System.Drawing.Point(638, 63);
             this.linkHelp.Name = "linkHelp";
             this.linkHelp.Size = new System.Drawing.Size(32, 16);
             this.linkHelp.TabIndex = 4;
@@ -250,8 +264,9 @@ namespace XRMTokensRun
             // 
             // lblSmart
             // 
+            this.lblSmart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSmart.AutoSize = true;
-            this.lblSmart.Location = new System.Drawing.Point(69, 63);
+            this.lblSmart.Location = new System.Drawing.Point(684, 63);
             this.lblSmart.Name = "lblSmart";
             this.lblSmart.Size = new System.Drawing.Size(91, 16);
             this.lblSmart.TabIndex = 3;
@@ -259,8 +274,9 @@ namespace XRMTokensRun
             // 
             // btnAddToken
             // 
+            this.btnAddToken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddToken.Enabled = false;
-            this.btnAddToken.Location = new System.Drawing.Point(247, 32);
+            this.btnAddToken.Location = new System.Drawing.Point(862, 32);
             this.btnAddToken.Name = "btnAddToken";
             this.btnAddToken.Size = new System.Drawing.Size(120, 23);
             this.btnAddToken.TabIndex = 2;
@@ -268,22 +284,23 @@ namespace XRMTokensRun
             this.btnAddToken.UseVisualStyleBackColor = true;
             this.btnAddToken.Click += new System.EventHandler(this.btnAddToken_Click);
             // 
-            // btnSmartToken
+            // btnSmartColumn
             // 
-            this.btnSmartToken.Enabled = false;
-            this.btnSmartToken.Location = new System.Drawing.Point(380, 32);
-            this.btnSmartToken.Name = "btnSmartToken";
-            this.btnSmartToken.Size = new System.Drawing.Size(120, 23);
-            this.btnSmartToken.TabIndex = 2;
-            this.btnSmartToken.Text = "Smart Token";
-            this.btnSmartToken.UseVisualStyleBackColor = true;
-            this.btnSmartToken.Click += new System.EventHandler(this.btnSmartToken_Click);
+            this.btnSmartColumn.Enabled = false;
+            this.btnSmartColumn.Location = new System.Drawing.Point(23, 32);
+            this.btnSmartColumn.Name = "btnSmartColumn";
+            this.btnSmartColumn.Size = new System.Drawing.Size(120, 23);
+            this.btnSmartColumn.TabIndex = 2;
+            this.btnSmartColumn.Text = "Column";
+            this.btnSmartColumn.UseVisualStyleBackColor = true;
+            this.btnSmartColumn.Click += new System.EventHandler(this.btnSmartColumn_Click);
             // 
             // cmbTokenHelp
             // 
+            this.cmbTokenHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbTokenHelp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTokenHelp.FormattingEnabled = true;
-            this.cmbTokenHelp.Location = new System.Drawing.Point(23, 32);
+            this.cmbTokenHelp.Location = new System.Drawing.Point(638, 32);
             this.cmbTokenHelp.Name = "cmbTokenHelp";
             this.cmbTokenHelp.Size = new System.Drawing.Size(202, 24);
             this.cmbTokenHelp.TabIndex = 1;
@@ -390,11 +407,12 @@ namespace XRMTokensRun
         private System.Windows.Forms.GroupBox gbSmart;
         private System.Windows.Forms.ComboBox cmbTokenHelp;
         private System.Windows.Forms.Button btnAddToken;
-        private System.Windows.Forms.Button btnSmartToken;
+        private System.Windows.Forms.Button btnSmartColumn;
         private System.Windows.Forms.LinkLabel linkHelp;
         private System.Windows.Forms.Label lblSmart;
         private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Button btnGetRecord;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnSmartExpand;
     }
 }

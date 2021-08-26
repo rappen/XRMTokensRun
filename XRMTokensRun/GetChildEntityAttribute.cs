@@ -25,7 +25,7 @@ namespace XRMTokensRun
             dialog.txtTable.Text = entity.DisplayName.UserLocalizedLabel.Label;
             var ents = entity.OneToManyRelationships.Select(r => r.ReferencingEntity);
             dialog.xrmEntityComboBox1.DataSource = owner.entities.Where(e => ents.Contains(e.LogicalName));
-            if (dialog.ShowDialog(owner) == DialogResult.OK && dialog.xrmLookup.SelectedAttribute is AttributeMetadata attr)
+            if (dialog.ShowDialog(owner) == DialogResult.OK)
             {
                 return "<expand|" +
                     dialog.xrmEntityComboBox1.SelectedEntity?.LogicalName + "|" +

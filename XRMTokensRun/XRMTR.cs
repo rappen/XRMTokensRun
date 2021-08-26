@@ -105,7 +105,8 @@ namespace XRMTokensRun
             btnGetRecord.Enabled = on && cmbTable.SelectedEntity != null;
             gbTokens.Enabled = on && record?.Record != null;
             btnAddToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
-            btnSmartToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
+            btnSmartColumn.Enabled = on && record?.Record != null;
+            btnSmartExpand.Enabled = on && record?.Record != null;
         }
 
         private void cmbTable_SelectedIndexChanged(object sender, EventArgs e)
@@ -190,23 +191,29 @@ namespace XRMTokensRun
             }
         }
 
-        private void btnSmartToken_Click(object sender, EventArgs e)
+        private void btnSmartColumn_Click(object sender, EventArgs e)
         {
-            if (cmbTokenHelp.SelectedItem is TokenHelp help)
+            AddSmartToken(GetAttribute.ShowDialog(this, Service.GetEntity(cmbTable.SelectedEntity.LogicalName)));
+        }
+
+        private void btnSmartExpand_Click(object sender, EventArgs e)
+        {
+            AddSmartToken(GetChildEntityAttribute.ShowDialog(this, Service.GetEntity(cmbTable.SelectedEntity.LogicalName)));
+        }
+
+        private void AddSmartToken(string token)
+        {
+            if (string.IsNullOrWhiteSpace(token))
             {
-                var token = GetSmartToken(help);
-                if (string.IsNullOrWhiteSpace(token))
-                {
-                    return;
-                }
-                cmbTokenHelp.SelectedIndex = -1;
-                var selstart = txtTokensIn.SelectionStart;
-                txtTokensIn.SelectedText = "";
-                txtTokensIn.Text = txtTokensIn.Text.Insert(selstart, token);
-                txtTokensIn.SelectionStart = selstart;
-                txtTokensIn.SelectionLength = token.Length;
-                txtTokensIn.Focus();
+                return;
             }
+            cmbTokenHelp.SelectedIndex = -1;
+            var selstart = txtTokensIn.SelectionStart;
+            txtTokensIn.SelectedText = "";
+            txtTokensIn.Text = txtTokensIn.Text.Insert(selstart, token);
+            txtTokensIn.SelectionStart = selstart;
+            txtTokensIn.SelectionLength = token.Length;
+            txtTokensIn.Focus();
         }
 
         private void cmbTokenHelp_SelectedIndexChanged(object sender, EventArgs e)
@@ -230,38 +237,6 @@ namespace XRMTokensRun
             {
                 Process.Start(help.url);
             }
-        }
-
-        private string GetSmartToken(TokenHelp help)
-        {
-            var entity = Service.GetEntity(cmbTable.SelectedEntity.LogicalName);
-            switch (help.name.ToLowerInvariant().Replace(" ", ""))
-            {
-                case "column":
-                    if (GetAttribute.ShowDialog(this, entity) is AttributeMetadata attr)
-                    {
-                        return "{" + attr.LogicalName + "}";
-                    }
-                    break;
-
-                case "columnraw":
-                    if (GetAttribute.ShowDialog(this, entity) is AttributeMetadata attrraw)
-                    {
-                        return "{" + attrraw.LogicalName + "|<value>}";
-                    }
-                    break;
-
-                case "expand":
-                    if (GetChildEntityAttribute.ShowDialog(this, entity) is string expand)
-                    {
-                        return expand;
-                    }
-                    break;
-
-                case "system":
-                    break;
-            }
-            return null;
         }
     }
 }

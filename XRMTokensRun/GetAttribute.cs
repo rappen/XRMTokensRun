@@ -16,17 +16,25 @@ namespace XRMTokensRun
             InitializeComponent();
         }
 
-        public static AttributeMetadata ShowDialog(XRMTR owner, EntityMetadata entity, IEnumerable<AttributeMetadata> attributes = null)
+        public static string ShowDialog(XRMTR owner, EntityMetadata entity, IEnumerable<AttributeMetadata> attributes = null)
         {
             var dialog = new GetAttribute();
             dialog.xrmtr = owner;
             dialog.txtTable.Text = entity.DisplayName.UserLocalizedLabel.Label;
-            dialog.xrmColumn.DataSource = attributes == null ?
-                entity.Attributes.Where(a => a.IsLogical == false) :
-                attributes;
-            if (dialog.ShowDialog(owner) == DialogResult.OK && dialog.xrmColumn.SelectedAttribute is AttributeMetadata attr)
+            dialog.xrmColumn.DataSource = attributes ?? entity.Attributes.Where(a => a.IsLogical == false);
+            if (dialog.ShowDialog(owner) == DialogResult.OK)
             {
-                return attr;
+                var result = "{" + dialog.xrmColumn.SelectedAttribute.LogicalName;
+                if (dialog.chkParent.Checked)
+                {
+                    result += "." + dialog.xrmParentAttr.SelectedAttribute.LogicalName;
+                }
+                if (dialog.chkValue.Checked)
+                {
+                    result += "|<value>";
+                }
+                result += "}";
+                return result;
             }
             return null;
         }
@@ -59,7 +67,7 @@ namespace XRMTokensRun
                 {
                     if (atts.FirstOrDefault(a => a.IsPrimaryName == true) is AttributeMetadata pri)
                     {
-                        xrmParentAttr.SelectedIndex = pri;
+                        //xrmParentAttr.SelectedIndex = pri;
                     }
                 }
             }
