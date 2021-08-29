@@ -44,6 +44,15 @@ namespace XRMTokensRun
             {
                 result += "|<value>";
             }
+            if (!string.IsNullOrEmpty(cmbFormat.Text))
+            {
+                if (!chkValue.Checked)
+                {
+                    result += "|";
+                }
+                result += "<" + cmbFormat.Text + "|";
+                result += txtFormValue.Text + ">";
+            }
             result += "}";
             return result;
         }
@@ -115,6 +124,18 @@ namespace XRMTokensRun
         private void ShowResult(object sender = null, System.EventArgs e = null)
         {
             txtResult.Text = GetResult();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://jonasr.app/xrm-tokens/#formatting");
+        }
+
+        private void cmbFormat_SelectedIndexChanged(object sender, System.EventArgs e)
+        {
+            txtFormValue.Enabled = !string.IsNullOrEmpty(cmbFormat.Text);
+            txtFormValue.Text = "";
+            ShowResult();
         }
     }
 }

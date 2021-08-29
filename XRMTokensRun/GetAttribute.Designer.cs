@@ -47,12 +47,17 @@ namespace XRMTokensRun
             this.xrmParentEntity = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
             this.xrmParentAttr = new Rappen.XTB.Helpers.Controls.XRMAttributeComboBox();
             this.xrmColumn = new Rappen.XTB.Helpers.Controls.XRMAttributeComboBox();
+            this.cmbFormat = new System.Windows.Forms.ComboBox();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.txtFormValue = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(138, 298);
+            this.button1.Location = new System.Drawing.Point(138, 375);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 28);
@@ -72,8 +77,9 @@ namespace XRMTokensRun
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(272, 298);
+            this.button2.Location = new System.Drawing.Point(272, 375);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 28);
@@ -176,7 +182,7 @@ namespace XRMTokensRun
             // txtResult
             // 
             this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtResult.Location = new System.Drawing.Point(138, 261);
+            this.txtResult.Location = new System.Drawing.Point(138, 338);
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
             this.txtResult.Size = new System.Drawing.Size(401, 22);
@@ -186,7 +192,7 @@ namespace XRMTokensRun
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(33, 264);
+            this.label5.Location = new System.Drawing.Point(33, 341);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 16);
             this.label5.TabIndex = 34;
@@ -227,13 +233,63 @@ namespace XRMTokensRun
             this.xrmColumn.TabIndex = 0;
             this.xrmColumn.SelectedIndexChanged += new System.EventHandler(this.xrmColumn_SelectedIndexChanged);
             // 
+            // cmbFormat
+            // 
+            this.cmbFormat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFormat.FormattingEnabled = true;
+            this.cmbFormat.Items.AddRange(new object[] {
+            "",
+            "Left",
+            "Right",
+            "SubStr",
+            "Pad",
+            "Replace",
+            "Math"});
+            this.cmbFormat.Location = new System.Drawing.Point(138, 254);
+            this.cmbFormat.Name = "cmbFormat";
+            this.cmbFormat.Size = new System.Drawing.Size(401, 24);
+            this.cmbFormat.TabIndex = 37;
+            this.cmbFormat.SelectedIndexChanged += new System.EventHandler(this.cmbFormat_SelectedIndexChanged);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(33, 257);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(71, 16);
+            this.linkLabel2.TabIndex = 38;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Formatting";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // txtFormValue
+            // 
+            this.txtFormValue.Location = new System.Drawing.Point(138, 284);
+            this.txtFormValue.Name = "txtFormValue";
+            this.txtFormValue.Size = new System.Drawing.Size(401, 22);
+            this.txtFormValue.TabIndex = 39;
+            this.txtFormValue.TextChanged += new System.EventHandler(this.ShowResult);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(33, 287);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(95, 16);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Format Values";
+            // 
             // GetAttribute
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(575, 347);
+            this.ClientSize = new System.Drawing.Size(575, 424);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtFormValue);
+            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.cmbFormat);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.chkParent);
@@ -282,5 +338,9 @@ namespace XRMTokensRun
         private System.Windows.Forms.CheckBox chkParent;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbFormat;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.TextBox txtFormValue;
+        private System.Windows.Forms.Label label6;
     }
 }
