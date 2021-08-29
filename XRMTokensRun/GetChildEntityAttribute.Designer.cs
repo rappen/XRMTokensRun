@@ -48,19 +48,21 @@ namespace XRMTokensRun
             this.mskMax = new System.Windows.Forms.MaskedTextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.chkOrderSel = new System.Windows.Forms.CheckBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.xrmOrder = new Rappen.XTB.Helpers.Controls.XRMAttributeComboBox();
             this.xrmShow = new Rappen.XTB.Helpers.Controls.XRMAttributeComboBox();
             this.xrmEntityComboBox1 = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
             this.xrmLookup = new Rappen.XTB.Helpers.Controls.XRMAttributeComboBox();
-            this.txtResult = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(136, 414);
+            this.button1.Location = new System.Drawing.Point(136, 464);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 28);
@@ -82,7 +84,7 @@ namespace XRMTokensRun
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(271, 414);
+            this.button2.Location = new System.Drawing.Point(271, 464);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 28);
@@ -142,7 +144,7 @@ namespace XRMTokensRun
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 252);
+            this.label6.Location = new System.Drawing.Point(33, 270);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(68, 16);
@@ -151,10 +153,10 @@ namespace XRMTokensRun
             // 
             // txtSeparate
             // 
-            this.txtSeparate.Location = new System.Drawing.Point(136, 249);
+            this.txtSeparate.Location = new System.Drawing.Point(136, 267);
             this.txtSeparate.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeparate.Name = "txtSeparate";
-            this.txtSeparate.Size = new System.Drawing.Size(401, 22);
+            this.txtSeparate.Size = new System.Drawing.Size(75, 22);
             this.txtSeparate.TabIndex = 13;
             this.txtSeparate.Text = ", ";
             this.txtSeparate.TextChanged += new System.EventHandler(this.ShowResult);
@@ -162,7 +164,7 @@ namespace XRMTokensRun
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(33, 281);
+            this.label7.Location = new System.Drawing.Point(33, 299);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(51, 16);
@@ -174,7 +176,7 @@ namespace XRMTokensRun
             this.chkDistinct.AutoSize = true;
             this.chkDistinct.Checked = true;
             this.chkDistinct.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkDistinct.Location = new System.Drawing.Point(136, 281);
+            this.chkDistinct.Location = new System.Drawing.Point(136, 299);
             this.chkDistinct.Margin = new System.Windows.Forms.Padding(4);
             this.chkDistinct.Name = "chkDistinct";
             this.chkDistinct.Size = new System.Drawing.Size(15, 14);
@@ -185,7 +187,7 @@ namespace XRMTokensRun
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(33, 305);
+            this.label8.Location = new System.Drawing.Point(33, 323);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(75, 16);
@@ -197,7 +199,7 @@ namespace XRMTokensRun
             this.chkActive.AutoSize = true;
             this.chkActive.Checked = true;
             this.chkActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkActive.Location = new System.Drawing.Point(136, 305);
+            this.chkActive.Location = new System.Drawing.Point(136, 323);
             this.chkActive.Margin = new System.Windows.Forms.Padding(4);
             this.chkActive.Name = "chkActive";
             this.chkActive.Size = new System.Drawing.Size(15, 14);
@@ -208,7 +210,7 @@ namespace XRMTokensRun
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(33, 334);
+            this.label9.Location = new System.Drawing.Point(33, 352);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(85, 16);
@@ -217,11 +219,11 @@ namespace XRMTokensRun
             // 
             // mskMax
             // 
-            this.mskMax.Location = new System.Drawing.Point(136, 330);
+            this.mskMax.Location = new System.Drawing.Point(136, 348);
             this.mskMax.Margin = new System.Windows.Forms.Padding(4);
             this.mskMax.Mask = "00000000";
             this.mskMax.Name = "mskMax";
-            this.mskMax.Size = new System.Drawing.Size(95, 22);
+            this.mskMax.Size = new System.Drawing.Size(75, 22);
             this.mskMax.TabIndex = 20;
             this.mskMax.Text = "100";
             this.mskMax.TextChanged += new System.EventHandler(this.ShowResult);
@@ -247,6 +249,45 @@ namespace XRMTokensRun
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Documentation Expand 🔗";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // txtResult
+            // 
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtResult.Location = new System.Drawing.Point(136, 400);
+            this.txtResult.Multiline = true;
+            this.txtResult.Name = "txtResult";
+            this.txtResult.ReadOnly = true;
+            this.txtResult.Size = new System.Drawing.Size(401, 47);
+            this.txtResult.TabIndex = 37;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(33, 403);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 16);
+            this.label11.TabIndex = 36;
+            this.label11.Text = "Result";
+            // 
+            // chkOrderSel
+            // 
+            this.chkOrderSel.AutoSize = true;
+            this.chkOrderSel.Location = new System.Drawing.Point(136, 246);
+            this.chkOrderSel.Name = "chkOrderSel";
+            this.chkOrderSel.Size = new System.Drawing.Size(15, 14);
+            this.chkOrderSel.TabIndex = 38;
+            this.chkOrderSel.UseVisualStyleBackColor = true;
+            this.chkOrderSel.CheckedChanged += new System.EventHandler(this.ShowResult);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(32, 244);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(85, 16);
+            this.label12.TabIndex = 39;
+            this.label12.Text = "Order Revert";
             // 
             // xrmOrder
             // 
@@ -292,32 +333,15 @@ namespace XRMTokensRun
             this.xrmLookup.TabIndex = 0;
             this.xrmLookup.SelectedIndexChanged += new System.EventHandler(this.ShowResult);
             // 
-            // txtResult
-            // 
-            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtResult.Location = new System.Drawing.Point(136, 378);
-            this.txtResult.Name = "txtResult";
-            this.txtResult.ReadOnly = true;
-            this.txtResult.Size = new System.Drawing.Size(401, 22);
-            this.txtResult.TabIndex = 37;
-            // 
-            // label11
-            // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(31, 381);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 16);
-            this.label11.TabIndex = 36;
-            this.label11.Text = "Result";
-            // 
             // GetChildEntityAttribute
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(575, 453);
+            this.ClientSize = new System.Drawing.Size(575, 503);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.chkOrderSel);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.linkLabel1);
@@ -380,5 +404,7 @@ namespace XRMTokensRun
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.TextBox txtResult;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.CheckBox chkOrderSel;
+        private System.Windows.Forms.Label label12;
     }
 }

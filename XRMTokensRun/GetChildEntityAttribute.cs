@@ -37,8 +37,9 @@ namespace XRMTokensRun
             return "<expand|" +
                 xrmEntityComboBox1.SelectedEntity?.LogicalName + "|" +
                 xrmLookup.SelectedAttribute?.LogicalName + "|" +
-                "{" + xrmShow.SelectedAttribute?.LogicalName + "}|" +
-                xrmOrder.SelectedAttribute?.LogicalName + "/asc|" +
+                (xrmShow.SelectedAttribute == null ? "|" : "{" + xrmShow.SelectedAttribute?.LogicalName + "}|") +
+                xrmOrder.SelectedAttribute?.LogicalName +
+                (!chkOrderSel.Checked ? "|" : "/desc|") +
                 txtSeparate.Text + "|" +
                 (chkDistinct.Checked ? "true" : "false") + "|" +
                 (chkActive.Checked ? "true" : "false") + "|" +
