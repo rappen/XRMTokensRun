@@ -16,13 +16,17 @@ namespace XRMTokensRun
             InitializeComponent();
         }
 
-        public static string ShowDialog(XRMTR owner, EntityMetadata entity, IEnumerable<AttributeMetadata> attributes = null)
+        public static string ShowDialog(XRMTR owner, EntityMetadata entity = null, IEnumerable<AttributeMetadata> attributes = null)
         {
             var dialog = new GetAttribute();
             dialog.xrmtr = owner;
+            if (entity == null)
+            {
+                entity = dialog.xrmtr.recordmeta;
+            }
             dialog.txtTable.Text = entity.DisplayName.UserLocalizedLabel.Label;
             dialog.xrmColumn.DataSource = attributes ?? entity.Attributes.Where(a => a.IsLogical == false);
-            if (dialog.ShowDialog(owner) == DialogResult.OK)
+            if (dialog.ShowDialog((Control)owner) == DialogResult.OK)
             {
                 var result = "{" + dialog.xrmColumn.SelectedAttribute.LogicalName;
                 if (dialog.chkParent.Checked)

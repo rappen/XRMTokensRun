@@ -29,6 +29,7 @@ namespace XRMTokensRun
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GetChildEntityAttribute));
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
@@ -98,7 +99,7 @@ namespace XRMTokensRun
             // txtTable
             // 
             this.txtTable.Location = new System.Drawing.Point(136, 87);
-            this.txtTable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTable.Margin = new System.Windows.Forms.Padding(4);
             this.txtTable.Name = "txtTable";
             this.txtTable.ReadOnly = true;
             this.txtTable.Size = new System.Drawing.Size(401, 22);
@@ -147,7 +148,7 @@ namespace XRMTokensRun
             // txtSeparate
             // 
             this.txtSeparate.Location = new System.Drawing.Point(136, 249);
-            this.txtSeparate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSeparate.Margin = new System.Windows.Forms.Padding(4);
             this.txtSeparate.Name = "txtSeparate";
             this.txtSeparate.Size = new System.Drawing.Size(401, 22);
             this.txtSeparate.TabIndex = 13;
@@ -169,7 +170,7 @@ namespace XRMTokensRun
             this.chkDistinct.Checked = true;
             this.chkDistinct.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkDistinct.Location = new System.Drawing.Point(136, 281);
-            this.chkDistinct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkDistinct.Margin = new System.Windows.Forms.Padding(4);
             this.chkDistinct.Name = "chkDistinct";
             this.chkDistinct.Size = new System.Drawing.Size(15, 14);
             this.chkDistinct.TabIndex = 15;
@@ -191,7 +192,7 @@ namespace XRMTokensRun
             this.chkActive.Checked = true;
             this.chkActive.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkActive.Location = new System.Drawing.Point(136, 305);
-            this.chkActive.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkActive.Margin = new System.Windows.Forms.Padding(4);
             this.chkActive.Name = "chkActive";
             this.chkActive.Size = new System.Drawing.Size(15, 14);
             this.chkActive.TabIndex = 17;
@@ -210,7 +211,7 @@ namespace XRMTokensRun
             // mskMax
             // 
             this.mskMax.Location = new System.Drawing.Point(136, 330);
-            this.mskMax.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mskMax.Margin = new System.Windows.Forms.Padding(4);
             this.mskMax.Mask = "00000000";
             this.mskMax.Name = "mskMax";
             this.mskMax.Size = new System.Drawing.Size(95, 22);
@@ -311,6 +312,7 @@ namespace XRMTokensRun
             this.Controls.Add(this.xrmLookup);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GetChildEntityAttribute";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

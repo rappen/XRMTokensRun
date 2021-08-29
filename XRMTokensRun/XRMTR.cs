@@ -20,6 +20,8 @@ namespace XRMTokensRun
 
         public EntityMetadataCollection entities { get; private set; }
 
+        public EntityMetadata recordmeta => Service?.GetEntity(cmbTable.SelectedEntity?.LogicalName);
+
         public XRMTR()
         {
             InitializeComponent();
@@ -107,6 +109,8 @@ namespace XRMTokensRun
             btnAddToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
             btnSmartColumn.Enabled = on && record?.Record != null;
             btnSmartExpand.Enabled = on && record?.Record != null;
+            btnSmartIf.Enabled = on && record?.Record != null;
+            btnSmartSystem.Enabled = on && record?.Record != null;
         }
 
         private void cmbTable_SelectedIndexChanged(object sender, EventArgs e)
@@ -191,16 +195,6 @@ namespace XRMTokensRun
             }
         }
 
-        private void btnSmartColumn_Click(object sender, EventArgs e)
-        {
-            AddSmartToken(GetAttribute.ShowDialog(this, Service.GetEntity(cmbTable.SelectedEntity.LogicalName)));
-        }
-
-        private void btnSmartExpand_Click(object sender, EventArgs e)
-        {
-            AddSmartToken(GetChildEntityAttribute.ShowDialog(this, Service.GetEntity(cmbTable.SelectedEntity.LogicalName)));
-        }
-
         private void AddSmartToken(string token)
         {
             if (string.IsNullOrWhiteSpace(token))
@@ -237,6 +231,26 @@ namespace XRMTokensRun
             {
                 Process.Start(help.url);
             }
+        }
+
+        private void btnSmartColumn_Click(object sender, EventArgs e)
+        {
+            AddSmartToken(GetAttribute.ShowDialog(this));
+        }
+
+        private void btnSmartExpand_Click(object sender, EventArgs e)
+        {
+            AddSmartToken(GetChildEntityAttribute.ShowDialog(this));
+        }
+
+        private void btnSmartIf_Click(object sender, EventArgs e)
+        {
+            AddSmartToken(GetIif.ShowDialog(this));
+        }
+
+        private void btnSmartSystem_Click(object sender, EventArgs e)
+        {
+            AddSmartToken(GetSystem.ShowDialog(this));
         }
     }
 }

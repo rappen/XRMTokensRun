@@ -198,6 +198,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GetSystem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetSystem.Designer.cs">
+      <DependentUpon>GetSystem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GetIif.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetIif.Designer.cs">
+      <DependentUpon>GetIif.cs</DependentUpon>
+    </Compile>
     <Compile Include="GetChildEntityAttribute.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +243,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="GetSystem.resx">
+      <DependentUpon>GetSystem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetIif.resx">
+      <DependentUpon>GetIif.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GetChildEntityAttribute.resx">
       <DependentUpon>GetChildEntityAttribute.cs</DependentUpon>
     </EmbeddedResource>
