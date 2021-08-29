@@ -50,6 +50,7 @@ namespace XRMTokensRun
             {
                 txtFormat.Text = val;
             }
+            ShowResult();
         }
 
         private void cmbOperator_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -58,7 +59,7 @@ namespace XRMTokensRun
             ShowResult();
         }
 
-        private void ShowResult()
+        private void ShowResult(object sender = null, System.EventArgs e = null)
         {
             txtResult.Text = GetResult();
         }

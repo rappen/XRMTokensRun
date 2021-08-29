@@ -95,7 +95,7 @@ namespace XRMTokensRun
             this.label10.Location = new System.Drawing.Point(134, 22);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 11);
+            this.label10.Size = new System.Drawing.Size(68, 20);
             this.label10.TabIndex = 23;
             this.label10.Text = "System";
             // 
@@ -132,6 +132,7 @@ namespace XRMTokensRun
             this.btnCol.TabIndex = 31;
             this.btnCol.Text = "Col";
             this.btnCol.UseVisualStyleBackColor = true;
+            this.btnCol.Visible = false;
             this.btnCol.Click += new System.EventHandler(this.btnCol_Click);
             // 
             // txtFormat
@@ -140,7 +141,7 @@ namespace XRMTokensRun
             this.txtFormat.Name = "txtFormat";
             this.txtFormat.Size = new System.Drawing.Size(346, 22);
             this.txtFormat.TabIndex = 30;
-            this.txtFormat.TextChanged += new System.EventHandler(this.cmbOperator_SelectedIndexChanged);
+            this.txtFormat.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // label1
             // 
@@ -148,7 +149,7 @@ namespace XRMTokensRun
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 178);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 9);
+            this.label1.Size = new System.Drawing.Size(46, 16);
             this.label1.TabIndex = 32;
             this.label1.Text = "Result";
             // 

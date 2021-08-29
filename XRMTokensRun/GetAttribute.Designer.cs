@@ -41,16 +41,18 @@ namespace XRMTokensRun
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.chkParent = new System.Windows.Forms.CheckBox();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.xrmParentEntity = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
             this.xrmParentAttr = new Rappen.XTB.Helpers.Controls.XRMAttributeComboBox();
             this.xrmColumn = new Rappen.XTB.Helpers.Controls.XRMAttributeComboBox();
-            this.chkParent = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // button1
             // 
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(138, 284);
+            this.button1.Location = new System.Drawing.Point(138, 298);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 28);
@@ -71,7 +73,7 @@ namespace XRMTokensRun
             // button2
             // 
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(272, 284);
+            this.button2.Location = new System.Drawing.Point(272, 298);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 28);
@@ -117,6 +119,7 @@ namespace XRMTokensRun
             this.chkValue.Size = new System.Drawing.Size(15, 14);
             this.chkValue.TabIndex = 17;
             this.chkValue.UseVisualStyleBackColor = true;
+            this.chkValue.CheckedChanged += new System.EventHandler(this.ShowResult);
             // 
             // label7
             // 
@@ -160,6 +163,35 @@ namespace XRMTokensRun
             this.label3.TabIndex = 26;
             this.label3.Text = "Parent Table";
             // 
+            // chkParent
+            // 
+            this.chkParent.AutoSize = true;
+            this.chkParent.Location = new System.Drawing.Point(138, 156);
+            this.chkParent.Name = "chkParent";
+            this.chkParent.Size = new System.Drawing.Size(15, 14);
+            this.chkParent.TabIndex = 27;
+            this.chkParent.UseVisualStyleBackColor = true;
+            this.chkParent.CheckedChanged += new System.EventHandler(this.chkParent_CheckedChanged);
+            // 
+            // txtResult
+            // 
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtResult.Location = new System.Drawing.Point(138, 261);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.ReadOnly = true;
+            this.txtResult.Size = new System.Drawing.Size(401, 22);
+            this.txtResult.TabIndex = 35;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(33, 264);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 16);
+            this.label5.TabIndex = 34;
+            this.label5.Text = "Result";
+            // 
             // xrmParentEntity
             // 
             this.xrmParentEntity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -182,6 +214,7 @@ namespace XRMTokensRun
             this.xrmParentAttr.Name = "xrmParentAttr";
             this.xrmParentAttr.Size = new System.Drawing.Size(375, 24);
             this.xrmParentAttr.TabIndex = 10;
+            this.xrmParentAttr.SelectedIndexChanged += new System.EventHandler(this.ShowResult);
             // 
             // xrmColumn
             // 
@@ -194,16 +227,6 @@ namespace XRMTokensRun
             this.xrmColumn.TabIndex = 0;
             this.xrmColumn.SelectedIndexChanged += new System.EventHandler(this.xrmColumn_SelectedIndexChanged);
             // 
-            // chkParent
-            // 
-            this.chkParent.AutoSize = true;
-            this.chkParent.Location = new System.Drawing.Point(138, 156);
-            this.chkParent.Name = "chkParent";
-            this.chkParent.Size = new System.Drawing.Size(15, 14);
-            this.chkParent.TabIndex = 27;
-            this.chkParent.UseVisualStyleBackColor = true;
-            this.chkParent.CheckedChanged += new System.EventHandler(this.chkParent_CheckedChanged);
-            // 
             // GetAttribute
             // 
             this.AcceptButton = this.button1;
@@ -211,6 +234,8 @@ namespace XRMTokensRun
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(575, 347);
+            this.Controls.Add(this.txtResult);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.chkParent);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.xrmParentEntity);
@@ -233,6 +258,7 @@ namespace XRMTokensRun
             this.Name = "GetAttribute";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Get Column";
+            this.Load += new System.EventHandler(this.ShowResult);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,5 +280,7 @@ namespace XRMTokensRun
         private System.Windows.Forms.Label label3;
         private Rappen.XTB.Helpers.Controls.XRMEntityComboBox xrmParentEntity;
         private System.Windows.Forms.CheckBox chkParent;
+        private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.Label label5;
     }
 }

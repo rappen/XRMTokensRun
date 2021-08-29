@@ -27,17 +27,22 @@ namespace XRMTokensRun
             dialog.xrmEntityComboBox1.DataSource = owner.entities.Where(e => ents.Contains(e.LogicalName));
             if (dialog.ShowDialog((Control)owner) == DialogResult.OK)
             {
-                return "<expand|" +
-                    dialog.xrmEntityComboBox1.SelectedEntity?.LogicalName + "|" +
-                    dialog.xrmLookup.SelectedAttribute?.LogicalName + "|" +
-                    "{" + dialog.xrmShow.SelectedAttribute?.LogicalName + "}|" +
-                    dialog.xrmOrder.SelectedAttribute?.LogicalName + "/asc|" +
-                    dialog.txtSeparate.Text + "|" +
-                    (dialog.chkDistinct.Checked ? "true" : "false") + "|" +
-                    (dialog.chkActive.Checked ? "true" : "false") + "|" +
-                    dialog.mskMax.Text + ">";
+                return dialog.GetResult();
             }
             return null;
+        }
+
+        private string GetResult()
+        {
+            return "<expand|" +
+                xrmEntityComboBox1.SelectedEntity?.LogicalName + "|" +
+                xrmLookup.SelectedAttribute?.LogicalName + "|" +
+                "{" + xrmShow.SelectedAttribute?.LogicalName + "}|" +
+                xrmOrder.SelectedAttribute?.LogicalName + "/asc|" +
+                txtSeparate.Text + "|" +
+                (chkDistinct.Checked ? "true" : "false") + "|" +
+                (chkActive.Checked ? "true" : "false") + "|" +
+                mskMax.Text + ">";
         }
 
         private void xrmEntityComboBox1_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -61,11 +66,17 @@ namespace XRMTokensRun
                 xrmShow.DataSource = null;
                 xrmOrder.DataSource = null;
             }
+            ShowResult();
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start("https://jonasr.app/xrm-tokens/#expand");
+        }
+
+        private void ShowResult(object sender = null, System.EventArgs e = null)
+        {
+            txtResult.Text = GetResult();
         }
     }
 }

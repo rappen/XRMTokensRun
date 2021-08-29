@@ -52,12 +52,15 @@ namespace XRMTokensRun
             this.xrmShow = new Rappen.XTB.Helpers.Controls.XRMAttributeComboBox();
             this.xrmEntityComboBox1 = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
             this.xrmLookup = new Rappen.XTB.Helpers.Controls.XRMAttributeComboBox();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(136, 383);
+            this.button1.Location = new System.Drawing.Point(136, 414);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 28);
@@ -77,8 +80,9 @@ namespace XRMTokensRun
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(271, 383);
+            this.button2.Location = new System.Drawing.Point(271, 414);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 28);
@@ -153,6 +157,7 @@ namespace XRMTokensRun
             this.txtSeparate.Size = new System.Drawing.Size(401, 22);
             this.txtSeparate.TabIndex = 13;
             this.txtSeparate.Text = ", ";
+            this.txtSeparate.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // label7
             // 
@@ -175,6 +180,7 @@ namespace XRMTokensRun
             this.chkDistinct.Size = new System.Drawing.Size(15, 14);
             this.chkDistinct.TabIndex = 15;
             this.chkDistinct.UseVisualStyleBackColor = true;
+            this.chkDistinct.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // label8
             // 
@@ -197,6 +203,7 @@ namespace XRMTokensRun
             this.chkActive.Size = new System.Drawing.Size(15, 14);
             this.chkActive.TabIndex = 17;
             this.chkActive.UseVisualStyleBackColor = true;
+            this.chkActive.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // label9
             // 
@@ -217,6 +224,7 @@ namespace XRMTokensRun
             this.mskMax.Size = new System.Drawing.Size(95, 22);
             this.mskMax.TabIndex = 20;
             this.mskMax.Text = "100";
+            this.mskMax.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // label10
             // 
@@ -249,6 +257,7 @@ namespace XRMTokensRun
             this.xrmOrder.Name = "xrmOrder";
             this.xrmOrder.Size = new System.Drawing.Size(401, 24);
             this.xrmOrder.TabIndex = 12;
+            this.xrmOrder.SelectedIndexChanged += new System.EventHandler(this.ShowResult);
             // 
             // xrmShow
             // 
@@ -259,6 +268,7 @@ namespace XRMTokensRun
             this.xrmShow.Name = "xrmShow";
             this.xrmShow.Size = new System.Drawing.Size(401, 24);
             this.xrmShow.TabIndex = 8;
+            this.xrmShow.SelectedIndexChanged += new System.EventHandler(this.ShowResult);
             // 
             // xrmEntityComboBox1
             // 
@@ -280,6 +290,26 @@ namespace XRMTokensRun
             this.xrmLookup.Name = "xrmLookup";
             this.xrmLookup.Size = new System.Drawing.Size(401, 24);
             this.xrmLookup.TabIndex = 0;
+            this.xrmLookup.SelectedIndexChanged += new System.EventHandler(this.ShowResult);
+            // 
+            // txtResult
+            // 
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtResult.Location = new System.Drawing.Point(136, 378);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.ReadOnly = true;
+            this.txtResult.Size = new System.Drawing.Size(401, 22);
+            this.txtResult.TabIndex = 37;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(31, 381);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 16);
+            this.label11.TabIndex = 36;
+            this.label11.Text = "Result";
             // 
             // GetChildEntityAttribute
             // 
@@ -287,7 +317,9 @@ namespace XRMTokensRun
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(575, 433);
+            this.ClientSize = new System.Drawing.Size(575, 453);
+            this.Controls.Add(this.txtResult);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.mskMax);
@@ -317,6 +349,7 @@ namespace XRMTokensRun
             this.Name = "GetChildEntityAttribute";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Expand Childs";
+            this.Load += new System.EventHandler(this.ShowResult);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -345,5 +378,7 @@ namespace XRMTokensRun
         private System.Windows.Forms.MaskedTextBox mskMax;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.Label label11;
     }
 }
