@@ -333,6 +333,11 @@ namespace XRMTokensRun
                 cmbTable.SetSelected(entity);
                 LoadRecord(entity, id);
             }
+            else
+            {
+                MessageBox.Show("Call this tool with any of these argument:\n\n  Entity\n  EntityReference\n  LogicalName:Guid (string)\n\nTry again! :)",
+                    "Message Argument incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnBackTool_Click(object sender, EventArgs e)
