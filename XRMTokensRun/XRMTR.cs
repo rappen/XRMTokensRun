@@ -28,7 +28,7 @@ namespace XRMTokensRun
 
         public string UserName => "rappen";
 
-        public string DonationDescription => "Donation to XRM Tokens Runner for XrmToolBox";
+        public string DonationDescription => "Donation to XRM Tokens Runners for XrmToolBox";
 
         public string EmailAccount => "jonas@rappen.net";
 
@@ -147,10 +147,34 @@ namespace XRMTokensRun
             };
             if (look.ShowDialog() == DialogResult.OK)
             {
-                record.Record = Service.Retrieve(look.Record.LogicalName, look.Record.Id, new ColumnSet(true));
+                LoadRecord(look.Record.LogicalName, look.Record.Id);
             }
-            Execute();
             Enable(true);
+        }
+
+        private void LoadRecord(string entity, Guid id)
+        {
+            WorkAsync(new WorkAsyncInfo
+            {
+                Message = "Loading record...",
+                Work = (work, args) =>
+                {
+                    args.Result = Service.Retrieve(entity, id, new ColumnSet(true));
+                },
+                PostWorkCallBack = (arg) =>
+                {
+                    if (arg.Error != null)
+                    {
+                        MessageBox.Show(arg.Error.Message);
+                    }
+                    else if (arg.Result is Entity result)
+                    {
+                        record.Record = result;
+                        Execute();
+                    }
+                    Enable(true);
+                }
+            });
         }
 
         private void Execute()
@@ -161,16 +185,28 @@ namespace XRMTokensRun
                 return;
             }
             SaveSettings();
-            try
+            lblError.Text = "";
+            txtTokensOut.Text = "";
+            WorkAsync(new WorkAsyncInfo
             {
-                lblError.Text = "";
-                txtTokensOut.Text = "";
-                txtTokensOut.Text = record.Record.Substitute(Service, txtTokensIn.Text);
-            }
-            catch (Exception ex)
-            {
-                lblError.Text = ex.Message;
-            }
+                Message = "Calling Substitute",
+                Work = (work, arg) =>
+                {
+                    arg.Result = record.Record.Substitute(Service, txtTokensIn.Text);
+                },
+                PostWorkCallBack = (arg) =>
+                {
+                    if (arg.Error != null)
+                    {
+                        lblError.Text = arg.Error.Message;
+                    }
+                    else if (arg.Result is string result)
+                    {
+                        txtTokensOut.Text = result;
+                    }
+
+                }
+            });
         }
 
         private void toolStripLabel1_Click(object sender, EventArgs e)
@@ -295,9 +331,7 @@ namespace XRMTokensRun
             {
                 SetBackTag(message.SourcePlugin);
                 cmbTable.SetSelected(entity);
-                record.LogicalName = entity;
-                record.Id = id;
-                Enable(true);
+                LoadRecord(entity, id);
             }
         }
 
