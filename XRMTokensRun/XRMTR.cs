@@ -3,7 +3,6 @@ using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using Microsoft.Xrm.Sdk.Query;
 using Rappen.XTB.Helpers;
-using Rappen.XTB.Helpers.ControlItems;
 using Rappen.XTB.Helpers.Controls;
 using Rappen.XTB.Helpers.Extensions;
 using System;
@@ -11,16 +10,29 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using XrmToolBox.Extensibility;
+using XrmToolBox.Extensibility.Interfaces;
 
 namespace XRMTokensRun
 {
-    public partial class XRMTR : PluginControlBase
+    public partial class XRMTR : PluginControlBase, IGitHubPlugin, IPayPalPlugin, IMessageBusHost, IAboutPlugin, IHelpPlugin
     {
         private Settings settings;
+
+        public event EventHandler<MessageBusEventArgs> OnOutgoingMessage;
 
         public EntityMetadataCollection entities { get; private set; }
 
         public EntityMetadata recordmeta => Service?.GetEntity(cmbTable.SelectedEntity?.LogicalName);
+
+        public string RepositoryName => "XRMTokensRun";
+
+        public string UserName => "rappen";
+
+        public string DonationDescription => "Donation to XRM Tokens Runner for XrmToolBox";
+
+        public string EmailAccount => "jonas@rappen.net";
+
+        public string HelpUrl => "https://jonasr.app/xrm-tokens/";
 
         public XRMTR()
         {
@@ -71,7 +83,7 @@ namespace XRMTokensRun
             record.Service = newService;
             if (settings.Table != null)
             {
-                cmbTable.SelectedItem = cmbTable.Items.OfType<EntityMetadataItem>().FirstOrDefault(t => t.Metadata.LogicalName == settings.Table);
+                cmbTable.SetSelected(settings.Table);
             }
         }
 
@@ -111,6 +123,7 @@ namespace XRMTokensRun
             btnSmartExpand.Enabled = on && record?.Record != null;
             btnSmartIf.Enabled = on && record?.Record != null;
             btnSmartSystem.Enabled = on && record?.Record != null;
+            btnBackTool.Enabled = btnBackTool.Tag != null;
         }
 
         private void cmbTable_SelectedIndexChanged(object sender, EventArgs e)
@@ -251,6 +264,59 @@ namespace XRMTokensRun
         private void btnSmartSystem_Click(object sender, EventArgs e)
         {
             AddSmartToken(GetSystem.ShowDialog(this));
+        }
+
+        public void ShowAboutDialog()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnIncomingMessage(MessageBusEventArgs message)
+        {
+            SetBackTag(null);
+            string entity = null;
+            string idstr = null;
+            if (message.TargetArgument is string str && str.Contains(":"))
+            {
+                entity = str.Split(':')[0];
+                idstr = str.Split(':')[1];
+            }
+            else if (message.TargetArgument is EntityReference er)
+            {
+                entity = er.LogicalName;
+                idstr = er.Id.ToString();
+            }
+            else if (message.TargetArgument is Entity ent)
+            {
+                entity = ent.LogicalName;
+                idstr = ent.Id.ToString();
+            }
+            if (!string.IsNullOrWhiteSpace(entity) && Guid.TryParse(idstr, out Guid id))
+            {
+                SetBackTag(message.SourcePlugin);
+                cmbTable.SetSelected(entity);
+                record.LogicalName = entity;
+                record.Id = id;
+                Enable(true);
+            }
+        }
+
+        private void btnBackTool_Click(object sender, EventArgs e)
+        {
+            OnOutgoingMessage(this, new MessageBusEventArgs(btnBackTool.Tag.ToString()) { TargetArgument = txtTokensIn.Text });
+        }
+
+        private void SetBackTag(string tag)
+        {
+            btnBackTool.Tag = tag;
+            if (string.IsNullOrWhiteSpace(tag))
+            {
+                btnBackTool.Text = "Send back XRM Tokens";
+            }
+            else
+            {
+                btnBackTool.Text = $"Send back XRM Tokens to tools {tag}";
+            }
         }
     }
 }

@@ -33,6 +33,7 @@ namespace XRMTokensRun
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XRMTR));
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.btnBackTool = new System.Windows.Forms.ToolStripButton();
             this.gbGetRecord = new System.Windows.Forms.GroupBox();
             this.btnGetRecord = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,7 +73,8 @@ namespace XRMTokensRun
             // 
             this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1});
+            this.toolStripLabel1,
+            this.btnBackTool});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Size = new System.Drawing.Size(997, 27);
@@ -87,6 +89,15 @@ namespace XRMTokensRun
             this.toolStripLabel1.Size = new System.Drawing.Size(181, 24);
             this.toolStripLabel1.Text = "XRM Tokens Documentation";
             this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
+            // 
+            // btnBackTool
+            // 
+            this.btnBackTool.Image = ((System.Drawing.Image)(resources.GetObject("btnBackTool.Image")));
+            this.btnBackTool.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBackTool.Name = "btnBackTool";
+            this.btnBackTool.Size = new System.Drawing.Size(156, 28);
+            this.btnBackTool.Text = "Send back XRM Tokens";
+            this.btnBackTool.Click += new System.EventHandler(this.btnBackTool_Click);
             // 
             // gbGetRecord
             // 
@@ -210,8 +221,8 @@ namespace XRMTokensRun
             // 
             // txtTokensIn
             // 
-            this.txtTokensIn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtTokensIn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTokensIn.Font = new System.Drawing.Font("Consolas", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTokensIn.HideSelection = false;
@@ -355,8 +366,8 @@ namespace XRMTokensRun
             // 
             // txtTokensOut
             // 
-            this.txtTokensOut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtTokensOut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTokensOut.BackColor = System.Drawing.SystemColors.Window;
             this.txtTokensOut.Location = new System.Drawing.Point(23, 34);
@@ -429,5 +440,6 @@ namespace XRMTokensRun
         private System.Windows.Forms.Button btnSmartExpand;
         private System.Windows.Forms.Button btnSmartIf;
         private System.Windows.Forms.Button btnSmartSystem;
+        private System.Windows.Forms.ToolStripButton btnBackTool;
     }
 }
