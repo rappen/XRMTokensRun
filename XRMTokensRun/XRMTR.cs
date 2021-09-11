@@ -8,6 +8,7 @@ using Rappen.XTB.Helpers.Extensions;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 using XrmToolBox.Extensibility;
 using XrmToolBox.Extensibility.Interfaces;
@@ -17,6 +18,9 @@ namespace XRMTokensRun
     public partial class XRMTR : PluginControlBase, IGitHubPlugin, IPayPalPlugin, IMessageBusHost, IAboutPlugin, IHelpPlugin
     {
         private Settings settings;
+        private const string aiEndpoint = "https://dc.services.visualstudio.com/v2/track";
+        private const string aiKey = "eed73022-2444-45fd-928b-5eebd8fa46a6";    // jonas@rappen.net tenant, XrmToolBox
+        private AppInsights ai = new AppInsights(aiEndpoint, aiKey, Assembly.GetExecutingAssembly(), "XRM Tokens Runner");
 
         public event EventHandler<MessageBusEventArgs> OnOutgoingMessage;
 
@@ -28,7 +32,7 @@ namespace XRMTokensRun
 
         public string UserName => "rappen";
 
-        public string DonationDescription => "Donation to XRM Tokens Runners for XrmToolBox";
+        public string DonationDescription => "Donation to XRM Tokens Runner for XrmToolBox";
 
         public string EmailAccount => "jonas@rappen.net";
 
@@ -62,6 +66,7 @@ namespace XRMTokensRun
 
         private void XRMTR_Load(object sender, EventArgs e)
         {
+            ai.WriteEvent("Load");
             LoadSetting();
             Enable(true);
         }
@@ -304,8 +309,12 @@ namespace XRMTokensRun
 
         public void ShowAboutDialog()
         {
-            throw new NotImplementedException();
-        }
+             var about = new About(this)
+            {
+                StartPosition = FormStartPosition.CenterParent
+            };
+            about.lblVersion.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            about.ShowDialog();   }
 
         public void OnIncomingMessage(MessageBusEventArgs message)
         {
