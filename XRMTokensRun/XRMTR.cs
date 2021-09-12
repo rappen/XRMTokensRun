@@ -83,13 +83,43 @@ namespace XRMTokensRun
         {
             base.UpdateConnection(newService, detail, actionName, parameter);
             LoadSetting();
-            entities = newService?.LoadEntities()?.EntityMetadata;
-            cmbTable.DataSource = entities;
-            record.Service = newService;
-            if (settings.Table != null)
+            LoadEntitiesEtc();
+        }
+
+        private void LoadEntitiesEtc()
+        {
+            if (Service == null)
             {
-                cmbTable.SetSelected(settings.Table);
+                entities = null;
+                return;
             }
+            Enable(false);
+            WorkAsync(new WorkAsyncInfo
+            {
+                Message = "Load entities",
+                Work = (work, arg) =>
+                {
+                    arg.Result = Service?.LoadEntities()?.EntityMetadata;
+                },
+                PostWorkCallBack = (arg) =>
+                {
+                    if (arg.Error != null)
+                    {
+                        MessageBox.Show(arg.Error.Message);
+                    }
+                    else if (arg.Result is EntityMetadataCollection result)
+                    {
+                        entities = result;
+                        cmbTable.DataSource = entities;
+                        record.Service = Service;
+                        if (settings.Table != null)
+                        {
+                            cmbTable.SetSelected(settings.Table);
+                        }
+                    }
+                    Enable(true);
+                }
+            });
         }
 
         private void LoadSetting()
@@ -106,14 +136,14 @@ namespace XRMTokensRun
             {
                 settings = new Settings();
             }
-            settings.Table = cmbTable.SelectedEntity.LogicalName;
-            if (settings.Token?.FirstOrDefault(t => t.key == cmbTable.SelectedEntity.LogicalName) is KeyValuePair token)
+            settings.Table = cmbTable.SelectedEntity?.LogicalName;
+            if (settings.Token?.FirstOrDefault(t => t.key == settings.Table) is KeyValuePair token)
             {
                 token.value = txtTokensIn.Text;
             }
             else
             {
-                settings.Token.Add(new KeyValuePair { key = cmbTable.SelectedEntity.LogicalName, value = txtTokensIn.Text });
+                settings.Token.Add(new KeyValuePair { key = settings.Table, value = txtTokensIn.Text });
             }
             SettingsManager.Instance.Save(GetType(), settings);
         }
@@ -309,12 +339,13 @@ namespace XRMTokensRun
 
         public void ShowAboutDialog()
         {
-             var about = new About(this)
+            var about = new About(this)
             {
                 StartPosition = FormStartPosition.CenterParent
             };
             about.lblVersion.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            about.ShowDialog();   }
+            about.ShowDialog();
+        }
 
         public void OnIncomingMessage(MessageBusEventArgs message)
         {

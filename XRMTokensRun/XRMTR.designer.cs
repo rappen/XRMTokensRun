@@ -34,10 +34,14 @@ namespace XRMTokensRun
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.btnBackTool = new System.Windows.Forms.ToolStripButton();
+            this.tslAbout = new System.Windows.Forms.ToolStripLabel();
             this.gbGetRecord = new System.Windows.Forms.GroupBox();
             this.btnGetRecord = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmbTable = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.recordname = new Rappen.XTB.Helpers.Controls.XRMColumnText();
+            this.record = new Rappen.XTB.Helpers.Controls.XRMRecordHost();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gbTokens = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -55,10 +59,6 @@ namespace XRMTokensRun
             this.lblError = new System.Windows.Forms.Label();
             this.txtTokensOut = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.cmbTable = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
-            this.recordname = new Rappen.XTB.Helpers.Controls.XRMColumnText();
-            this.record = new Rappen.XTB.Helpers.Controls.XRMRecordHost();
-            this.tslAbout = new System.Windows.Forms.ToolStripLabel();
             this.toolStripMenu.SuspendLayout();
             this.gbGetRecord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -101,6 +101,16 @@ namespace XRMTokensRun
             this.btnBackTool.Text = "Send back XRM Tokens";
             this.btnBackTool.Click += new System.EventHandler(this.btnBackTool_Click);
             // 
+            // tslAbout
+            // 
+            this.tslAbout.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tslAbout.Image = ((System.Drawing.Image)(resources.GetObject("tslAbout.Image")));
+            this.tslAbout.IsLink = true;
+            this.tslAbout.Name = "tslAbout";
+            this.tslAbout.Size = new System.Drawing.Size(106, 28);
+            this.tslAbout.Text = "by Jonas Rapp";
+            this.tslAbout.Click += new System.EventHandler(this.tslAbout_Click);
+            // 
             // gbGetRecord
             // 
             this.gbGetRecord.Controls.Add(this.btnGetRecord);
@@ -137,6 +147,16 @@ namespace XRMTokensRun
             this.label2.TabIndex = 4;
             this.label2.Text = "Record";
             // 
+            // cmbTable
+            // 
+            this.cmbTable.FormattingEnabled = true;
+            this.cmbTable.Location = new System.Drawing.Point(23, 58);
+            this.cmbTable.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbTable.Name = "cmbTable";
+            this.cmbTable.Size = new System.Drawing.Size(375, 24);
+            this.cmbTable.TabIndex = 0;
+            this.cmbTable.SelectedIndexChanged += new System.EventHandler(this.cmbTable_SelectedIndexChanged);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -146,6 +166,26 @@ namespace XRMTokensRun
             this.label1.Size = new System.Drawing.Size(44, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Table";
+            // 
+            // recordname
+            // 
+            this.recordname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordname.Column = null;
+            this.recordname.DisplayFormat = "";
+            this.recordname.Location = new System.Drawing.Point(425, 58);
+            this.recordname.Margin = new System.Windows.Forms.Padding(4);
+            this.recordname.Name = "recordname";
+            this.recordname.RecordHost = this.record;
+            this.recordname.Size = new System.Drawing.Size(430, 22);
+            this.recordname.TabIndex = 3;
+            // 
+            // record
+            // 
+            this.record.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.record.LogicalName = null;
+            this.record.Record = null;
+            this.record.Service = null;
             // 
             // splitContainer2
             // 
@@ -354,46 +394,6 @@ namespace XRMTokensRun
             // 
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // cmbTable
-            // 
-            this.cmbTable.FormattingEnabled = true;
-            this.cmbTable.Location = new System.Drawing.Point(23, 58);
-            this.cmbTable.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbTable.Name = "cmbTable";
-            this.cmbTable.Size = new System.Drawing.Size(375, 24);
-            this.cmbTable.TabIndex = 0;
-            this.cmbTable.SelectedIndexChanged += new System.EventHandler(this.cmbTable_SelectedIndexChanged);
-            // 
-            // recordname
-            // 
-            this.recordname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordname.Column = null;
-            this.recordname.DisplayFormat = "";
-            this.recordname.Location = new System.Drawing.Point(425, 58);
-            this.recordname.Margin = new System.Windows.Forms.Padding(4);
-            this.recordname.Name = "recordname";
-            this.recordname.RecordHost = this.record;
-            this.recordname.Size = new System.Drawing.Size(430, 22);
-            this.recordname.TabIndex = 3;
-            // 
-            // record
-            // 
-            this.record.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.record.LogicalName = null;
-            this.record.Record = null;
-            this.record.Service = null;
-            // 
-            // tslAbout
-            // 
-            this.tslAbout.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tslAbout.Image = ((System.Drawing.Image)(resources.GetObject("tslAbout.Image")));
-            this.tslAbout.IsLink = true;
-            this.tslAbout.Name = "tslAbout";
-            this.tslAbout.Size = new System.Drawing.Size(106, 28);
-            this.tslAbout.Text = "by Jonas Rapp";
-            this.tslAbout.Click += new System.EventHandler(this.tslAbout_Click);
             // 
             // XRMTR
             // 
