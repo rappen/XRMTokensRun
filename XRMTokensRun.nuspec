@@ -24,6 +24,6 @@ First version!
     </dependencies>
   </metadata>
   <files>
-    <file src="XRMTokensRun\bin\Release\Rappen.XTB.XRBTR.dll" target="lib\net452\Plugins" />
+    <file src="XRMTokensRun\bin\Release\Rappen.XTB.XRMTR.dll" target="lib\net452\Plugins" />
   </files>
 </package>
