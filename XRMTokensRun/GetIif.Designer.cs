@@ -48,12 +48,15 @@ namespace XRMTokensRun
             this.btnFalse = new System.Windows.Forms.Button();
             this.txtFalse = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button1.Location = new System.Drawing.Point(138, 284);
+            this.button1.Location = new System.Drawing.Point(138, 340);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 28);
@@ -73,8 +76,9 @@ namespace XRMTokensRun
             // 
             // button2
             // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(272, 284);
+            this.button2.Location = new System.Drawing.Point(272, 340);
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 28);
@@ -130,6 +134,7 @@ namespace XRMTokensRun
             this.txtValue1.Name = "txtValue1";
             this.txtValue1.Size = new System.Drawing.Size(346, 22);
             this.txtValue1.TabIndex = 27;
+            this.txtValue1.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // btnValue1
             // 
@@ -156,6 +161,7 @@ namespace XRMTokensRun
             this.cmbOperator.Name = "cmbOperator";
             this.cmbOperator.Size = new System.Drawing.Size(346, 24);
             this.cmbOperator.TabIndex = 29;
+            this.cmbOperator.SelectedIndexChanged += new System.EventHandler(this.ShowResult);
             // 
             // btnValue2
             // 
@@ -165,6 +171,7 @@ namespace XRMTokensRun
             this.btnValue2.TabIndex = 31;
             this.btnValue2.Text = "Col";
             this.btnValue2.UseVisualStyleBackColor = true;
+            this.btnValue2.Click += new System.EventHandler(this.btnValue1_Click);
             // 
             // txtValue2
             // 
@@ -172,6 +179,7 @@ namespace XRMTokensRun
             this.txtValue2.Name = "txtValue2";
             this.txtValue2.Size = new System.Drawing.Size(346, 22);
             this.txtValue2.TabIndex = 30;
+            this.txtValue2.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // label2
             // 
@@ -190,6 +198,7 @@ namespace XRMTokensRun
             this.btnTrue.TabIndex = 34;
             this.btnTrue.Text = "Col";
             this.btnTrue.UseVisualStyleBackColor = true;
+            this.btnTrue.Click += new System.EventHandler(this.btnValue1_Click);
             // 
             // txtTrue
             // 
@@ -197,6 +206,7 @@ namespace XRMTokensRun
             this.txtTrue.Name = "txtTrue";
             this.txtTrue.Size = new System.Drawing.Size(346, 22);
             this.txtTrue.TabIndex = 33;
+            this.txtTrue.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // btnFalse
             // 
@@ -206,6 +216,7 @@ namespace XRMTokensRun
             this.btnFalse.TabIndex = 36;
             this.btnFalse.Text = "Col";
             this.btnFalse.UseVisualStyleBackColor = true;
+            this.btnFalse.Click += new System.EventHandler(this.btnValue1_Click);
             // 
             // txtFalse
             // 
@@ -213,6 +224,7 @@ namespace XRMTokensRun
             this.txtFalse.Name = "txtFalse";
             this.txtFalse.Size = new System.Drawing.Size(346, 22);
             this.txtFalse.TabIndex = 35;
+            this.txtFalse.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // label5
             // 
@@ -223,13 +235,35 @@ namespace XRMTokensRun
             this.label5.TabIndex = 37;
             this.label5.Text = "False-result";
             // 
+            // txtResult
+            // 
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtResult.Location = new System.Drawing.Point(138, 277);
+            this.txtResult.Multiline = true;
+            this.txtResult.Name = "txtResult";
+            this.txtResult.ReadOnly = true;
+            this.txtResult.Size = new System.Drawing.Size(401, 47);
+            this.txtResult.TabIndex = 39;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(35, 280);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(46, 16);
+            this.label11.TabIndex = 38;
+            this.label11.Text = "Result";
+            // 
             // GetIif
             // 
             this.AcceptButton = this.button1;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(575, 347);
+            this.ClientSize = new System.Drawing.Size(575, 390);
+            this.Controls.Add(this.txtResult);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnFalse);
             this.Controls.Add(this.txtFalse);
@@ -279,5 +313,7 @@ namespace XRMTokensRun
         private System.Windows.Forms.Button btnFalse;
         private System.Windows.Forms.TextBox txtFalse;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.Label label11;
     }
 }

@@ -1,8 +1,4 @@
-﻿using Microsoft.Xrm.Sdk.Metadata;
-using Rappen.XTB.Helpers.Extensions;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace XRMTokensRun
@@ -22,15 +18,19 @@ namespace XRMTokensRun
             dialog.xrmtr = owner;
             if (dialog.ShowDialog((Control)owner) == DialogResult.OK)
             {
-                var result = "<iif|" +
-                    dialog.txtValue1.Text + "|" +
-                    dialog.cmbOperator.Text + "|" +
-                    dialog.txtValue2.Text + "|" +
-                    dialog.txtTrue.Text + "|" +
-                    dialog.txtFalse.Text + ">";
-                return result;
+                return dialog.GetResult();
             }
             return null;
+        }
+
+        private string GetResult()
+        {
+            return "<iif|" +
+                txtValue1.Text + "|" +
+                cmbOperator.Text + "|" +
+                txtValue2.Text + "|" +
+                txtTrue.Text + "|" +
+                txtFalse.Text + ">";
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -40,10 +40,25 @@ namespace XRMTokensRun
 
         private void btnValue1_Click(object sender, System.EventArgs e)
         {
+            var value =
+                sender == btnValue1 ? txtValue1 :
+                sender == btnValue2 ? txtValue2 :
+                sender == btnTrue ? txtTrue :
+                sender == btnFalse ? txtFalse : null;
+            if (value == null)
+            {
+                return;
+            }
             if (GetAttribute.ShowDialog(xrmtr) is string val && !string.IsNullOrEmpty(val))
             {
-                txtValue1.Text = val;
+                value.Text = val;
             }
+            ShowResult();
+        }
+
+        private void ShowResult(object sender = null, System.EventArgs e = null)
+        {
+            txtResult.Text = GetResult();
         }
     }
 }

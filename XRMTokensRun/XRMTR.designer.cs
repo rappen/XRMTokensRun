@@ -267,7 +267,7 @@ namespace XRMTokensRun
             this.gbSmart.Size = new System.Drawing.Size(997, 85);
             this.gbSmart.TabIndex = 6;
             this.gbSmart.TabStop = false;
-            this.gbSmart.Text = "Adding XRM Tokens";
+            this.gbSmart.Text = "Build XRM Tokens";
             // 
             // btnSmartSystem
             // 
