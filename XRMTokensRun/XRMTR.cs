@@ -366,5 +366,10 @@ namespace XRMTokensRun
                 btnBackTool.Text = $"Send back XRM Tokens to tools {tag}";
             }
         }
+
+        private void tslAbout_Click(object sender, EventArgs e)
+        {
+            ShowAboutDialog();
+        }
     }
 }
