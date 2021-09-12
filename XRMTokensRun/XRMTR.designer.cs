@@ -59,6 +59,7 @@ namespace XRMTokensRun
             this.lblError = new System.Windows.Forms.Label();
             this.txtTokensOut = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenu.SuspendLayout();
             this.gbGetRecord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -72,14 +73,17 @@ namespace XRMTokensRun
             // 
             // toolStripMenu
             // 
+            this.toolStripMenu.BackColor = System.Drawing.SystemColors.Window;
             this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
+            this.toolStripSeparator1,
             this.btnBackTool,
             this.tslAbout});
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
-            this.toolStripMenu.Size = new System.Drawing.Size(997, 31);
+            this.toolStripMenu.Padding = new System.Windows.Forms.Padding(10, 4, 10, 4);
+            this.toolStripMenu.Size = new System.Drawing.Size(997, 39);
             this.toolStripMenu.TabIndex = 4;
             this.toolStripMenu.Text = "toolStrip1";
             // 
@@ -119,7 +123,7 @@ namespace XRMTokensRun
             this.gbGetRecord.Controls.Add(this.label1);
             this.gbGetRecord.Controls.Add(this.recordname);
             this.gbGetRecord.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbGetRecord.Location = new System.Drawing.Point(0, 0);
+            this.gbGetRecord.Location = new System.Drawing.Point(0, 4);
             this.gbGetRecord.Name = "gbGetRecord";
             this.gbGetRecord.Size = new System.Drawing.Size(997, 106);
             this.gbGetRecord.TabIndex = 9;
@@ -190,7 +194,7 @@ namespace XRMTokensRun
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 31);
+            this.splitContainer2.Location = new System.Drawing.Point(0, 39);
             this.splitContainer2.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -200,12 +204,13 @@ namespace XRMTokensRun
             this.splitContainer2.Panel1.Controls.Add(this.gbTokens);
             this.splitContainer2.Panel1.Controls.Add(this.gbGetRecord);
             this.splitContainer2.Panel1.Controls.Add(this.gbSmart);
+            this.splitContainer2.Panel1.Padding = new System.Windows.Forms.Padding(0, 4, 0, 0);
             // 
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.gbTokenResult);
-            this.splitContainer2.Size = new System.Drawing.Size(997, 607);
-            this.splitContainer2.SplitterDistance = 392;
+            this.splitContainer2.Size = new System.Drawing.Size(997, 599);
+            this.splitContainer2.SplitterDistance = 386;
             this.splitContainer2.SplitterWidth = 8;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -214,9 +219,9 @@ namespace XRMTokensRun
             this.gbTokens.Controls.Add(this.label3);
             this.gbTokens.Controls.Add(this.txtTokensIn);
             this.gbTokens.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gbTokens.Location = new System.Drawing.Point(0, 106);
+            this.gbTokens.Location = new System.Drawing.Point(0, 110);
             this.gbTokens.Name = "gbTokens";
-            this.gbTokens.Size = new System.Drawing.Size(997, 201);
+            this.gbTokens.Size = new System.Drawing.Size(997, 191);
             this.gbTokens.TabIndex = 5;
             this.gbTokens.TabStop = false;
             this.gbTokens.Text = "XRM Tokens";
@@ -242,7 +247,7 @@ namespace XRMTokensRun
             this.txtTokensIn.Margin = new System.Windows.Forms.Padding(4);
             this.txtTokensIn.Multiline = true;
             this.txtTokensIn.Name = "txtTokensIn";
-            this.txtTokensIn.Size = new System.Drawing.Size(959, 118);
+            this.txtTokensIn.Size = new System.Drawing.Size(959, 108);
             this.txtTokensIn.TabIndex = 1;
             this.txtTokensIn.TextChanged += new System.EventHandler(this.txtTokensIn_TextChanged);
             // 
@@ -257,7 +262,7 @@ namespace XRMTokensRun
             this.gbSmart.Controls.Add(this.btnSmartColumn);
             this.gbSmart.Controls.Add(this.cmbTokenHelp);
             this.gbSmart.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gbSmart.Location = new System.Drawing.Point(0, 307);
+            this.gbSmart.Location = new System.Drawing.Point(0, 301);
             this.gbSmart.Name = "gbSmart";
             this.gbSmart.Size = new System.Drawing.Size(997, 85);
             this.gbSmart.TabIndex = 6;
@@ -361,7 +366,7 @@ namespace XRMTokensRun
             this.gbTokenResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbTokenResult.Location = new System.Drawing.Point(0, 0);
             this.gbTokenResult.Name = "gbTokenResult";
-            this.gbTokenResult.Size = new System.Drawing.Size(997, 207);
+            this.gbTokenResult.Size = new System.Drawing.Size(997, 205);
             this.gbTokenResult.TabIndex = 4;
             this.gbTokenResult.TabStop = false;
             this.gbTokenResult.Text = "Result";
@@ -370,7 +375,7 @@ namespace XRMTokensRun
             // 
             this.lblError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblError.AutoSize = true;
-            this.lblError.Location = new System.Drawing.Point(26, 179);
+            this.lblError.Location = new System.Drawing.Point(26, 177);
             this.lblError.Name = "lblError";
             this.lblError.Size = new System.Drawing.Size(37, 16);
             this.lblError.TabIndex = 4;
@@ -387,13 +392,18 @@ namespace XRMTokensRun
             this.txtTokensOut.Multiline = true;
             this.txtTokensOut.Name = "txtTokensOut";
             this.txtTokensOut.ReadOnly = true;
-            this.txtTokensOut.Size = new System.Drawing.Size(959, 141);
+            this.txtTokensOut.Size = new System.Drawing.Size(959, 139);
             this.txtTokensOut.TabIndex = 3;
             // 
             // timer1
             // 
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // XRMTR
             // 
@@ -457,5 +467,6 @@ namespace XRMTokensRun
         private System.Windows.Forms.Button btnSmartSystem;
         private System.Windows.Forms.ToolStripButton btnBackTool;
         private System.Windows.Forms.ToolStripLabel tslAbout;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
