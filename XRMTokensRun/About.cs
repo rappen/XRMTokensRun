@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -28,8 +28,11 @@ namespace XRMTokensRun
 
         private ListViewItem GetListItem(AssemblyName a)
         {
+            var assembly = Assembly.Load(a);
+            var fi = FileVersionInfo.GetVersionInfo(assembly.Location);
+
             var item = new ListViewItem(a.Name);
-            item.SubItems.Add(a.Version.ToString());
+            item.SubItems.Add(fi.FileVersion.ToString());
             return item;
         }
 
@@ -57,17 +60,17 @@ namespace XRMTokensRun
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://jonasr.app/xrm-tokens/");
+            Process.Start("https://jonasr.app/xrm-tokens/");
         }
 
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://jonasr.app");
+            Process.Start("https://jonasr.app");
         }
 
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://twitter.com/rappen");
+            Process.Start("https://twitter.com/rappen");
         }
 
         private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
