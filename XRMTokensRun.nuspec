@@ -20,7 +20,7 @@ First version!
     <copyright>Copyright 2021 Jonas Rapp</copyright>
     <tags>XrmToolBox Plugins XRMTokensRunner</tags>
     <dependencies>
-      <dependency id="XrmToolBox" version="1.2021.5.47" />
+      <dependency id="XrmToolBox" version="1.2021.9.52" />
     </dependencies>
   </metadata>
   <files>
