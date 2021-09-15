@@ -33,6 +33,7 @@ namespace XRMTokensRun
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(XRMTR));
             this.toolStripMenu = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnBackTool = new System.Windows.Forms.ToolStripButton();
             this.tslAbout = new System.Windows.Forms.ToolStripLabel();
             this.gbGetRecord = new System.Windows.Forms.GroupBox();
@@ -59,7 +60,6 @@ namespace XRMTokensRun
             this.lblError = new System.Windows.Forms.Label();
             this.txtTokensOut = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenu.SuspendLayout();
             this.gbGetRecord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -95,6 +95,11 @@ namespace XRMTokensRun
             this.toolStripLabel1.Size = new System.Drawing.Size(181, 28);
             this.toolStripLabel1.Text = "XRM Tokens Documentation";
             this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // btnBackTool
             // 
@@ -160,6 +165,7 @@ namespace XRMTokensRun
             this.cmbTable.Size = new System.Drawing.Size(375, 24);
             this.cmbTable.TabIndex = 0;
             this.cmbTable.SelectedIndexChanged += new System.EventHandler(this.cmbTable_SelectedIndexChanged);
+            this.cmbTable.Leave += new System.EventHandler(this.cmbTable_Leave);
             // 
             // label1
             // 
@@ -399,11 +405,6 @@ namespace XRMTokensRun
             // 
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
             // XRMTR
             // 

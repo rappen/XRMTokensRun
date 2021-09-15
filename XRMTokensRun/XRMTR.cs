@@ -151,7 +151,7 @@ namespace XRMTokensRun
         private void Enable(bool on)
         {
             cmbTable.Enabled = on && Service != null;
-            btnGetRecord.Enabled = on && cmbTable.SelectedEntity != null;
+            btnGetRecord.Enabled = on && cmbTable.SelectedEntity is EntityMetadata;
             gbTokens.Enabled = on && record?.Record != null;
             btnAddToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
             btnSmartColumn.Enabled = on && record?.Record != null;
@@ -175,6 +175,10 @@ namespace XRMTokensRun
 
         private void btnGetRecord_Click(object sender, EventArgs e)
         {
+            if (cmbTable.SelectedEntity == null)
+            {
+                return;
+            }
             var look = new XRMLookupDialog
             {
                 Service = Service,
@@ -401,6 +405,21 @@ namespace XRMTokensRun
         private void tslAbout_Click(object sender, EventArgs e)
         {
             ShowAboutDialog();
+        }
+
+        private void cmbTable_Leave(object sender, EventArgs e)
+        {
+            if (cmbTable.SelectedItem == null && !string.IsNullOrWhiteSpace(cmbTable.Text))
+            {
+                foreach (var item in cmbTable.Items)
+                {
+                    if (item.ToString().Equals(cmbTable.Text, StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        cmbTable.SelectedItem = item;
+                        return;
+                    }
+                }
+            }
         }
     }
 }
