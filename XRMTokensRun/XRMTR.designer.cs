@@ -181,11 +181,13 @@ namespace XRMTokensRun
             // 
             this.recordname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordname.BackColor = System.Drawing.SystemColors.Window;
             this.recordname.Column = null;
             this.recordname.DisplayFormat = "";
             this.recordname.Location = new System.Drawing.Point(425, 58);
             this.recordname.Margin = new System.Windows.Forms.Padding(4);
             this.recordname.Name = "recordname";
+            this.recordname.ReadOnly = true;
             this.recordname.RecordHost = this.record;
             this.recordname.Size = new System.Drawing.Size(430, 22);
             this.recordname.TabIndex = 3;

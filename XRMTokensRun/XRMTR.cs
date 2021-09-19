@@ -184,7 +184,7 @@ namespace XRMTokensRun
                 Service = Service,
                 LogicalName = cmbTable.SelectedEntity.LogicalName
             };
-            if (look.ShowDialog() == DialogResult.OK)
+            if (look.ShowDialog() == DialogResult.OK && look.Record != null)
             {
                 LoadRecord(look.Record.LogicalName, look.Record.Id);
             }
