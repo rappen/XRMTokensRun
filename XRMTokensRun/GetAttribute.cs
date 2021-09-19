@@ -25,7 +25,9 @@ namespace XRMTokensRun
                 entity = dialog.xrmtr.recordmeta;
             }
             dialog.txtTable.Text = entity.DisplayName.UserLocalizedLabel.Label;
-            dialog.xrmColumn.DataSource = attributes ?? entity.Attributes.Where(a => a.IsLogical == false);
+            dialog.xrmColumn.DataSource = attributes ?? entity.Attributes
+                .Where(a => !string.IsNullOrEmpty(a.DisplayName?.UserLocalizedLabel?.Label));
+            dialog.xrmColumn.SetSelectedPrimaryName();
             if (dialog.ShowDialog((Control)owner) == DialogResult.OK)
             {
                 return dialog.GetResult();
@@ -81,14 +83,8 @@ namespace XRMTokensRun
             {
                 var parent = xrmtr.Service.GetEntity(ent.LogicalName);
                 xrmParentAttr.DataSource = parent.Attributes
-                    .Where(a => a.IsLogical == false);
-                if (xrmParentAttr.DataSource is IEnumerable<AttributeMetadata> atts)
-                {
-                    if (atts.FirstOrDefault(a => a.IsPrimaryName == true) is AttributeMetadata pri)
-                    {
-                        //xrmParentAttr.SelectedIndex = pri;
-                    }
-                }
+                   .Where(a => !string.IsNullOrEmpty(a.DisplayName?.UserLocalizedLabel?.Label));
+                xrmParentAttr.SetSelectedPrimaryName();
             }
             else
             {
