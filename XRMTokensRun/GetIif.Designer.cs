@@ -288,7 +288,7 @@ namespace XRMTokensRun
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "GetIif";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Get Column";
+            this.Text = "Get IIF";
             this.ResumeLayout(false);
             this.PerformLayout();
 
