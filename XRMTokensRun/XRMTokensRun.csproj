@@ -312,17 +312,20 @@
       <DependentUpon>XRMTR.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="..\Rappen.XTB.Helper\Rappen.XTB.Helpers.projitems" Label="Shared" />
+  <Import Project="..\Rappen.XTB.Helper\Rappen.XRM.Helpers\Rappen.XRM.Helpers.projitems" Label="Shared" />
+  <Import Project="..\Rappen.XTB.Helper\Rappen.XTB.Helpers\Rappen.XTB.Helpers.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>IF $(ConfigurationName) == Debug (
-      IF NOT EXIST Plugins mkdir Plugins
-      xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)Plugins\" /Y
-      xcopy "$(TargetDir)$(TargetName).pdb" "$(TargetDir)Plugins\" /Y
-      )</PostBuildEvent>
+    <PostBuildEvent>
+			IF $(ConfigurationName) == Debug (
+			IF NOT EXIST Plugins mkdir Plugins
+			xcopy "$(TargetDir)$(TargetFileName)" "$(TargetDir)Plugins\" /Y
+			xcopy "$(TargetDir)$(TargetName).pdb" "$(TargetDir)Plugins\" /Y
+			)
+		</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
-       Other similar extension points exist, see Microsoft.Common.targets.  
+       Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
