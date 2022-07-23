@@ -252,6 +252,12 @@
     <Compile Include="About.designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetRandom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetRandom.Designer.cs">
+      <DependentUpon>GetRandom.cs</DependentUpon>
+    </Compile>
     <Compile Include="GetSystem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -299,6 +305,9 @@
   <ItemGroup>
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetRandom.resx">
+      <DependentUpon>GetRandom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GetSystem.resx">
       <DependentUpon>GetSystem.cs</DependentUpon>
