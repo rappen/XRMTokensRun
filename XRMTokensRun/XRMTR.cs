@@ -21,6 +21,7 @@ namespace XRMTokensRun
         private const string aiEndpoint = "https://dc.services.visualstudio.com/v2/track";
         private const string aiKey = "eed73022-2444-45fd-928b-5eebd8fa46a6";    // jonas@rappen.net tenant, XrmToolBox
         private AppInsights ai = new AppInsights(aiEndpoint, aiKey, Assembly.GetExecutingAssembly(), "XRM Tokens Runner");
+        private EntityReference loadingreference;
 
         public event EventHandler<MessageBusEventArgs> OnOutgoingMessage;
 
@@ -112,7 +113,13 @@ namespace XRMTokensRun
                         entities = result;
                         cmbTable.DataSource = entities;
                         record.Service = Service;
-                        if (settings.Table != null)
+                        if (loadingreference != null)
+                        {
+                            cmbTable.SetSelected(loadingreference.LogicalName);
+                            LoadRecord(loadingreference);
+                            loadingreference = null;
+                        }
+                        else if (settings.Table != null)
                         {
                             cmbTable.SetSelected(settings.Table);
                         }
@@ -187,19 +194,19 @@ namespace XRMTokensRun
             };
             if (look.ShowDialog() == DialogResult.OK && look.Record != null)
             {
-                LoadRecord(look.Record.LogicalName, look.Record.Id);
+                LoadRecord(look.Record.ToEntityReference());
             }
             Enable(true);
         }
 
-        private void LoadRecord(string entity, Guid id)
+        private void LoadRecord(EntityReference reference)
         {
             WorkAsync(new WorkAsyncInfo
             {
                 Message = "Loading record...",
                 Work = (work, args) =>
                 {
-                    args.Result = Service.Retrieve(entity, id, new ColumnSet(true));
+                    args.Result = Service.Retrieve(reference.LogicalName, reference.Id, new ColumnSet(true));
                 },
                 PostWorkCallBack = (arg) =>
                 {
@@ -379,8 +386,16 @@ namespace XRMTokensRun
             if (!string.IsNullOrWhiteSpace(entity) && Guid.TryParse(idstr, out Guid id))
             {
                 SetBackTag(message.SourcePlugin);
-                cmbTable.SetSelected(entity);
-                LoadRecord(entity, id);
+                var reference = new EntityReference(entity, id);
+                if (entities == null)
+                {
+                    loadingreference = reference;
+                }
+                else
+                {
+                    cmbTable.SetSelected(entity);
+                    LoadRecord(reference);
+                }
             }
             else
             {
