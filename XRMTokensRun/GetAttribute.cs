@@ -37,10 +37,10 @@ namespace XRMTokensRun
 
         private string GetResult()
         {
-            var result = "{" + xrmColumn.SelectedAttribute.LogicalName;
+            var result = "{" + xrmColumn.SelectedAttribute?.LogicalName;
             if (chkParent.Checked)
             {
-                result += "." + xrmParentAttr.SelectedAttribute.LogicalName;
+                result += "." + xrmParentAttr.SelectedAttribute?.LogicalName;
             }
             if (chkValue.Checked)
             {
