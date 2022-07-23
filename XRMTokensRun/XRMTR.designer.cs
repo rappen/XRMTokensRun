@@ -60,6 +60,7 @@ namespace XRMTokensRun
             this.lblError = new System.Windows.Forms.Label();
             this.txtTokensOut = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.btnSmartRandom = new System.Windows.Forms.Button();
             this.toolStripMenu.SuspendLayout();
             this.gbGetRecord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -261,6 +262,7 @@ namespace XRMTokensRun
             // 
             // gbSmart
             // 
+            this.gbSmart.Controls.Add(this.btnSmartRandom);
             this.gbSmart.Controls.Add(this.btnSmartSystem);
             this.gbSmart.Controls.Add(this.btnSmartIf);
             this.gbSmart.Controls.Add(this.btnSmartExpand);
@@ -280,10 +282,10 @@ namespace XRMTokensRun
             // btnSmartSystem
             // 
             this.btnSmartSystem.Enabled = false;
-            this.btnSmartSystem.Location = new System.Drawing.Point(149, 32);
+            this.btnSmartSystem.Location = new System.Drawing.Point(119, 32);
             this.btnSmartSystem.Name = "btnSmartSystem";
-            this.btnSmartSystem.Size = new System.Drawing.Size(120, 23);
-            this.btnSmartSystem.TabIndex = 7;
+            this.btnSmartSystem.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartSystem.TabIndex = 20;
             this.btnSmartSystem.Text = "System";
             this.btnSmartSystem.UseVisualStyleBackColor = true;
             this.btnSmartSystem.Click += new System.EventHandler(this.btnSmartSystem_Click);
@@ -291,10 +293,10 @@ namespace XRMTokensRun
             // btnSmartIf
             // 
             this.btnSmartIf.Enabled = false;
-            this.btnSmartIf.Location = new System.Drawing.Point(401, 32);
+            this.btnSmartIf.Location = new System.Drawing.Point(407, 32);
             this.btnSmartIf.Name = "btnSmartIf";
-            this.btnSmartIf.Size = new System.Drawing.Size(120, 23);
-            this.btnSmartIf.TabIndex = 6;
+            this.btnSmartIf.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartIf.TabIndex = 50;
             this.btnSmartIf.Text = "If";
             this.btnSmartIf.UseVisualStyleBackColor = true;
             this.btnSmartIf.Click += new System.EventHandler(this.btnSmartIf_Click);
@@ -302,10 +304,10 @@ namespace XRMTokensRun
             // btnSmartExpand
             // 
             this.btnSmartExpand.Enabled = false;
-            this.btnSmartExpand.Location = new System.Drawing.Point(275, 32);
+            this.btnSmartExpand.Location = new System.Drawing.Point(311, 32);
             this.btnSmartExpand.Name = "btnSmartExpand";
-            this.btnSmartExpand.Size = new System.Drawing.Size(120, 23);
-            this.btnSmartExpand.TabIndex = 5;
+            this.btnSmartExpand.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartExpand.TabIndex = 40;
             this.btnSmartExpand.Text = "Expand";
             this.btnSmartExpand.UseVisualStyleBackColor = true;
             this.btnSmartExpand.Click += new System.EventHandler(this.btnSmartExpand_Click);
@@ -318,7 +320,7 @@ namespace XRMTokensRun
             this.linkHelp.Location = new System.Drawing.Point(651, 59);
             this.linkHelp.Name = "linkHelp";
             this.linkHelp.Size = new System.Drawing.Size(31, 16);
-            this.linkHelp.TabIndex = 4;
+            this.linkHelp.TabIndex = 80;
             this.linkHelp.TabStop = true;
             this.linkHelp.Text = "Link";
             this.linkHelp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkHelp_LinkClicked);
@@ -340,7 +342,7 @@ namespace XRMTokensRun
             this.btnAddToken.Location = new System.Drawing.Point(862, 32);
             this.btnAddToken.Name = "btnAddToken";
             this.btnAddToken.Size = new System.Drawing.Size(120, 23);
-            this.btnAddToken.TabIndex = 2;
+            this.btnAddToken.TabIndex = 70;
             this.btnAddToken.Text = "Add Manual";
             this.btnAddToken.UseVisualStyleBackColor = true;
             this.btnAddToken.Click += new System.EventHandler(this.btnAddToken_Click);
@@ -350,8 +352,8 @@ namespace XRMTokensRun
             this.btnSmartColumn.Enabled = false;
             this.btnSmartColumn.Location = new System.Drawing.Point(23, 32);
             this.btnSmartColumn.Name = "btnSmartColumn";
-            this.btnSmartColumn.Size = new System.Drawing.Size(120, 23);
-            this.btnSmartColumn.TabIndex = 2;
+            this.btnSmartColumn.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartColumn.TabIndex = 10;
             this.btnSmartColumn.Text = "Column";
             this.btnSmartColumn.UseVisualStyleBackColor = true;
             this.btnSmartColumn.Click += new System.EventHandler(this.btnSmartColumn_Click);
@@ -364,7 +366,7 @@ namespace XRMTokensRun
             this.cmbTokenHelp.Location = new System.Drawing.Point(654, 32);
             this.cmbTokenHelp.Name = "cmbTokenHelp";
             this.cmbTokenHelp.Size = new System.Drawing.Size(202, 24);
-            this.cmbTokenHelp.TabIndex = 1;
+            this.cmbTokenHelp.TabIndex = 60;
             this.cmbTokenHelp.SelectedIndexChanged += new System.EventHandler(this.cmbTokenHelp_SelectedIndexChanged);
             // 
             // gbTokenResult
@@ -407,6 +409,17 @@ namespace XRMTokensRun
             // 
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // btnSmartRandom
+            // 
+            this.btnSmartRandom.Enabled = false;
+            this.btnSmartRandom.Location = new System.Drawing.Point(215, 32);
+            this.btnSmartRandom.Name = "btnSmartRandom";
+            this.btnSmartRandom.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartRandom.TabIndex = 30;
+            this.btnSmartRandom.Text = "Random";
+            this.btnSmartRandom.UseVisualStyleBackColor = true;
+            this.btnSmartRandom.Click += new System.EventHandler(this.btnSmartRandom_Click);
             // 
             // XRMTR
             // 
@@ -471,5 +484,6 @@ namespace XRMTokensRun
         private System.Windows.Forms.ToolStripButton btnBackTool;
         private System.Windows.Forms.ToolStripLabel tslAbout;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.Button btnSmartRandom;
     }
 }

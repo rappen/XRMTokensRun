@@ -158,6 +158,7 @@ namespace XRMTokensRun
             btnSmartExpand.Enabled = on && record?.Record != null;
             btnSmartIf.Enabled = on && record?.Record != null;
             btnSmartSystem.Enabled = on && record?.Record != null;
+            btnSmartRandom.Enabled = on && record?.Record != null;
             btnBackTool.Enabled = btnBackTool.Tag != null;
         }
 
@@ -338,6 +339,11 @@ namespace XRMTokensRun
         private void btnSmartSystem_Click(object sender, EventArgs e)
         {
             AddSmartToken(GetSystem.ShowDialog(this));
+        }
+
+        private void btnSmartRandom_Click(object sender, EventArgs e)
+        {
+            AddSmartToken(GetRandom.ShowDialog(this));
         }
 
         public void ShowAboutDialog()
