@@ -152,7 +152,7 @@ namespace XRMTokensRun
             this.label2.Location = new System.Drawing.Point(422, 29);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 16);
+            this.label2.Size = new System.Drawing.Size(52, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Record";
             // 
@@ -173,7 +173,7 @@ namespace XRMTokensRun
             this.label1.Location = new System.Drawing.Point(20, 29);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 16);
+            this.label1.Size = new System.Drawing.Size(43, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Table";
             // 
@@ -240,7 +240,7 @@ namespace XRMTokensRun
             this.label3.Location = new System.Drawing.Point(20, 34);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(179, 16);
+            this.label3.Size = new System.Drawing.Size(178, 16);
             this.label3.TabIndex = 0;
             this.label3.Text = "Input - all the text and Tokens";
             // 
@@ -317,7 +317,7 @@ namespace XRMTokensRun
             this.linkHelp.Enabled = false;
             this.linkHelp.Location = new System.Drawing.Point(651, 59);
             this.linkHelp.Name = "linkHelp";
-            this.linkHelp.Size = new System.Drawing.Size(32, 16);
+            this.linkHelp.Size = new System.Drawing.Size(31, 16);
             this.linkHelp.TabIndex = 4;
             this.linkHelp.TabStop = true;
             this.linkHelp.Text = "Link";
@@ -329,7 +329,7 @@ namespace XRMTokensRun
             this.lblSmart.AutoSize = true;
             this.lblSmart.Location = new System.Drawing.Point(697, 59);
             this.lblSmart.Name = "lblSmart";
-            this.lblSmart.Size = new System.Drawing.Size(91, 16);
+            this.lblSmart.Size = new System.Drawing.Size(90, 16);
             this.lblSmart.TabIndex = 3;
             this.lblSmart.Text = "Select above!";
             // 
@@ -385,9 +385,9 @@ namespace XRMTokensRun
             this.lblError.AutoSize = true;
             this.lblError.Location = new System.Drawing.Point(26, 177);
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(37, 16);
+            this.lblError.Size = new System.Drawing.Size(28, 16);
             this.lblError.TabIndex = 4;
-            this.lblError.Text = "Error";
+            this.lblError.Text = "Info";
             // 
             // txtTokensOut
             // 

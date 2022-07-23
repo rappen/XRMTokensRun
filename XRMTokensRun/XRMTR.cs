@@ -237,7 +237,7 @@ namespace XRMTokensRun
                 {
                     if (arg.Error != null)
                     {
-                        lblError.Text = arg.Error.Message;
+                        lblError.Text = arg.Error.Message.Replace("\r\n", ", ");
                     }
                     else if (arg.Result is string result)
                     {
