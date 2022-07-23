@@ -52,7 +52,7 @@ namespace XRMTokensRun
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(115, 28);
-            this.button1.TabIndex = 1;
+            this.button1.TabIndex = 4;
             this.button1.Text = "OK";
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -64,7 +64,7 @@ namespace XRMTokensRun
             this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(115, 28);
-            this.button2.TabIndex = 3;
+            this.button2.TabIndex = 5;
             this.button2.Text = "Cancel";
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -122,7 +122,7 @@ namespace XRMTokensRun
             this.cmbOperator.Location = new System.Drawing.Point(138, 88);
             this.cmbOperator.Name = "cmbOperator";
             this.cmbOperator.Size = new System.Drawing.Size(346, 24);
-            this.cmbOperator.TabIndex = 29;
+            this.cmbOperator.TabIndex = 1;
             this.cmbOperator.SelectedIndexChanged += new System.EventHandler(this.cmbOperator_SelectedIndexChanged);
             // 
             // txtParam1
@@ -131,7 +131,7 @@ namespace XRMTokensRun
             this.txtParam1.Location = new System.Drawing.Point(138, 118);
             this.txtParam1.Name = "txtParam1";
             this.txtParam1.Size = new System.Drawing.Size(346, 22);
-            this.txtParam1.TabIndex = 30;
+            this.txtParam1.TabIndex = 2;
             this.txtParam1.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // label1
@@ -159,7 +159,7 @@ namespace XRMTokensRun
             this.txtParam2.Location = new System.Drawing.Point(138, 146);
             this.txtParam2.Name = "txtParam2";
             this.txtParam2.Size = new System.Drawing.Size(346, 22);
-            this.txtParam2.TabIndex = 35;
+            this.txtParam2.TabIndex = 3;
             this.txtParam2.TextChanged += new System.EventHandler(this.ShowResult);
             // 
             // lblParam2
