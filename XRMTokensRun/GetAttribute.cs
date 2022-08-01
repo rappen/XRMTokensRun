@@ -52,8 +52,12 @@ namespace XRMTokensRun
                 {
                     result += "|";
                 }
-                result += "<" + cmbFormat.Text + "|";
-                result += txtFormValue.Text + ">";
+                result += "<" + cmbFormat.Text;
+                if (!string.IsNullOrEmpty(txtFormValue.Text))
+                {
+                    result += "|" + txtFormValue.Text;
+                }
+                result += ">";
             }
             result += "}";
             return result;

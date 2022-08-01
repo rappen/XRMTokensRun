@@ -71,7 +71,7 @@ namespace XRMTokensRun
             this.label1.Location = new System.Drawing.Point(33, 124);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 16);
+            this.label1.Size = new System.Drawing.Size(52, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Column";
             // 
@@ -93,7 +93,7 @@ namespace XRMTokensRun
             this.label2.Location = new System.Drawing.Point(33, 90);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 16);
+            this.label2.Size = new System.Drawing.Size(43, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Table";
             // 
@@ -112,7 +112,7 @@ namespace XRMTokensRun
             this.label4.Location = new System.Drawing.Point(33, 181);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(95, 16);
+            this.label4.Size = new System.Drawing.Size(94, 16);
             this.label4.TabIndex = 11;
             this.label4.Text = "Parent Column";
             // 
@@ -133,7 +133,7 @@ namespace XRMTokensRun
             this.label7.Location = new System.Drawing.Point(33, 218);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(43, 16);
+            this.label7.Size = new System.Drawing.Size(42, 16);
             this.label7.TabIndex = 16;
             this.label7.Text = "Value";
             // 
@@ -142,7 +142,7 @@ namespace XRMTokensRun
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(138, 46);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(146, 16);
+            this.linkLabel1.Size = new System.Drawing.Size(145, 16);
             this.linkLabel1.TabIndex = 24;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Documentation Column";
@@ -165,7 +165,7 @@ namespace XRMTokensRun
             this.label3.Location = new System.Drawing.Point(33, 154);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 16);
+            this.label3.Size = new System.Drawing.Size(85, 16);
             this.label3.TabIndex = 26;
             this.label3.Text = "Parent Table";
             // 
@@ -194,7 +194,7 @@ namespace XRMTokensRun
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(33, 341);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 16);
+            this.label5.Size = new System.Drawing.Size(45, 16);
             this.label5.TabIndex = 34;
             this.label5.Text = "Result";
             // 
@@ -241,6 +241,9 @@ namespace XRMTokensRun
             "",
             "Left",
             "Right",
+            "Trim",
+            "TrimStart",
+            "TrimEnd",
             "SubStr",
             "Pad",
             "Replace",
@@ -256,7 +259,7 @@ namespace XRMTokensRun
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Location = new System.Drawing.Point(33, 257);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(71, 16);
+            this.linkLabel2.Size = new System.Drawing.Size(70, 16);
             this.linkLabel2.TabIndex = 38;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Formatting";
@@ -275,7 +278,7 @@ namespace XRMTokensRun
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(33, 287);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(95, 16);
+            this.label6.Size = new System.Drawing.Size(94, 16);
             this.label6.TabIndex = 40;
             this.label6.Text = "Format Values";
             // 
