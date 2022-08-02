@@ -17,10 +17,11 @@
 		<releaseNotes>
 			Version 1.2022.8:
 
-			Added support for Random features.
-			Added support for Choices feature.
-			Added support for Trim features.
+			#14 Added support for Random features.
+			#15 Added support for Choices feature.
+			#17 Added support for Trim features.
 
+			#18 Fixing formatting order in XRM Tokens.
 			Minor fixes here and there.
 
 			---
