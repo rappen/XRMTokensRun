@@ -1,0 +1,14 @@
+{fullname}
+{parentcustomerid}
+{parentcustomerid|<value>}
+{parentcustomerid.ownerid}
+{parentcustomerid.ownerid.createdon|<Left|5>}
+
+Descriptions:
+"{description}" 
+
+<system|char|{> "status_code": "{statuscode}" <system|char|}> 
+
+My trimmed: '{parentcustomerid|<Left|5><TrimEnd|AB><Replace|AB|Inc.><Pad|R|10><Pad|L|15><TrimEnd><TrimStart>}'
+{parentcustomerid|<Replace|AB|Inc.>}
+<system|today|yyyy-MM-dd|<Trim|02>>
