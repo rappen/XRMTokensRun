@@ -5,3 +5,5 @@
 *See documentations for XRM Tokens: https://jonasr.app/xrm-tokens/*
 
 This is a XrmTooBox to test and play and runner the XRM Tokens!
+
+Tool in integrated with [Bulk Data Updater](https://github.com/rappen/BulkDataUpdater) in [XrmToolBox](https://github.com/MscrmTools/XrmToolBox).
