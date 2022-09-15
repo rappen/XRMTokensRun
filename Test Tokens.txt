@@ -1,9 +1,9 @@
 {fullname}
+{firstname|<Upper>} {lastname|<Lower>}
 {parentcustomerid}
-{parentcustomerid|<value>}
+{parentcustomerid|<value><Upper>}
 {parentcustomerid.ownerid}
 {parentcustomerid.ownerid.createdon|<Left|5>}
-
 Descriptions:
 "{description}" 
 

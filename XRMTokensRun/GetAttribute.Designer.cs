@@ -241,6 +241,8 @@ namespace XRMTokensRun
             "",
             "Left",
             "Right",
+            "Upper",
+            "Lower",
             "Trim",
             "TrimStart",
             "TrimEnd",
