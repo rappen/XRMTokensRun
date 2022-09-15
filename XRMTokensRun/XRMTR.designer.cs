@@ -45,9 +45,12 @@ namespace XRMTokensRun
             this.record = new Rappen.XTB.Helpers.Controls.XRMRecordHost();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gbTokens = new System.Windows.Forms.GroupBox();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnOpen = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTokensIn = new System.Windows.Forms.TextBox();
             this.gbSmart = new System.Windows.Forms.GroupBox();
+            this.btnSmartRandom = new System.Windows.Forms.Button();
             this.btnSmartSystem = new System.Windows.Forms.Button();
             this.btnSmartIf = new System.Windows.Forms.Button();
             this.btnSmartExpand = new System.Windows.Forms.Button();
@@ -60,7 +63,6 @@ namespace XRMTokensRun
             this.lblError = new System.Windows.Forms.Label();
             this.txtTokensOut = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnSmartRandom = new System.Windows.Forms.Button();
             this.toolStripMenu.SuspendLayout();
             this.gbGetRecord.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -139,9 +141,11 @@ namespace XRMTokensRun
             // btnGetRecord
             // 
             this.btnGetRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetRecord.Location = new System.Drawing.Point(862, 58);
+            this.btnGetRecord.Image = ((System.Drawing.Image)(resources.GetObject("btnGetRecord.Image")));
+            this.btnGetRecord.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGetRecord.Location = new System.Drawing.Point(862, 53);
             this.btnGetRecord.Name = "btnGetRecord";
-            this.btnGetRecord.Size = new System.Drawing.Size(120, 23);
+            this.btnGetRecord.Size = new System.Drawing.Size(120, 33);
             this.btnGetRecord.TabIndex = 5;
             this.btnGetRecord.Text = "Lookup...";
             this.btnGetRecord.UseVisualStyleBackColor = true;
@@ -225,6 +229,8 @@ namespace XRMTokensRun
             // 
             // gbTokens
             // 
+            this.gbTokens.Controls.Add(this.btnSave);
+            this.gbTokens.Controls.Add(this.btnOpen);
             this.gbTokens.Controls.Add(this.label3);
             this.gbTokens.Controls.Add(this.txtTokensIn);
             this.gbTokens.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -234,6 +240,32 @@ namespace XRMTokensRun
             this.gbTokens.TabIndex = 5;
             this.gbTokens.TabStop = false;
             this.gbTokens.Text = "XRM Tokens";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSave.Location = new System.Drawing.Point(862, 26);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(120, 33);
+            this.btnSave.TabIndex = 3;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
+            this.btnOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOpen.Location = new System.Drawing.Point(735, 26);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(120, 33);
+            this.btnOpen.TabIndex = 2;
+            this.btnOpen.Text = "Open";
+            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // label3
             // 
@@ -278,6 +310,17 @@ namespace XRMTokensRun
             this.gbSmart.TabIndex = 6;
             this.gbSmart.TabStop = false;
             this.gbSmart.Text = "Build XRM Tokens";
+            // 
+            // btnSmartRandom
+            // 
+            this.btnSmartRandom.Enabled = false;
+            this.btnSmartRandom.Location = new System.Drawing.Point(215, 32);
+            this.btnSmartRandom.Name = "btnSmartRandom";
+            this.btnSmartRandom.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartRandom.TabIndex = 30;
+            this.btnSmartRandom.Text = "Random";
+            this.btnSmartRandom.UseVisualStyleBackColor = true;
+            this.btnSmartRandom.Click += new System.EventHandler(this.btnSmartRandom_Click);
             // 
             // btnSmartSystem
             // 
@@ -410,17 +453,6 @@ namespace XRMTokensRun
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // btnSmartRandom
-            // 
-            this.btnSmartRandom.Enabled = false;
-            this.btnSmartRandom.Location = new System.Drawing.Point(215, 32);
-            this.btnSmartRandom.Name = "btnSmartRandom";
-            this.btnSmartRandom.Size = new System.Drawing.Size(90, 23);
-            this.btnSmartRandom.TabIndex = 30;
-            this.btnSmartRandom.Text = "Random";
-            this.btnSmartRandom.UseVisualStyleBackColor = true;
-            this.btnSmartRandom.Click += new System.EventHandler(this.btnSmartRandom_Click);
-            // 
             // XRMTR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -485,5 +517,7 @@ namespace XRMTokensRun
         private System.Windows.Forms.ToolStripLabel tslAbout;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Button btnSmartRandom;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnOpen;
     }
 }

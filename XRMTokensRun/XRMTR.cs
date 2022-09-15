@@ -212,7 +212,7 @@ namespace XRMTokensRun
                 {
                     if (arg.Error != null)
                     {
-                        MessageBox.Show(arg.Error.Message);
+                        ShowErrorDialog(arg.Error);
                     }
                     else if (arg.Result is Entity result)
                     {
@@ -439,6 +439,48 @@ namespace XRMTokensRun
                         return;
                     }
                 }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            var entity = cmbTable.SelectedEntity;
+            if (entity == null)
+            {
+                MessageBox.Show("No proper table selected.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var save = new SaveFileDialog
+            {
+                Title = $"Save XRM Tokens for {entity.DisplayName?.UserLocalizedLabel?.Label} table",
+                DefaultExt = $".{entity.LogicalName}.XRM.Tokens",
+                Filter = $"*.{entity.LogicalName}.XRM.Tokens|*.{entity.LogicalName}.XRM.Tokens"
+            };
+            if (save.ShowDialog(this) == DialogResult.OK)
+            {
+                System.IO.File.WriteAllText(save.FileName, txtTokensIn.Text);
+                MessageBox.Show($"XRM Tokens saved to file:\n{save.FileName}", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnOpen_Click(object sender, EventArgs e)
+        {
+            var entity = cmbTable.SelectedEntity;
+            if (entity == null)
+            {
+                MessageBox.Show("No proper table selected.", "Open", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            var open = new OpenFileDialog
+            {
+                Title = $"Open XRM Tokens for {entity.DisplayName?.UserLocalizedLabel?.Label} table",
+                Filter = $"*.{entity.LogicalName}.XRM.Tokens|*.{entity.LogicalName}.XRM.Tokens"
+            };
+            if (open.ShowDialog(this) == DialogResult.OK)
+            {
+                var text = System.IO.File.ReadAllText(open.FileName);
+                MessageBox.Show($"XRM Tokens opened from file:\n{open.FileName}", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTokensIn.Text = text;
             }
         }
     }
