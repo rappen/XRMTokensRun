@@ -447,7 +447,7 @@ namespace XRMTokensRun
             var entity = cmbTable.SelectedEntity;
             if (entity == null)
             {
-                MessageBox.Show("No proper table selected.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No proper table is selected.", "Save", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             var save = new SaveFileDialog
@@ -468,7 +468,7 @@ namespace XRMTokensRun
             var entity = cmbTable.SelectedEntity;
             if (entity == null)
             {
-                MessageBox.Show("No proper table selected.", "Open", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("No proper table is selected.", "Open", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             var open = new OpenFileDialog
