@@ -46,6 +46,10 @@ namespace XRMTokensRun
             {
                 result += "|<value>";
             }
+            if (chkRecurdUrl.Checked)
+            {
+                result += "|<recordurl>";
+            }
             if (!string.IsNullOrEmpty(cmbFormat.Text))
             {
                 if (!chkValue.Checked)
@@ -123,6 +127,14 @@ namespace XRMTokensRun
 
         private void ShowResult(object sender = null, System.EventArgs e = null)
         {
+            chkRecurdUrl.Enabled =
+                xrmColumn.SelectedAttribute.IsPrimaryId == true ||
+                (!chkParent.Checked && xrmColumn.SelectedAttribute is LookupAttributeMetadata) ||
+                (chkParent.Checked && xrmParentAttr.SelectedAttribute is LookupAttributeMetadata);
+            if (!chkRecurdUrl.Enabled)
+            {
+                chkRecurdUrl.Checked = false;
+            }
             txtResult.Text = GetResult();
         }
 
