@@ -164,15 +164,15 @@ namespace XRMTokensRun
         {
             cmbTable.Enabled = on && Service != null;
             btnGetRecord.Enabled = on && cmbTable.SelectedEntity is EntityMetadata;
-            btnRefresh.Enabled = on && record?.Record != null;
-            btnOpenRecord.Enabled = on && record?.Record != null;
-            gbTokens.Enabled = on && record?.Record != null;
-            btnAddToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
-            btnSmartColumn.Enabled = on && record?.Record != null;
-            btnSmartExpand.Enabled = on && record?.Record != null;
-            btnSmartIf.Enabled = on && record?.Record != null;
-            btnSmartSystem.Enabled = on && record?.Record != null;
-            btnSmartRandom.Enabled = on && record?.Record != null;
+            btnRefresh.Enabled = on && record.Record != null;
+            btnOpenRecord.Enabled = on && record.Record != null;
+            gbTokens.Enabled = on && record.Record != null;
+            btnAddToken.Enabled = on && record.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
+            btnSmartColumn.Enabled = on && record.Record != null;
+            btnSmartExpand.Enabled = on && record.Record != null;
+            btnSmartIf.Enabled = on && record.Record != null;
+            btnSmartSystem.Enabled = on && record.Record != null;
+            btnSmartRandom.Enabled = on && record.Record != null;
             btnBackTool.Enabled = btnBackTool.Tag != null;
         }
 
@@ -511,7 +511,7 @@ namespace XRMTokensRun
 
         private void btnOpenRecord_Click(object sender, EventArgs e)
         {
-            if (Service.GetEntityFormUrl(record?.Record?.ToEntityReference()) is string url && !string.IsNullOrEmpty(url))
+            if (Service.GetEntityFormUrl(record.Record?.ToEntityReference()) is string url && !string.IsNullOrEmpty(url))
             {
                 ConnectionDetail.OpenUrlWithBrowserProfile(new Uri(url));
             }
