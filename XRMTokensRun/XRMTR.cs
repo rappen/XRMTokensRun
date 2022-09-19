@@ -55,6 +55,11 @@ namespace XRMTokensRun
             cmbTokenHelp.Items.Add(" - Formatting -");
             cmbTokenHelp.Items.Add(new TokenHelp("Left", "<Left|length>", 6, 6, "Can add to Left number of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
             cmbTokenHelp.Items.Add(new TokenHelp("Right", "<Right|length>", 7, 6, "Can add to Right number of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
+            cmbTokenHelp.Items.Add(new TokenHelp("Upper", "<Upper>", 1, 5, "Make all letters uppercase of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
+            cmbTokenHelp.Items.Add(new TokenHelp("Lower", "<Lower>", 1, 5, "Make all letters lowercase of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
+            cmbTokenHelp.Items.Add(new TokenHelp("Trim", "<Trim|chars>", 6, 5, "Trim start/end, maybe of a string, of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
+            cmbTokenHelp.Items.Add(new TokenHelp("TrimStart", "<TrimStart|chars>", 11, 5, "Trim start, maybe of a string, of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
+            cmbTokenHelp.Items.Add(new TokenHelp("TrimEnd", "<TrimEnd|chars>", 9, 5, "Trim end, maybe of a string, of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
             cmbTokenHelp.Items.Add(new TokenHelp("SubStr", "<SubStr|start|length>", 8, 12, "Can add to SubString of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
             cmbTokenHelp.Items.Add(new TokenHelp("Pad", "<Pad|R|length| >", 7, 6, "Can add to Pad number of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
             cmbTokenHelp.Items.Add(new TokenHelp("Replace", "<Replace|old|new>", 9, 7, "Can replace old info to new info of Column/System data.", "https://jonasr.app/xrm-tokens/#formatting"));
