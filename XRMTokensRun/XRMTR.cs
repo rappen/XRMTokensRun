@@ -164,6 +164,8 @@ namespace XRMTokensRun
         {
             cmbTable.Enabled = on && Service != null;
             btnGetRecord.Enabled = on && cmbTable.SelectedEntity is EntityMetadata;
+            btnRefresh.Enabled = on && record?.Record != null;
+            btnOpenRecord.Enabled = on && record?.Record != null;
             gbTokens.Enabled = on && record?.Record != null;
             btnAddToken.Enabled = on && record?.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
             btnSmartColumn.Enabled = on && record?.Record != null;
@@ -197,15 +199,33 @@ namespace XRMTokensRun
                 Service = Service,
                 LogicalName = cmbTable.SelectedEntity.LogicalName
             };
-            if (look.ShowDialog() == DialogResult.OK && look.Record != null)
+            switch (look.ShowDialog())
             {
-                LoadRecord(look.Record.ToEntityReference());
+                case DialogResult.OK:
+                    if (look.Record != null)
+                    {
+                        LoadRecord(look.Record.ToEntityReference());
+                    }
+                    else
+                    {
+                        record.Record = null;
+                    }
+                    break;
+
+                case DialogResult.Abort:
+                    record.Record = null;
+                    break;
             }
             Enable(true);
         }
 
         private void LoadRecord(EntityReference reference)
         {
+            if (reference == null)
+            {
+                record.Record = null;
+                return;
+            }
             WorkAsync(new WorkAsyncInfo
             {
                 Message = "Loading record...",
@@ -487,6 +507,19 @@ namespace XRMTokensRun
                 MessageBox.Show($"XRM Tokens opened from file:\n{open.FileName}", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtTokensIn.Text = text;
             }
+        }
+
+        private void btnOpenRecord_Click(object sender, EventArgs e)
+        {
+            if (Service.GetEntityFormUrl(record?.Record?.ToEntityReference()) is string url && !string.IsNullOrEmpty(url))
+            {
+                ConnectionDetail.OpenUrlWithBrowserProfile(new Uri(url));
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadRecord(record.Record?.ToEntityReference());
         }
     }
 }
