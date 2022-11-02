@@ -15,6 +15,17 @@
 		</description>
 		<summary>Runner for the XRM Tokens - work out the data info for used in code or Bulk Data Updater. </summary>
 		<releaseNotes>
+			Version 1.2022.11:
+
+			Added Save and Open XRM Tokens
+			Added Lower and Upper cases
+			Added RecurdURL XRM Tokens
+			Added Refresh and Open buttons for selected record
+			Will never implement recurrency XRM Tokens
+			Bug fixes for format Math|Round and Math|Abs
+
+			---
+
 			Version 1.2022.8:
 
 			#14 Added support for Random features.
@@ -33,7 +44,7 @@
 		<copyright>Copyright 2021-2022 Jonas Rapp</copyright>
 		<tags>XrmToolBox Plugins XRMTokensRunner</tags>
 		<dependencies>
-			<dependency id="XrmToolBox" version="1.2022.5.56" />
+			<dependency id="XrmToolBox" version="1.2022.10.58" />
 		</dependencies>
 	</metadata>
 	<files>
