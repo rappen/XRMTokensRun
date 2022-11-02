@@ -19,8 +19,12 @@ namespace XRMTokensRun
         ExportMetadata("BackgroundColor", "#FFFFC0"),
         ExportMetadata("PrimaryFontColor", "#0000C0"),
         ExportMetadata("SecondaryFontColor", "#0000FF")]
-    public class XRMTRinfo : PluginBase
+    public class XRMTRinfo : PluginBase, IPayPalPlugin
     {
+        public string DonationDescription => "Donation to XRM Tokens Runner for XrmToolBox";
+
+        public string EmailAccount => "jonas@rappen.net";
+
         public override IXrmToolBoxPluginControl GetControl()
         {
             return new XRMTR();
