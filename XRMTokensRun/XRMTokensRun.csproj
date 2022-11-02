@@ -301,7 +301,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="XRMTokensRun.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="About.resx">
