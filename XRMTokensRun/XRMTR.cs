@@ -6,6 +6,7 @@ using Rappen.XRM.Helpers;
 using Rappen.XRM.Helpers.Extensions;
 using Rappen.XTB.Helpers.Controls;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
@@ -136,7 +137,7 @@ namespace XRMTokensRun
 
         private void LoadSetting()
         {
-            if (settings == null && !SettingsManager.Instance.TryLoad(GetType(), out settings))
+            if (settings == null && !SettingsManager.Instance.TryLoad(GetType(), out settings, ConnectionDetail?.ConnectionName))
             {
                 settings = new Settings();
             }
@@ -148,7 +149,17 @@ namespace XRMTokensRun
             {
                 settings = new Settings();
             }
+            settings.RecordId = settings.RecordId ?? new List<KeyValuePair>();
+            settings.Token = settings.Token ?? new List<KeyValuePair>();
             settings.Table = cmbTable.SelectedEntity?.LogicalName;
+            if (settings.RecordId?.FirstOrDefault(t => t.key == settings.Table) is KeyValuePair id)
+            {
+                id.value = record.Id.ToString();
+            }
+            else
+            {
+                settings.RecordId.Add(new KeyValuePair { key = settings.Table, value = record.Id.ToString() });
+            }
             if (settings.Token?.FirstOrDefault(t => t.key == settings.Table) is KeyValuePair token)
             {
                 token.value = txtTokensIn.Text;
@@ -157,7 +168,7 @@ namespace XRMTokensRun
             {
                 settings.Token.Add(new KeyValuePair { key = settings.Table, value = txtTokensIn.Text });
             }
-            SettingsManager.Instance.Save(GetType(), settings);
+            SettingsManager.Instance.Save(GetType(), settings, ConnectionDetail?.ConnectionName);
         }
 
         private void Enable(bool on)
@@ -182,6 +193,12 @@ namespace XRMTokensRun
             record.Record = null;
             if (entity != null && settings != null)
             {
+                if (settings.RecordId?.FirstOrDefault(r => r.key == entity.LogicalName) is KeyValuePair strid &&
+                    Guid.TryParse(strid.value, out Guid id) &&
+                    !id.Equals(Guid.Empty))
+                {
+                    LoadRecord(new EntityReference(entity.LogicalName, id));
+                }
                 var token = settings.Token?.FirstOrDefault(t => t.key == entity.LogicalName)?.value;
                 txtTokensIn.Lines = token?.Split('\n');
             }

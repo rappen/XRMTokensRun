@@ -15,6 +15,7 @@ namespace XRMTokensRun
     public class Settings
     {
         public string Table { get; set; }
+        public List<KeyValuePair> RecordId { get; set; }
         public List<KeyValuePair> Token { get; set; } = new List<KeyValuePair>();
     }
 
