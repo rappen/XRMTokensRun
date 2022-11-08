@@ -2,8 +2,8 @@
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Metadata;
 using Microsoft.Xrm.Sdk.Query;
-using Rappen.XRM.Helpers;
 using Rappen.XRM.Helpers.Extensions;
+using Rappen.XRM.Tokens;
 using Rappen.XTB.Helpers.Controls;
 using System;
 using System.Collections.Generic;
@@ -278,10 +278,10 @@ namespace XRMTokensRun
             txtTokensOut.Text = "";
             WorkAsync(new WorkAsyncInfo
             {
-                Message = "Calling Substitute",
+                Message = "Calling XRM Tokens",
                 Work = (work, arg) =>
                 {
-                    arg.Result = record.Record.Substitute(Service, txtTokensIn.Text);
+                    arg.Result = record.Record.Tokens(Service, txtTokensIn.Text);
                 },
                 PostWorkCallBack = (arg) =>
                 {
@@ -536,7 +536,9 @@ namespace XRMTokensRun
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-            LoadRecord(record.Record?.ToEntityReference());
+            var recref = record.Record.ToEntityReference();
+            record.Record = null;
+            LoadRecord(recref);
         }
     }
 }
