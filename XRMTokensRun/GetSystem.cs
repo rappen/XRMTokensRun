@@ -1,8 +1,5 @@
-﻿using Microsoft.Xrm.Sdk.Metadata;
-using Rappen.XRM.Helpers.Extensions;
-using System.Collections.Generic;
+﻿using Rappen.XRM.Helpers.Extensions;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace XRMTokensRun

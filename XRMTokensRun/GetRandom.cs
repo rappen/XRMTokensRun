@@ -1,5 +1,4 @@
-﻿using Rappen.XRM.Helpers.Extensions;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace XRMTokensRun
