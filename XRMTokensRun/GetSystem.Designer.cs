@@ -73,7 +73,7 @@ namespace XRMTokensRun
             this.label4.Location = new System.Drawing.Point(33, 121);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 16);
+            this.label4.Size = new System.Drawing.Size(49, 16);
             this.label4.TabIndex = 11;
             this.label4.Text = "Format";
             // 
@@ -82,7 +82,7 @@ namespace XRMTokensRun
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(138, 46);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(146, 16);
+            this.linkLabel1.Size = new System.Drawing.Size(145, 16);
             this.linkLabel1.TabIndex = 24;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Documentation Column";
@@ -105,7 +105,7 @@ namespace XRMTokensRun
             this.label3.Location = new System.Drawing.Point(33, 92);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 16);
+            this.label3.Size = new System.Drawing.Size(60, 16);
             this.label3.TabIndex = 26;
             this.label3.Text = "Operator";
             // 
@@ -126,6 +126,7 @@ namespace XRMTokensRun
             // 
             // btnCol
             // 
+            this.btnCol.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCol.Location = new System.Drawing.Point(490, 118);
             this.btnCol.Name = "btnCol";
             this.btnCol.Size = new System.Drawing.Size(49, 23);
@@ -149,7 +150,7 @@ namespace XRMTokensRun
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 178);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 16);
+            this.label1.Size = new System.Drawing.Size(45, 16);
             this.label1.TabIndex = 32;
             this.label1.Text = "Result";
             // 
@@ -168,6 +169,7 @@ namespace XRMTokensRun
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.CancelButton = this.button2;
             this.ClientSize = new System.Drawing.Size(575, 247);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.label1);
