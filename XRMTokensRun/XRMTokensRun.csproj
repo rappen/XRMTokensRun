@@ -277,6 +277,12 @@
     <Compile Include="GetRandom.Designer.cs">
       <DependentUpon>GetRandom.cs</DependentUpon>
     </Compile>
+    <Compile Include="GetPowerFx.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GetPowerFx.Designer.cs">
+      <DependentUpon>GetPowerFx.cs</DependentUpon>
+    </Compile>
     <Compile Include="GetSystem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -327,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GetRandom.resx">
       <DependentUpon>GetRandom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GetPowerFx.resx">
+      <DependentUpon>GetPowerFx.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GetSystem.resx">
       <DependentUpon>GetSystem.cs</DependentUpon>

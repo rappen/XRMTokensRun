@@ -48,6 +48,9 @@ namespace XRMTokensRun
                 "EntityLogicalName"
             }).ToArray();
 
+            cmbTokenHelp.Items.Add(" - Power Fx -");
+            cmbTokenHelp.Items.Add(new TokenHelp("PowerFx", "<PowerFx|formula>", 9, 7, "Add any formula for Power Fx, including data from Dataverse.", "https://jonasr.app/xrm-tokens/#powerfx"));
+            cmbTokenHelp.Items.Add("");
             cmbTokenHelp.Items.Add(" - Data -");
             cmbTokenHelp.Items.Add(new TokenHelp("Column", "{column}", 1, 6, "A simple column, of lookup.column", "https://jonasr.app/xrm-tokens/#attribute"));
             cmbTokenHelp.Items.Add(new TokenHelp("Column Raw", "{column|<value>}", 1, 6, "Like Column, but always return simlest type.", "https://jonasr.app/xrm-tokens/#raw"));
@@ -178,12 +181,8 @@ namespace XRMTokensRun
             btnRefresh.Enabled = on && record.Record != null;
             btnOpenRecord.Enabled = on && record.Record != null;
             gbTokens.Enabled = on && record.Record != null;
-            btnAddToken.Enabled = on && record.Record != null && cmbTokenHelp.SelectedItem is TokenHelp;
-            btnSmartColumn.Enabled = on && record.Record != null;
-            btnSmartExpand.Enabled = on && record.Record != null;
-            btnSmartIf.Enabled = on && record.Record != null;
-            btnSmartSystem.Enabled = on && record.Record != null;
-            btnSmartRandom.Enabled = on && record.Record != null;
+            gbSmart.Enabled = on && record.Record != null;
+            btnAddToken.Enabled = cmbTokenHelp.SelectedItem is TokenHelp;
             btnBackTool.Enabled = btnBackTool.Tag != null;
         }
 
@@ -339,12 +338,17 @@ namespace XRMTokensRun
                 return;
             }
             cmbTokenHelp.SelectedIndex = -1;
-            var selstart = txtTokensIn.SelectionStart;
-            txtTokensIn.SelectedText = "";
-            txtTokensIn.Text = txtTokensIn.Text.Insert(selstart, token);
-            txtTokensIn.SelectionStart = selstart;
-            txtTokensIn.SelectionLength = token.Length;
-            txtTokensIn.Focus();
+            InsertValue(txtTokensIn, token);
+        }
+
+        internal static void InsertValue(TextBox textbox, string value)
+        {
+            var selstart = textbox.SelectionStart;
+            textbox.SelectedText = "";
+            textbox.Text = textbox.Text.Insert(selstart, value);
+            textbox.SelectionStart = selstart;
+            textbox.SelectionLength = value.Length;
+            textbox.Focus();
         }
 
         private void cmbTokenHelp_SelectedIndexChanged(object sender, EventArgs e)
@@ -368,6 +372,11 @@ namespace XRMTokensRun
             {
                 Process.Start(help.url);
             }
+        }
+
+        private void btnSmartPowerFx_Click(object sender, EventArgs e)
+        {
+            AddSmartToken(GetPowerFx.ShowDialog(this));
         }
 
         private void btnSmartColumn_Click(object sender, EventArgs e)
