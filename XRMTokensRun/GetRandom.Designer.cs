@@ -178,6 +178,7 @@ namespace XRMTokensRun
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.CancelButton = this.button2;
             this.ClientSize = new System.Drawing.Size(575, 276);
             this.Controls.Add(this.txtParam2);
             this.Controls.Add(this.lblParam2);

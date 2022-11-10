@@ -76,7 +76,7 @@ namespace XRMTokensRun
             this.label1.Location = new System.Drawing.Point(33, 156);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 16);
+            this.label1.Size = new System.Drawing.Size(52, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Lookup";
             // 
@@ -98,7 +98,7 @@ namespace XRMTokensRun
             this.label2.Location = new System.Drawing.Point(33, 90);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 16);
+            this.label2.Size = new System.Drawing.Size(43, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Table";
             // 
@@ -117,7 +117,7 @@ namespace XRMTokensRun
             this.label3.Location = new System.Drawing.Point(33, 124);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 16);
+            this.label3.Size = new System.Drawing.Size(76, 16);
             this.label3.TabIndex = 7;
             this.label3.Text = "Child Table";
             // 
@@ -127,7 +127,7 @@ namespace XRMTokensRun
             this.label4.Location = new System.Drawing.Point(33, 188);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 16);
+            this.label4.Size = new System.Drawing.Size(88, 16);
             this.label4.TabIndex = 9;
             this.label4.Text = "Show Column";
             // 
@@ -137,7 +137,7 @@ namespace XRMTokensRun
             this.label5.Location = new System.Drawing.Point(33, 219);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 16);
+            this.label5.Size = new System.Drawing.Size(60, 16);
             this.label5.TabIndex = 10;
             this.label5.Text = "Order By";
             // 
@@ -147,7 +147,7 @@ namespace XRMTokensRun
             this.label6.Location = new System.Drawing.Point(33, 270);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 16);
+            this.label6.Size = new System.Drawing.Size(67, 16);
             this.label6.TabIndex = 11;
             this.label6.Text = "Separator";
             // 
@@ -167,7 +167,7 @@ namespace XRMTokensRun
             this.label7.Location = new System.Drawing.Point(33, 299);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(51, 16);
+            this.label7.Size = new System.Drawing.Size(50, 16);
             this.label7.TabIndex = 14;
             this.label7.Text = "Distinct";
             // 
@@ -190,7 +190,7 @@ namespace XRMTokensRun
             this.label8.Location = new System.Drawing.Point(33, 323);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(75, 16);
+            this.label8.Size = new System.Drawing.Size(74, 16);
             this.label8.TabIndex = 16;
             this.label8.Text = "Active Only";
             // 
@@ -213,7 +213,7 @@ namespace XRMTokensRun
             this.label9.Location = new System.Drawing.Point(33, 352);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 16);
+            this.label9.Size = new System.Drawing.Size(84, 16);
             this.label9.TabIndex = 19;
             this.label9.Text = "Max Children";
             // 
@@ -244,7 +244,7 @@ namespace XRMTokensRun
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(136, 45);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(162, 16);
+            this.linkLabel1.Size = new System.Drawing.Size(161, 16);
             this.linkLabel1.TabIndex = 22;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Documentation Expand 🔗";
@@ -266,7 +266,7 @@ namespace XRMTokensRun
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(33, 403);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(46, 16);
+            this.label11.Size = new System.Drawing.Size(45, 16);
             this.label11.TabIndex = 36;
             this.label11.Text = "Result";
             // 
@@ -285,7 +285,7 @@ namespace XRMTokensRun
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(32, 244);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(85, 16);
+            this.label12.Size = new System.Drawing.Size(84, 16);
             this.label12.TabIndex = 39;
             this.label12.Text = "Order Revert";
             // 
@@ -339,6 +339,7 @@ namespace XRMTokensRun
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.CancelButton = this.button2;
             this.ClientSize = new System.Drawing.Size(575, 503);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.chkOrderSel);

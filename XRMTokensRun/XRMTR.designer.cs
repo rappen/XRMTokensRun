@@ -37,9 +37,14 @@ namespace XRMTokensRun
             this.btnBackTool = new System.Windows.Forms.ToolStripButton();
             this.tslAbout = new System.Windows.Forms.ToolStripLabel();
             this.gbGetRecord = new System.Windows.Forms.GroupBox();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnOpenRecord = new System.Windows.Forms.Button();
             this.btnGetRecord = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.cmbTable = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.recordname = new Rappen.XTB.Helpers.Controls.XRMColumnText();
+            this.record = new Rappen.XTB.Helpers.Controls.XRMRecordHost();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.gbTokens = new System.Windows.Forms.GroupBox();
             this.btnSave = new System.Windows.Forms.Button();
@@ -47,6 +52,7 @@ namespace XRMTokensRun
             this.label3 = new System.Windows.Forms.Label();
             this.txtTokensIn = new System.Windows.Forms.TextBox();
             this.gbSmart = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.btnSmartRandom = new System.Windows.Forms.Button();
             this.btnSmartSystem = new System.Windows.Forms.Button();
             this.btnSmartIf = new System.Windows.Forms.Button();
@@ -57,14 +63,9 @@ namespace XRMTokensRun
             this.btnSmartColumn = new System.Windows.Forms.Button();
             this.cmbTokenHelp = new System.Windows.Forms.ComboBox();
             this.gbTokenResult = new System.Windows.Forms.GroupBox();
-            this.lblError = new System.Windows.Forms.Label();
+            this.lblError = new System.Windows.Forms.TextBox();
             this.txtTokensOut = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnOpenRecord = new System.Windows.Forms.Button();
-            this.btnRefresh = new System.Windows.Forms.Button();
-            this.cmbTable = new Rappen.XTB.Helpers.Controls.XRMEntityComboBox();
-            this.recordname = new Rappen.XTB.Helpers.Controls.XRMColumnText();
-            this.record = new Rappen.XTB.Helpers.Controls.XRMRecordHost();
             this.tt = new System.Windows.Forms.ToolTip(this.components);
             this.toolStripMenu.SuspendLayout();
             this.gbGetRecord.SuspendLayout();
@@ -141,22 +142,49 @@ namespace XRMTokensRun
             this.gbGetRecord.Location = new System.Drawing.Point(0, 4);
             this.gbGetRecord.Name = "gbGetRecord";
             this.gbGetRecord.Size = new System.Drawing.Size(997, 106);
-            this.gbGetRecord.TabIndex = 9;
+            this.gbGetRecord.TabIndex = 1;
             this.gbGetRecord.TabStop = false;
             this.gbGetRecord.Text = "Get Record";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRefresh.BackColor = System.Drawing.SystemColors.Window;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(776, 53);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(37, 33);
+            this.btnRefresh.TabIndex = 7;
+            this.tt.SetToolTip(this.btnRefresh, "Refresh selected record - useful if record has changed.");
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
+            // btnOpenRecord
+            // 
+            this.btnOpenRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpenRecord.BackColor = System.Drawing.SystemColors.Window;
+            this.btnOpenRecord.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenRecord.Image")));
+            this.btnOpenRecord.Location = new System.Drawing.Point(819, 53);
+            this.btnOpenRecord.Name = "btnOpenRecord";
+            this.btnOpenRecord.Size = new System.Drawing.Size(37, 33);
+            this.btnOpenRecord.TabIndex = 8;
+            this.tt.SetToolTip(this.btnOpenRecord, "Open this record in the browser.");
+            this.btnOpenRecord.UseVisualStyleBackColor = false;
+            this.btnOpenRecord.Click += new System.EventHandler(this.btnOpenRecord_Click);
             // 
             // btnGetRecord
             // 
             this.btnGetRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGetRecord.BackColor = System.Drawing.SystemColors.Window;
             this.btnGetRecord.Image = ((System.Drawing.Image)(resources.GetObject("btnGetRecord.Image")));
             this.btnGetRecord.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnGetRecord.Location = new System.Drawing.Point(862, 53);
             this.btnGetRecord.Name = "btnGetRecord";
             this.btnGetRecord.Size = new System.Drawing.Size(120, 33);
-            this.btnGetRecord.TabIndex = 5;
+            this.btnGetRecord.TabIndex = 10;
             this.btnGetRecord.Text = "Lookup...";
             this.tt.SetToolTip(this.btnGetRecord, "Choose the record for this table.");
-            this.btnGetRecord.UseVisualStyleBackColor = true;
+            this.btnGetRecord.UseVisualStyleBackColor = false;
             this.btnGetRecord.Click += new System.EventHandler(this.btnGetRecord_Click);
             // 
             // label2
@@ -169,6 +197,17 @@ namespace XRMTokensRun
             this.label2.TabIndex = 4;
             this.label2.Text = "Record";
             // 
+            // cmbTable
+            // 
+            this.cmbTable.FormattingEnabled = true;
+            this.cmbTable.Location = new System.Drawing.Point(23, 58);
+            this.cmbTable.Margin = new System.Windows.Forms.Padding(4);
+            this.cmbTable.Name = "cmbTable";
+            this.cmbTable.Size = new System.Drawing.Size(375, 24);
+            this.cmbTable.TabIndex = 0;
+            this.cmbTable.SelectedIndexChanged += new System.EventHandler(this.cmbTable_SelectedIndexChanged);
+            this.cmbTable.Leave += new System.EventHandler(this.cmbTable_Leave);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -178,6 +217,28 @@ namespace XRMTokensRun
             this.label1.Size = new System.Drawing.Size(43, 16);
             this.label1.TabIndex = 1;
             this.label1.Text = "Table";
+            // 
+            // recordname
+            // 
+            this.recordname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.recordname.BackColor = System.Drawing.SystemColors.Window;
+            this.recordname.Column = null;
+            this.recordname.DisplayFormat = "";
+            this.recordname.Location = new System.Drawing.Point(425, 58);
+            this.recordname.Margin = new System.Windows.Forms.Padding(4);
+            this.recordname.Name = "recordname";
+            this.recordname.ReadOnly = true;
+            this.recordname.RecordHost = this.record;
+            this.recordname.Size = new System.Drawing.Size(344, 22);
+            this.recordname.TabIndex = 3;
+            // 
+            // record
+            // 
+            this.record.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.record.LogicalName = null;
+            this.record.Record = null;
+            this.record.Service = null;
             // 
             // splitContainer2
             // 
@@ -219,6 +280,7 @@ namespace XRMTokensRun
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.BackColor = System.Drawing.SystemColors.Window;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
             this.btnSave.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSave.Location = new System.Drawing.Point(862, 26);
@@ -226,12 +288,13 @@ namespace XRMTokensRun
             this.btnSave.Size = new System.Drawing.Size(120, 33);
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnOpen
             // 
             this.btnOpen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnOpen.BackColor = System.Drawing.SystemColors.Window;
             this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
             this.btnOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOpen.Location = new System.Drawing.Point(735, 26);
@@ -239,7 +302,7 @@ namespace XRMTokensRun
             this.btnOpen.Size = new System.Drawing.Size(120, 33);
             this.btnOpen.TabIndex = 2;
             this.btnOpen.Text = "Open";
-            this.btnOpen.UseVisualStyleBackColor = true;
+            this.btnOpen.UseVisualStyleBackColor = false;
             this.btnOpen.Click += new System.EventHandler(this.btnOpen_Click);
             // 
             // label3
@@ -263,12 +326,14 @@ namespace XRMTokensRun
             this.txtTokensIn.Margin = new System.Windows.Forms.Padding(4);
             this.txtTokensIn.Multiline = true;
             this.txtTokensIn.Name = "txtTokensIn";
+            this.txtTokensIn.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTokensIn.Size = new System.Drawing.Size(959, 108);
             this.txtTokensIn.TabIndex = 1;
             this.txtTokensIn.TextChanged += new System.EventHandler(this.txtTokensIn_TextChanged);
             // 
             // gbSmart
             // 
+            this.gbSmart.Controls.Add(this.button1);
             this.gbSmart.Controls.Add(this.btnSmartRandom);
             this.gbSmart.Controls.Add(this.btnSmartSystem);
             this.gbSmart.Controls.Add(this.btnSmartIf);
@@ -286,48 +351,59 @@ namespace XRMTokensRun
             this.gbSmart.TabStop = false;
             this.gbSmart.Text = "Build XRM Tokens";
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.SystemColors.Window;
+            this.button1.Location = new System.Drawing.Point(23, 32);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(71, 25);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "Power Fx";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.btnSmartPowerFx_Click);
+            // 
             // btnSmartRandom
             // 
-            this.btnSmartRandom.Enabled = false;
-            this.btnSmartRandom.Location = new System.Drawing.Point(215, 32);
+            this.btnSmartRandom.BackColor = System.Drawing.SystemColors.Window;
+            this.btnSmartRandom.Location = new System.Drawing.Point(254, 32);
             this.btnSmartRandom.Name = "btnSmartRandom";
-            this.btnSmartRandom.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartRandom.Size = new System.Drawing.Size(71, 25);
             this.btnSmartRandom.TabIndex = 30;
             this.btnSmartRandom.Text = "Random";
-            this.btnSmartRandom.UseVisualStyleBackColor = true;
+            this.btnSmartRandom.UseVisualStyleBackColor = false;
             this.btnSmartRandom.Click += new System.EventHandler(this.btnSmartRandom_Click);
             // 
             // btnSmartSystem
             // 
-            this.btnSmartSystem.Enabled = false;
-            this.btnSmartSystem.Location = new System.Drawing.Point(119, 32);
+            this.btnSmartSystem.BackColor = System.Drawing.SystemColors.Window;
+            this.btnSmartSystem.Location = new System.Drawing.Point(177, 32);
             this.btnSmartSystem.Name = "btnSmartSystem";
-            this.btnSmartSystem.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartSystem.Size = new System.Drawing.Size(71, 25);
             this.btnSmartSystem.TabIndex = 20;
             this.btnSmartSystem.Text = "System";
-            this.btnSmartSystem.UseVisualStyleBackColor = true;
+            this.btnSmartSystem.UseVisualStyleBackColor = false;
             this.btnSmartSystem.Click += new System.EventHandler(this.btnSmartSystem_Click);
             // 
             // btnSmartIf
             // 
-            this.btnSmartIf.Enabled = false;
-            this.btnSmartIf.Location = new System.Drawing.Point(407, 32);
+            this.btnSmartIf.BackColor = System.Drawing.SystemColors.Window;
+            this.btnSmartIf.Location = new System.Drawing.Point(408, 32);
             this.btnSmartIf.Name = "btnSmartIf";
-            this.btnSmartIf.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartIf.Size = new System.Drawing.Size(71, 25);
             this.btnSmartIf.TabIndex = 50;
             this.btnSmartIf.Text = "If";
-            this.btnSmartIf.UseVisualStyleBackColor = true;
+            this.btnSmartIf.UseVisualStyleBackColor = false;
             this.btnSmartIf.Click += new System.EventHandler(this.btnSmartIf_Click);
             // 
             // btnSmartExpand
             // 
-            this.btnSmartExpand.Enabled = false;
-            this.btnSmartExpand.Location = new System.Drawing.Point(311, 32);
+            this.btnSmartExpand.BackColor = System.Drawing.SystemColors.Window;
+            this.btnSmartExpand.Location = new System.Drawing.Point(331, 32);
             this.btnSmartExpand.Name = "btnSmartExpand";
-            this.btnSmartExpand.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartExpand.Size = new System.Drawing.Size(71, 25);
             this.btnSmartExpand.TabIndex = 40;
             this.btnSmartExpand.Text = "Expand";
-            this.btnSmartExpand.UseVisualStyleBackColor = true;
+            this.btnSmartExpand.UseVisualStyleBackColor = false;
             this.btnSmartExpand.Click += new System.EventHandler(this.btnSmartExpand_Click);
             // 
             // linkHelp
@@ -356,29 +432,31 @@ namespace XRMTokensRun
             // btnAddToken
             // 
             this.btnAddToken.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddToken.BackColor = System.Drawing.SystemColors.Window;
             this.btnAddToken.Enabled = false;
-            this.btnAddToken.Location = new System.Drawing.Point(862, 32);
+            this.btnAddToken.Location = new System.Drawing.Point(862, 31);
             this.btnAddToken.Name = "btnAddToken";
-            this.btnAddToken.Size = new System.Drawing.Size(120, 23);
+            this.btnAddToken.Size = new System.Drawing.Size(120, 25);
             this.btnAddToken.TabIndex = 70;
             this.btnAddToken.Text = "Add Manual";
-            this.btnAddToken.UseVisualStyleBackColor = true;
+            this.btnAddToken.UseVisualStyleBackColor = false;
             this.btnAddToken.Click += new System.EventHandler(this.btnAddToken_Click);
             // 
             // btnSmartColumn
             // 
-            this.btnSmartColumn.Enabled = false;
-            this.btnSmartColumn.Location = new System.Drawing.Point(23, 32);
+            this.btnSmartColumn.BackColor = System.Drawing.SystemColors.Window;
+            this.btnSmartColumn.Location = new System.Drawing.Point(100, 32);
             this.btnSmartColumn.Name = "btnSmartColumn";
-            this.btnSmartColumn.Size = new System.Drawing.Size(90, 23);
+            this.btnSmartColumn.Size = new System.Drawing.Size(71, 25);
             this.btnSmartColumn.TabIndex = 10;
             this.btnSmartColumn.Text = "Column";
-            this.btnSmartColumn.UseVisualStyleBackColor = true;
+            this.btnSmartColumn.UseVisualStyleBackColor = false;
             this.btnSmartColumn.Click += new System.EventHandler(this.btnSmartColumn_Click);
             // 
             // cmbTokenHelp
             // 
             this.cmbTokenHelp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbTokenHelp.BackColor = System.Drawing.SystemColors.Window;
             this.cmbTokenHelp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTokenHelp.FormattingEnabled = true;
             this.cmbTokenHelp.Location = new System.Drawing.Point(654, 32);
@@ -395,19 +473,22 @@ namespace XRMTokensRun
             this.gbTokenResult.Location = new System.Drawing.Point(0, 0);
             this.gbTokenResult.Name = "gbTokenResult";
             this.gbTokenResult.Size = new System.Drawing.Size(997, 205);
-            this.gbTokenResult.TabIndex = 4;
+            this.gbTokenResult.TabIndex = 10;
             this.gbTokenResult.TabStop = false;
             this.gbTokenResult.Text = "Result";
             // 
             // lblError
             // 
-            this.lblError.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblError.AutoSize = true;
-            this.lblError.Location = new System.Drawing.Point(26, 177);
+            this.lblError.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblError.BackColor = System.Drawing.SystemColors.Window;
+            this.lblError.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lblError.Location = new System.Drawing.Point(23, 177);
+            this.lblError.Multiline = true;
             this.lblError.Name = "lblError";
-            this.lblError.Size = new System.Drawing.Size(28, 16);
+            this.lblError.ReadOnly = true;
+            this.lblError.Size = new System.Drawing.Size(959, 25);
             this.lblError.TabIndex = 4;
-            this.lblError.Text = "Info";
             // 
             // txtTokensOut
             // 
@@ -420,6 +501,7 @@ namespace XRMTokensRun
             this.txtTokensOut.Multiline = true;
             this.txtTokensOut.Name = "txtTokensOut";
             this.txtTokensOut.ReadOnly = true;
+            this.txtTokensOut.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTokensOut.Size = new System.Drawing.Size(959, 139);
             this.txtTokensOut.TabIndex = 3;
             // 
@@ -427,63 +509,6 @@ namespace XRMTokensRun
             // 
             this.timer1.Interval = 500;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // btnOpenRecord
-            // 
-            this.btnOpenRecord.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenRecord.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenRecord.Image")));
-            this.btnOpenRecord.Location = new System.Drawing.Point(819, 53);
-            this.btnOpenRecord.Name = "btnOpenRecord";
-            this.btnOpenRecord.Size = new System.Drawing.Size(37, 33);
-            this.btnOpenRecord.TabIndex = 6;
-            this.tt.SetToolTip(this.btnOpenRecord, "Open this record in the browser.");
-            this.btnOpenRecord.UseVisualStyleBackColor = true;
-            this.btnOpenRecord.Click += new System.EventHandler(this.btnOpenRecord_Click);
-            // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(776, 53);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(37, 33);
-            this.btnRefresh.TabIndex = 7;
-            this.tt.SetToolTip(this.btnRefresh, "Refresh selected record - useful if record has changed.");
-            this.btnRefresh.UseVisualStyleBackColor = true;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // cmbTable
-            // 
-            this.cmbTable.FormattingEnabled = true;
-            this.cmbTable.Location = new System.Drawing.Point(23, 58);
-            this.cmbTable.Margin = new System.Windows.Forms.Padding(4);
-            this.cmbTable.Name = "cmbTable";
-            this.cmbTable.Size = new System.Drawing.Size(375, 24);
-            this.cmbTable.TabIndex = 0;
-            this.cmbTable.SelectedIndexChanged += new System.EventHandler(this.cmbTable_SelectedIndexChanged);
-            this.cmbTable.Leave += new System.EventHandler(this.cmbTable_Leave);
-            // 
-            // recordname
-            // 
-            this.recordname.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordname.BackColor = System.Drawing.SystemColors.Window;
-            this.recordname.Column = null;
-            this.recordname.DisplayFormat = "";
-            this.recordname.Location = new System.Drawing.Point(425, 58);
-            this.recordname.Margin = new System.Windows.Forms.Padding(4);
-            this.recordname.Name = "recordname";
-            this.recordname.ReadOnly = true;
-            this.recordname.RecordHost = this.record;
-            this.recordname.Size = new System.Drawing.Size(344, 22);
-            this.recordname.TabIndex = 3;
-            // 
-            // record
-            // 
-            this.record.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.record.LogicalName = null;
-            this.record.Record = null;
-            this.record.Service = null;
             // 
             // XRMTR
             // 
@@ -539,7 +564,6 @@ namespace XRMTokensRun
         private System.Windows.Forms.Button btnSmartColumn;
         private System.Windows.Forms.LinkLabel linkHelp;
         private System.Windows.Forms.Label lblSmart;
-        private System.Windows.Forms.Label lblError;
         private System.Windows.Forms.Button btnGetRecord;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSmartExpand;
@@ -554,5 +578,7 @@ namespace XRMTokensRun
         private System.Windows.Forms.Button btnOpenRecord;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.ToolTip tt;
+        private System.Windows.Forms.TextBox lblError;
+        private System.Windows.Forms.Button button1;
     }
 }
