@@ -10,7 +10,7 @@
 		<iconUrl>https://raw.githubusercontent.com/rappen/XRMTokensRun/main/images/XRMTR-150-tsp.png</iconUrl>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>
-			Runner for the XRM Tokens - work out the data info for used in code or Bulk Data Updater.
+			Runner for the XRM Tokens, now including Microsoft Power Fx! Try it, test it, do more, and use the Bulk Data Updater.
 			The XRM Tokens is available with source code at https://jonasr.app/xrm-tokens/#code
 		</description>
 		<summary>Runner for the XRM Tokens - work out the data info for used in code or Bulk Data Updater. </summary>
