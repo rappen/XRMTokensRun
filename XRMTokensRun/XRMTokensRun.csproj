@@ -352,10 +352,20 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="XRMTR.resx">
       <DependentUpon>XRMTR.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BDU-2019-032-tsp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nav_up_left_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BDU-2019-032-tilt-tsp.png" />
   </ItemGroup>
   <Import Project="..\Rappen.XTB.Helper\Rappen.XRM.Helpers\Rappen.XRM.Helpers.projitems" Label="Shared" />
   <Import Project="..\Rappen.XTB.Helper\Rappen.XTB.Helpers\Rappen.XTB.Helpers.projitems" Label="Shared" />

@@ -81,7 +81,7 @@ namespace XRMTokensRun
             // toolStripMenu
             // 
             this.toolStripMenu.BackColor = System.Drawing.SystemColors.Window;
-            this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.toolStripMenu.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStripMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
             this.toolStripSeparator1,
@@ -90,7 +90,7 @@ namespace XRMTokensRun
             this.toolStripMenu.Location = new System.Drawing.Point(0, 0);
             this.toolStripMenu.Name = "toolStripMenu";
             this.toolStripMenu.Padding = new System.Windows.Forms.Padding(10, 4, 10, 4);
-            this.toolStripMenu.Size = new System.Drawing.Size(997, 39);
+            this.toolStripMenu.Size = new System.Drawing.Size(997, 47);
             this.toolStripMenu.TabIndex = 4;
             this.toolStripMenu.Text = "toolStrip1";
             // 
@@ -99,21 +99,21 @@ namespace XRMTokensRun
             this.toolStripLabel1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripLabel1.Image")));
             this.toolStripLabel1.IsLink = true;
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(181, 28);
+            this.toolStripLabel1.Size = new System.Drawing.Size(189, 36);
             this.toolStripLabel1.Text = "XRM Tokens Documentation";
             this.toolStripLabel1.Click += new System.EventHandler(this.toolStripLabel1_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
             // 
             // btnBackTool
             // 
-            this.btnBackTool.Image = ((System.Drawing.Image)(resources.GetObject("btnBackTool.Image")));
+            this.btnBackTool.Image = global::Rappen.XTB.XRMTR.Properties.Resources.Tool_back;
             this.btnBackTool.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnBackTool.Name = "btnBackTool";
-            this.btnBackTool.Size = new System.Drawing.Size(156, 28);
+            this.btnBackTool.Size = new System.Drawing.Size(164, 36);
             this.btnBackTool.Text = "Send back XRM Tokens";
             this.btnBackTool.ToolTipText = "Send back XRM Tokens\r\nMake sure the target tool knows the same features of the XR" +
     "M Tokens!";
@@ -125,7 +125,7 @@ namespace XRMTokensRun
             this.tslAbout.Image = ((System.Drawing.Image)(resources.GetObject("tslAbout.Image")));
             this.tslAbout.IsLink = true;
             this.tslAbout.Name = "tslAbout";
-            this.tslAbout.Size = new System.Drawing.Size(106, 28);
+            this.tslAbout.Size = new System.Drawing.Size(114, 36);
             this.tslAbout.Text = "by Jonas Rapp";
             this.tslAbout.Click += new System.EventHandler(this.tslAbout_Click);
             // 
@@ -243,7 +243,7 @@ namespace XRMTokensRun
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 39);
+            this.splitContainer2.Location = new System.Drawing.Point(0, 47);
             this.splitContainer2.Margin = new System.Windows.Forms.Padding(4);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -258,8 +258,8 @@ namespace XRMTokensRun
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.gbTokenResult);
-            this.splitContainer2.Size = new System.Drawing.Size(997, 599);
-            this.splitContainer2.SplitterDistance = 386;
+            this.splitContainer2.Size = new System.Drawing.Size(997, 591);
+            this.splitContainer2.SplitterDistance = 380;
             this.splitContainer2.SplitterWidth = 8;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -272,7 +272,7 @@ namespace XRMTokensRun
             this.gbTokens.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbTokens.Location = new System.Drawing.Point(0, 110);
             this.gbTokens.Name = "gbTokens";
-            this.gbTokens.Size = new System.Drawing.Size(997, 191);
+            this.gbTokens.Size = new System.Drawing.Size(997, 185);
             this.gbTokens.TabIndex = 5;
             this.gbTokens.TabStop = false;
             this.gbTokens.Text = "XRM Tokens";
@@ -327,7 +327,7 @@ namespace XRMTokensRun
             this.txtTokensIn.Multiline = true;
             this.txtTokensIn.Name = "txtTokensIn";
             this.txtTokensIn.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTokensIn.Size = new System.Drawing.Size(959, 108);
+            this.txtTokensIn.Size = new System.Drawing.Size(959, 102);
             this.txtTokensIn.TabIndex = 1;
             this.txtTokensIn.TextChanged += new System.EventHandler(this.txtTokensIn_TextChanged);
             // 
@@ -344,7 +344,7 @@ namespace XRMTokensRun
             this.gbSmart.Controls.Add(this.btnSmartColumn);
             this.gbSmart.Controls.Add(this.cmbTokenHelp);
             this.gbSmart.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.gbSmart.Location = new System.Drawing.Point(0, 301);
+            this.gbSmart.Location = new System.Drawing.Point(0, 295);
             this.gbSmart.Name = "gbSmart";
             this.gbSmart.Size = new System.Drawing.Size(997, 85);
             this.gbSmart.TabIndex = 6;
@@ -472,7 +472,7 @@ namespace XRMTokensRun
             this.gbTokenResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gbTokenResult.Location = new System.Drawing.Point(0, 0);
             this.gbTokenResult.Name = "gbTokenResult";
-            this.gbTokenResult.Size = new System.Drawing.Size(997, 205);
+            this.gbTokenResult.Size = new System.Drawing.Size(997, 203);
             this.gbTokenResult.TabIndex = 10;
             this.gbTokenResult.TabStop = false;
             this.gbTokenResult.Text = "Result";
@@ -483,7 +483,7 @@ namespace XRMTokensRun
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblError.BackColor = System.Drawing.SystemColors.Window;
             this.lblError.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lblError.Location = new System.Drawing.Point(23, 177);
+            this.lblError.Location = new System.Drawing.Point(23, 175);
             this.lblError.Multiline = true;
             this.lblError.Name = "lblError";
             this.lblError.ReadOnly = true;
@@ -502,7 +502,7 @@ namespace XRMTokensRun
             this.txtTokensOut.Name = "txtTokensOut";
             this.txtTokensOut.ReadOnly = true;
             this.txtTokensOut.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTokensOut.Size = new System.Drawing.Size(959, 139);
+            this.txtTokensOut.Size = new System.Drawing.Size(959, 137);
             this.txtTokensOut.TabIndex = 3;
             // 
             // timer1
@@ -569,7 +569,6 @@ namespace XRMTokensRun
         private System.Windows.Forms.Button btnSmartExpand;
         private System.Windows.Forms.Button btnSmartIf;
         private System.Windows.Forms.Button btnSmartSystem;
-        private System.Windows.Forms.ToolStripButton btnBackTool;
         private System.Windows.Forms.ToolStripLabel tslAbout;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Button btnSmartRandom;
@@ -580,5 +579,6 @@ namespace XRMTokensRun
         private System.Windows.Forms.ToolTip tt;
         private System.Windows.Forms.TextBox lblError;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripButton btnBackTool;
     }
 }

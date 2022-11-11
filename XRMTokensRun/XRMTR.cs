@@ -5,6 +5,7 @@ using Microsoft.Xrm.Sdk.Query;
 using Rappen.XRM.Helpers.Extensions;
 using Rappen.XRM.Tokens;
 using Rappen.XTB.Helpers.Controls;
+using Rappen.XTB.XRMTR.Properties;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -77,6 +78,7 @@ namespace XRMTokensRun
         private void XRMTR_Load(object sender, EventArgs e)
         {
             ai.WriteEvent("Load");
+            tslAbout.Text = Assembly.GetExecutingAssembly().GetName().Version.ToString() + " by Jonas Rapp";
             LoadSetting();
             Enable(true);
         }
@@ -463,13 +465,22 @@ namespace XRMTokensRun
         private void SetBackTag(string tag)
         {
             btnBackTool.Tag = tag;
-            if (string.IsNullOrWhiteSpace(tag))
+            if (tag == "Bulk Data Updater")
             {
-                btnBackTool.Text = "Send back XRM Tokens";
+                btnBackTool.Text = "Send XRM Tokens back to Bulk Data Updater";
+                btnBackTool.Image = Resources.BDU_back;
             }
             else
             {
-                btnBackTool.Text = $"Send back XRM Tokens to tools {tag}";
+                if (string.IsNullOrWhiteSpace(tag))
+                {
+                    btnBackTool.Text = "Send back XRM Tokens";
+                }
+                else
+                {
+                    btnBackTool.Text = $"Send back XRM Tokens to tool {tag}";
+                }
+                btnBackTool.Image = Resources.Tool_back;
             }
         }
 
