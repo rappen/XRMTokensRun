@@ -530,7 +530,7 @@ namespace XRMTokensRun
             if (open.ShowDialog(this) == DialogResult.OK)
             {
                 var text = System.IO.File.ReadAllText(open.FileName);
-                MessageBox.Show($"XRM Tokens opened from file:\n{open.FileName}", "Save", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"XRM Tokens opened from file:\n{open.FileName}", "Open", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtTokensIn.Text = text;
             }
         }
