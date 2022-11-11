@@ -15,7 +15,18 @@
 		</description>
 		<summary>Runner for the XRM Tokens - work out the data info for used in code or Bulk Data Updater. </summary>
 		<releaseNotes>
-			Version 1.2022.11:
+			Version 1.2022.11.latest:
+
+			Major improvement!
+			XRM Tokens can now calculate with Microsoft Power Fx!
+			See the docs: https://jonasr.app/xrm-tokens/#powerfx
+			Example:
+			&lt;PowerFx|Round({price|&lt;value&gt;}*(1+({pricelist.yearlyincrease}/100)); 2)&gt;
+			Go figure! 🤯
+
+			---
+
+			Version 1.2022.11.3:
 
 			Added Save and Open XRM Tokens
 			Added Lower and Upper cases
