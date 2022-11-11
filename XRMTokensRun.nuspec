@@ -59,9 +59,9 @@
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="XRMTokensRun\bin\Release\Rappen.XTB.XRMTR.dll" target="lib\net452\Plugins" />
-		<file src="XRMTokensRun\bin\Release\Microsoft.PowerFx.*.dll" target="lib\net471\Plugins\Rappen.XTB.XRMTR" />
-		<file src="XRMTokensRun\bin\Release\en-US\*.dll" target="lib\net471\Plugins\Rappen.XTB.XRMTR\en-US" />
-		<file src="XRMTokensRun\bin\Release\System.Collections.Immutable.dll" target="lib\net471\Plugins\Rappen.XTB.XRMTR" />
+		<file src="XRMTokensRun\bin\Release\Rappen.XTB.XRMTR.dll" target="lib\net472\Plugins" />
+		<file src="XRMTokensRun\bin\Release\Microsoft.PowerFx.*.dll" target="lib\net421\Plugins\Rappen.XTB.XRMTR" />
+		<file src="XRMTokensRun\bin\Release\en-US\*.dll" target="lib\net472\Plugins\Rappen.XTB.XRMTR\en-US" />
+		<file src="XRMTokensRun\bin\Release\System.Collections.Immutable.dll" target="lib\net472\Plugins\Rappen.XTB.XRMTR" />
 	</files>
 </package>
