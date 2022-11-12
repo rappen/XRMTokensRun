@@ -15,42 +15,42 @@
 		</description>
 		<summary>Runner for the XRM Tokens - work out the data info for used in code or Bulk Data Updater. </summary>
 		<releaseNotes>
-			Version 1.2022.11.latest:
+Version 1.2022.11.latest:
 
-			Major improvement!
-			XRM Tokens can now calculate with Microsoft Power Fx!
-			See the docs: https://jonasr.app/xrm-tokens/#powerfx
-			Example:
-			&lt;PowerFx|Round({price|&lt;value&gt;}*(1+({pricelist.yearlyincrease}/100)); 2)&gt;
-			Go figure! 🤯
+Major improvement!
+XRM Tokens can now calculate with Microsoft Power Fx!
+See the docs: https://jonasr.app/xrm-tokens/#powerfx
+Example:
+&lt;PowerFx|Round({price|&lt;value&gt;}*(1+({pricelist.yearlyincrease}/100)); 2)&gt;
+Go figure! 🤯
 
-			---
+---
 
-			Version 1.2022.11.3:
+Version 1.2022.11.3:
 
-			Added Save and Open XRM Tokens
-			Added Lower and Upper cases
-			Added RecurdURL XRM Tokens
-			Added Refresh and Open buttons for selected record
-			Will never implement recurrency XRM Tokens
-			Bug fixes for format Math|Round and Math|Abs
+Added Save and Open XRM Tokens
+Added Lower and Upper cases
+Added RecordURL XRM Tokens
+Added Refresh and Open buttons for selected record
+Will never implement recurrency XRM Tokens
+Bug fixes for format Math|Round and Math|Abs
 
-			---
+---
 
-			Version 1.2022.8:
+Version 1.2022.8:
 
-			#14 Added support for Random features.
-			#15 Added support for Choices feature.
-			#17 Added support for Trim features.
+#14 Added support for Random features.
+#15 Added support for Choices feature.
+#17 Added support for Trim features.
 
-			#18 Fixing formatting order in XRM Tokens.
-			Minor fixes here and there.
+#18 Fixing formatting order in XRM Tokens.
+Minor fixes here and there.
 
-			---
+---
 
-			Version 1.2021.9:
+Version 1.2021.9:
 
-			First release!
+First release!
 		</releaseNotes>
 		<copyright>Copyright 2021-2022 Jonas Rapp</copyright>
 		<tags>XrmToolBox Plugins XRMTokensRunner</tags>
