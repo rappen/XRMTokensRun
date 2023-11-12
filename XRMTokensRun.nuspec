@@ -15,7 +15,17 @@
 		</description>
 		<summary>Runner for the XRM Tokens - work out the data info for used in code or Bulk Data Updater. </summary>
 		<releaseNotes>
-Version 1.2022.11.latest:
+Version 1.2023.11:
+
+Now works well with newest version of XrmToolBox!
+
+Using Latest and Greatest versions of XrmToolBoxPackage, Microsoft CRMSDK, Microsoft Power Fx, etc.
+
+Sorry, no new features this time...
+
+---
+
+Version 1.2022.11.8:
 
 Major improvement!
 XRM Tokens can now calculate with Microsoft Power Fx!
@@ -52,7 +62,7 @@ Version 1.2021.9:
 
 First release!
 		</releaseNotes>
-		<copyright>Copyright 2021-2022 Jonas Rapp</copyright>
+		<copyright>Copyright 2021-2023 Jonas Rapp</copyright>
 		<tags>XrmToolBox Plugins XRMTokensRunner</tags>
 		<dependencies>
 			<dependency id="XrmToolBox" version="1.2022.11.59" />
